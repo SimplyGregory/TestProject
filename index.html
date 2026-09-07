@@ -285,7 +285,7 @@
         </div>
         <div class="option-forms">
             <a class="FormTitle">Log In</a>
-            <form class="LoginForm" novalidate>
+            <form id="LoginForm" class="LoginForm login" novalidate>
                 <label for="email">Email</label>
                 <input type="email" id="email" required>
                 <span class="input-error">Email is required</span>
@@ -299,7 +299,7 @@
         </div>
         <div class="option-forms hidden">
             <a class="FormTitle">Register</a>
-            <form class="LoginForm" novalidate>
+            <form id="RegisterForm" class="LoginForm" novalidate>
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" minlength="5" maxlength="15" required>
                 <span class="input-error">Username is required</span>
@@ -555,7 +555,18 @@
             }
         });
 
-        
+        const RegisterForm = document.getElementById('RegisterForm');
+        const LoginForm = document.getElementById('LoginForm');
+
+        const Param = new URLSearchParams(window.location.search).get('form');
+
+        if (Param === 'login') {
+            LoginForm.classList.add('active');
+            RegisterForm.classList.remove('active');
+        } else if (Param === 'register') {
+            RegisterForm.classList.add('active');
+            LoginForm.classList.remove('active');
+        }
 
     }
 </script>

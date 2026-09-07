@@ -563,9 +563,13 @@
         if (Param === 'login') {
             LoginForm.classList.remove('hidden');
             RegisterForm.classList.add('hidden');
+            document.querySelector('.OptionReg').classList.remove('active');
+            document.querySelector('.OptionSign').classList.add('active');
         } else if (Param === 'register') {
             RegisterForm.classList.remove('hidden');
             LoginForm.classList.add('hidden');
+            document.querySelector('.OptionReg').classList.add('active');
+            document.querySelector('.OptionSign').classList.remove('active');
         }
 
     }

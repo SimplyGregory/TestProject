@@ -208,6 +208,7 @@
     .ResetBack {
         background: transparent;
         border: transparent;
+        font-size: 20px;
         color: rgba(29, 29, 29, 0.7);
         cursor: pointer;
         font-family: 'Arial Black', sans-serif;
@@ -215,8 +216,8 @@
         text-decoration: underline;
         position: relative;
         display: inline-block;
-        top: 85px;
-        left: 60px;
+        top: 200px;
+        left: 40%;
     }
 
     .policy {
@@ -315,11 +316,11 @@
         <div class="option-forms hidden">
             <a class="FormTitle">Forgot Password</a>
             <form class="LoginForm" novalidate>
-                <button class="ResetBack">Back</button>
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
                 <span class="input-error">Email is required</span>
-                <button class="submit ResetPassword" type="submit">Reset Password</button>
+                <button class="submit" type="submit">Reset Password</button>
+                <button class="ResetBack">Back</button>
             </form>
         </div>
     </div>

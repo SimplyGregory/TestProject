@@ -7,9 +7,9 @@
 </head>
 <body>
     <div class="option-buttons">
-        <button id="OptionSign" class="OptionSign active">Privacy</button>
-        <button id="OptionSign" class="OptionSign">Log In</button>
-        <button id="OptionReg" class="OptionReg">Register</button>
+        <button class="active">Privacy</button>
+        <button onclick="location.href='index.html'">Log In</button>
+        <button  onclick="location.href='index.html'">Register</button>
     </div>
 </body>
 <style>
@@ -30,47 +30,31 @@
         flex-direction: row;
         display: flex;
         gap: 10px;
+        
+    }
+
+    .option-buttons button {
+        background-color: transparent;
+        border: 0px solid transparent;
+        width: 80px;
+        height: 30px;
+        color: #1d1d1d;
+        cursor: pointer;
+        font-family: inherit;
+    }
+
+    .option-buttons button.active {
+        background-color: #373737;
+        width: 80px;
+        height: 30px;
+        border: 0px solid transparent;
+        color: #929292;
+        cursor: pointer;
+        font-family: inherit;
     }
 
     .option-buttons button:hover {
         text-decoration: underline;
-    }
-    .OptionSign {
-        background-color: transparent;
-        border: 0px solid transparent;
-        width: 80px;
-        height: 30px;
-        color: #1d1d1d;
-        cursor: pointer;
-        font-family: inherit;
-    }
-
-    .OptionReg {
-        background-color: transparent;
-        border: 0px solid transparent;
-        width: 80px;
-        height: 30px;
-        color: #1d1d1d;
-        cursor: pointer;
-        font-family: inherit;
-    }
-    .OptionSign.active {
-        background-color: #373737;
-        width: 80px;
-        height: 30px;
-        border: 0px solid transparent;
-        color: #929292;
-        cursor: pointer;
-        font-family: inherit;
-    }
-    .OptionReg.active {
-        background-color: #373737;
-        width: 80px;
-        height: 30px;
-        border: 0px solid transparent;
-        color: #929292;
-        cursor: pointer;
-        font-family: inherit;
     }
 </style>
 </html>

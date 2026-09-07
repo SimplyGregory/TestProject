@@ -195,7 +195,7 @@
         margin-top: 10px;
         text-decoration: underline;
         left: 30%;
-        top: 85%;
+        top: 90%;
         position: absolute;
     }
 
@@ -218,11 +218,26 @@
         font-size: 18px;
     }
 
+    .policy {
+        color: rgba(29, 29, 29, 0.9);
+        font-family: 'Arial Black', sans-serif;
+        font-size: 9px;
+        position: absolute;
+        top: 85%;
+        width: 50%;
+        left: 25%;
+    }
+
     .TermsLink {
-        color: rgba(29, 29, 29, 0.7);
+        color: rgba(187, 86, 86, 0.9);
         cursor: pointer;
         font-family: 'Arial Black', sans-serif;
         text-decoration: underline;
+        font-size: 10px;
+    }
+
+    .TermsLink:hover {
+        color: rgb(150, 66, 66);
     }
 
 </style>
@@ -255,7 +270,7 @@
                 <button type="submit">Sign Up</button>
             </form>
             <div class="HaveAccount">Already have an account?</div>
-            <a class="tos/policy">By clicking Sign up, Sign in with Google or Sign in with Github, you agree to our <a class="TermsLink">Terms and Conditions</a> and <a class="TermsLink">Privacy Policy</a>.</a>
+            <span class="policy">By clicking Sign up, Sign in with Google or Sign in with Github, you agree to our <a class="TermsLink">Terms and Conditions</a> and <a class="TermsLink">Privacy Policy</a>.</span>
         </div>
         <div class="option-forms hidden">
             <a class="FormTitle">Forgot Password</a>

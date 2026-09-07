@@ -555,12 +555,17 @@
             }
         });
 
+        const RegisterForm = document.getElementById('RegisterForm').parentElement;;
+        const LoginForm = document.getElementById('LoginForm').parentElement;
+
         const Param = new URLSearchParams(window.location.search).get('form');
 
         if (Param === 'login') {
-           
+            LoginForm.classList.remove('hidden');
+            RegisterForm.classList.add('hidden');
         } else if (Param === 'register') {
-           
+            RegisterForm.classList.remove('hidden');
+            LoginForm.classList.add('hidden');
         }
 
     }

@@ -555,17 +555,12 @@
             }
         });
 
-        const RegisterForm = document.getElementById('RegisterForm');
-        const LoginForm = document.getElementById('LoginForm');
-
         const Param = new URLSearchParams(window.location.search).get('form');
 
         if (Param === 'login') {
-            LoginForm.classList.add('active');
-            RegisterForm.classList.remove('active');
+           
         } else if (Param === 'register') {
-            RegisterForm.classList.add('active');
-            LoginForm.classList.remove('active');
+           
         }
 
     }

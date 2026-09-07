@@ -250,6 +250,14 @@
         color: rgb(150, 66, 66);
     }
 
+    .input-error {
+        color: #d34242;
+        font-family: 'Arial Black', sans-serif;
+        font-size: 12px;
+        position: relative;
+        top: -15px;
+    }
+
 </style>
 <body>
     <div id="Login">
@@ -262,10 +270,10 @@
             <form class="LoginForm" novalidate>
                 <label for="email">Email</label>
                 <input type="email" id="email" required>
-                <span class="email-error">Email is required</span>
+                <span class="input-error">Email is required</span>
                 <label for="password">Password</label>
                 <input type="password" id="password" minlength="8" maxlength="20" required>
-                <span class="password-error">Password is required</span>
+                <span class="input-error">Password is required</span>
                 <button type="submit">Sign In</button>
             </form>
             <span class="policy1">By clicking Sign In, Sign in with Google or Sign in with Github, you agree to our <a href="terms.html" class="TermsLink">Terms and Conditions</a> and <a href="privacy.html" class="TermsLink">Privacy Policy</a>.</span>
@@ -276,13 +284,13 @@
             <form class="LoginForm" novalidate>
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
-                <span class="username-error">Username is required</span>
+                <span class="input-error">Username is required</span>
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
-                <span class="email-error">Email is required</span>
+                <span class="input-error">Email is required</span>
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" minlength="8" maxlength="20" required>
-                <span class="password-error">Password is required</span>
+                <span class="input-error">Password is required</span>
                 <button type="submit">Sign Up</button>
             </form>
             <span class="policy">By clicking Sign up, Sign in with Google or Sign in with Github, you agree to our <a href="terms.html" class="TermsLink">Terms and Conditions</a> and <a href="privacy.html" class="TermsLink">Privacy Policy</a>.</span>
@@ -294,7 +302,7 @@
             <form class="LoginForm" novalidate>
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
-                <span class="email-error">Email is required</span>
+                <span class="input-error">Email is required</span>
                 <button type="submit">Reset Password</button>
             </form>
         </div>

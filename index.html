@@ -185,7 +185,8 @@
         text-decoration: underline;
         left: 37%;
         top: 80%;
-        position: absolute;
+        position: relative;
+        display: inline-block;
     }
 
     .HaveAccount {
@@ -293,7 +294,7 @@
             <a class="FormTitle">Register</a>
             <form class="LoginForm" novalidate>
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" minlength="5" maxlength="15" required>
                 <span class="input-error">Username is required</span>
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>

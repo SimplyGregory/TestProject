@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IB_CS_APP</title>
+</head>
+<style>
+
+    body {
+        overflow: hidden;
+        background: linear-gradient(to right, #0a0a0a 0%, #1c1c1c 50%, #ffffff 100%);
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;  
+    }
+    #Login {
+        background-color: #bdbdbd;
+        position: absolute;
+        top: 0%;
+        right: 0%;
+        width: 50%;
+        height: 100%;
+        z-index: 11;
+    }
+    #getStarted {
+        position: absolute;
+        top: 55%;
+        left: 15%;
+        font-size: 2em;
+        color: rgba(188, 188, 188, 0.7);
+        font-family: 'Arial Black', sans-serif;
+        font-size: 30px;
+        z-index: 12;
+    }
+
+    .signin-container {
+        position: absolute;
+        top: 63%;
+        left: 14.5%;
+        z-index: 12;
+        flex-direction: column;
+        display: flex;
+    }
+
+    .signin {
+        margin: 10px 0;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: transparent;
+        border: 2px solid rgba(188, 188, 188, 0.7);
+        color: rgba(188, 188, 188, 0.7);
+        font-family: 'Arial Black', sans-serif;
+    }
+
+    .signin:hover {
+        border: 2px solid rgba(188, 188, 188, 1);
+        color: rgba(188, 188, 188, 1);
+    }
+
+    .option-buttons {
+        position: absolute;
+        top: 3%;
+        right: 3%;
+        z-index: 12;
+        flex-direction: row;
+        display: flex;
+        gap: 10px;
+    }
+
+    .option-buttons button:hover {
+        text-decoration: underline;
+    }
+
+            .OptionSign {
+                background-color: transparent;
+                border: 0px solid transparent;
+                width: 80px;
+                height: 30px;
+                color: #1d1d1d;
+                cursor: pointer;
+                font-family: 'Arial Black', sans-serif;
+            }
+
+            .OptionReg {
+                background-color: transparent;
+                border: 0px solid transparent;
+                width: 80px;
+                height: 30px;
+                color: #1d1d1d;
+                cursor: pointer;
+                font-family: 'Arial Black', sans-serif;
+            }
+            .OptionSign.active {
+                background-color: #373737;
+                width: 80px;
+                height: 30px;
+                border: 0px solid transparent;
+                color: #929292;
+                cursor: pointer;
+                font-family: 'Arial Black', sans-serif;
+            }
+            .OptionReg.active {
+                background-color: #373737;
+                width: 80px;
+                height: 30px;
+                border: 0px solid transparent;
+                color: #929292;
+                cursor: pointer;
+                font-family: 'Arial Black', sans-serif;
+            }
+
+    .option-forms {
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        width: 90%;
+        height: 80%;
+        z-index: 12;
+    }
+
+    .FormTitle {
+        color: rgba(29, 29, 29, 0.7);
+        font-family: 'Arial Black', sans-serif;
+        font-size: 40px;
+        left: 15%;
+        top: 20%;
+        position: absolute;
+    }
+
+    .LoginForm {
+        display: block;
+        margin: 10px 0;
+        position: absolute;
+        padding: 10px;
+        font-size: 20px;
+        width: 60%;
+        box-sizing: border-box;
+        left: 18%;
+        top: 35%;
+    }
+
+    .LoginForm input {
+        display: block;
+        width: 100%;
+        color: rgba(29, 29, 29, 0.7);
+        margin-bottom: 13px;
+        background-color: transparent;
+        border: transparent;
+        outline: none;
+        border-bottom: 2px solid rgba(29, 29, 29, 0.7);
+    }
+
+    .LoginForm label {
+        color: rgba(29, 29, 29, 0.7);
+        font-family: 'Arial Black', sans-serif;
+        display: block;
+        font-size: 18px;
+        margin-bottom: 13px;
+    }
+
+    .LoginForm button{
+        width: 95%;
+        height: 70px;
+        margin-top: 20px;
+        left: 13px;
+        position: absolute;
+        color: #929292;
+        background-color: #373737;
+        border: 0px solid transparent;
+        font-size: 22px;
+        cursor: pointer;
+        font-family: 'Arial Black', sans-serif;
+    }
+    .LoginForm button:hover {
+        background-color: #4a4a4a;
+    }
+
+    .ForgotPassword {
+        color: rgba(29, 29, 29, 0.7);
+        cursor: pointer;
+        font-family: 'Arial Black', sans-serif;
+        margin-top: 10px;
+        text-decoration: underline;
+        left: 37%;
+        top: 75%;
+        position: absolute;
+    }
+
+    .HaveAccount {
+        color: rgba(29, 29, 29, 0.7);
+        cursor: pointer;
+        font-family: 'Arial Black', sans-serif;
+        margin-top: 10px;
+        text-decoration: underline;
+        left: 30%;
+        top: 85%;
+        position: absolute;
+    }
+
+    .option-forms.hidden {
+        display: none;
+    }
+    
+    .ResetBack {
+        background-color: transparent;
+        width: 100px;
+        height: 40px;
+        top: 65%;
+        left: 40%;
+        position: absolute;
+        border: 0px solid transparent;
+        color: rgba(29, 29, 29, 0.7);
+        cursor: pointer;
+        font-family: 'Arial Black', sans-serif;
+        text-decoration: underline;
+        font-size: 18px;
+    }
+
+</style>
+<body>
+    <div id="Login">
+        <div class="option-buttons">
+            <button id="OptionSign" class="OptionSign active">Log In</button>
+            <button id="OptionReg" class="OptionReg">Register</button>
+        </div>
+        <div class="option-forms">
+            <a class="FormTitle">Log In</a>
+            <form class="LoginForm">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" minlength="8" maxlength="20" required>
+                <button type="submit">Sign In</button>
+            </form>
+            <div class="ForgotPassword">Forgot Password?</div>
+        </div>
+        <div class="option-forms hidden">
+            <a class="FormTitle">Register</a>
+            <form class="LoginForm">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" minlength="8" maxlength="20" required>
+                <button type="submit">Sign Up</button>
+            </form>
+            <div class="HaveAccount">Already have an account?</div>
+        </div>
+        <div class="option-forms hidden">
+            <a class="FormTitle">Forgot Password</a>
+            <button class="ResetBack">Back</button>
+            <form class="LoginForm">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Reset Password</button>
+            </form>
+        </div>
+    </div>
+    <text id="getStarted">Get Started</text>
+    <div class="signin-container">
+        <button class="signin">Sign in with Google</button>
+        <button class="signin">Sign in with Github</button>
+    </div>
+</body>
+<script>
+    const circles = [
+        { top: '40%', left: '-25%', size: '1200px', color: '#0a0a0a', zIndex: '10', boxShadow: '0 0 60px 10px rgba(0, 0, 0, 0.6)'},
+        { top: '5%', left: '5%', size: '600px', color: '#1b4b7a', zIndex: '5', overflow: true, boxShadow: '0 0 60px 10px rgba(0, 0, 0, 0.6)',
+            children: [
+                { top: '0%', left: '42%', size: '210px', color: '#3fae53'},
+                { top: '8%', left: '58%', size: '160px', color: '#3fae53'},
+                { top: '-6%', left: '62%', size: '140px', color: '#3fae53'},
+                { top: '48%', left: '2%', size: '190px', color: '#2f8f45'},
+                { top: '60%', left: '18%', size: '150px', color: '#2f8f45'},
+                { top: '38%', left: '-4%', size: '120px', color: '#2f8f45'},
+                { top: '66%', left: '55%', size: '110px', color: '#256b38'},
+                { top: '74%', left: '65%', size: '85px', color: '#256b38'},
+            ]
+        },
+        { top: '79.71%', left: '31.25%', size: '10.73px' },
+        { top: '87.15%', left: '21.80%', size: '14.79px' },
+        { top: '13.83%', left: '39.40%', size: '7.19px' },
+        { top: '17.93%', left: '15.26%', size: '14.11px' },
+        { top: '72.95%', left: '26.27%', size: '13.14px' },
+        { top: '10.54%', left: '48.16%', size: '14.29px' },
+        { top: '33.60%', left: '18.52%', size: '13.99px' },
+        { top: '2.21%', left: '37.54%', size: '12.66px' },
+        { top: '52.48%', left: '38.75%', size: '8.06px' },
+        { top: '95.37%', left: '6.58%', size: '11.79px' },
+        { top: '61.93%', left: '30.28%', size: '9.15px' },
+        { top: '79.26%', left: '38.58%', size: '13.04px' },
+        { top: '38.04%', left: '29.59%', size: '7.82px' },
+        { top: '19.07%', left: '17.64%', size: '9.77px' },
+        { top: '21.98%', left: '3.49%', size: '11.55px' },
+        { top: '60.48%', left: '40.32%', size: '8.21px' },
+        { top: '61.82%', left: '8.95%', size: '8.37px' },
+        { top: '70.17%', left: '31.69%', size: '14.75px' },
+        { top: '80.41%', left: '44.41%', size: '7.40px' },
+        { top: '75.53%', left: '45.58%', size: '14.95px' },
+        { top: '92.99%', left: '12.43%', size: '7.92px' },
+        { top: '18.00%', left: '26.91%', size: '14.82px' },
+        { top: '3.29%', left: '43.59%', size: '7.55px' },
+        { top: '80.64%', left: '47.61%', size: '14.60px' },
+        { top: '4.07%', left: '16.90%', size: '8.59px' },
+        { top: '39.82%', left: '14.27%', size: '12.68px' },
+        { top: '90.01%', left: '18.31%', size: '11.86px' },
+        { top: '85.03%', left: '16.40%', size: '10.17px' },
+        { top: '4.88%', left: '15.29%', size: '11.86px' },
+        { top: '2.18%', left: '35.50%', size: '13.55px' },
+        { top: '83.94%', left: '31.21%', size: '14.98px' },
+        { top: '30.09%', left: '22.31%', size: '11.88px' },
+        { top: '44.61%', left: '40.10%', size: '12.14px' },
+        { top: '97.00%', left: '10.83%', size: '10.70px' },
+        { top: '78.59%', left: '13.63%', size: '10.63px' },
+        { top: '57.29%', left: '30.04%', size: '10.73px' },
+        { top: '84.12%', left: '26.99%', size: '7.67px' },
+        { top: '96.08%', left: '35.13%', size: '8.61px' },
+        { top: '78.91%', left: '48.80%', size: '9.77px' },
+        { top: '90.94%', left: '21.19%', size: '13.54px' },
+        { top: '67.28%', left: '7.49%', size: '13.04px' },
+        { top: '51.72%', left: '23.78%', size: '11.06px' },
+        { top: '48.22%', left: '5.38%', size: '9.60px' },
+        { top: '76.40%', left: '19.78%', size: '8.41px' },
+        { top: '23.12%', left: '42.98%', size: '7.16px' },
+        { top: '74.25%', left: '33.60%', size: '14.45px' },
+        { top: '39.26%', left: '27.02%', size: '14.67px' },
+        { top: '6.91%', left: '14.08%', size: '7.45px' },
+        { top: '75.05%', left: '18.29%', size: '13.26px' },
+        { top: '76.76%', left: '6.55%', size: '13.56px' },
+        { top: '42.58%', left: '7.78%', size: '11.64px' },
+        { top: '6.95%', left: '6.82%', size: '8.38px' },
+        { top: '77.92%', left: '5.66%', size: '9.88px' },
+        { top: '48.43%', left: '1.10%', size: '14.03px' },
+        { top: '99.74%', left: '4.89%', size: '9.09px' },
+        { top: '19.56%', left: '21.48%', size: '14.58px' },
+        { top: '89.02%', left: '47.78%', size: '14.84px' },
+        { top: '5.34%', left: '3.18%', size: '13.06px' },
+        { top: '23.94%', left: '10.18%', size: '8.43px' },
+        { top: '70.24%', left: '0.46%', size: '10.18px' },
+        { top: '32.87%', left: '43.18%', size: '11.41px' },
+        { top: '61.23%', left: '34.57%', size: '7.21px' },
+        { top: '75.96%', left: '40.24%', size: '8.71px' },
+        { top: '48.99%', left: '42.68%', size: '8.07px' },
+        { top: '37.72%', left: '12.34%', size: '14.48px' },
+        { top: '58.31%', left: '48.18%', size: '14.36px' },
+        { top: '58.77%', left: '24.51%', size: '12.24px' },
+        { top: '76.07%', left: '14.24%', size: '13.34px' },
+        { top: '39.39%', left: '43.56%', size: '12.90px' },
+        { top: '63.92%', left: '2.38%', size: '8.45px' },
+        { top: '58.84%', left: '38.94%', size: '12.18px' },
+        { top: '25.05%', left: '19.55%', size: '8.27px' },
+        { top: '91.94%', left: '22.70%', size: '14.34px' },
+        { top: '18.95%', left: '38.69%', size: '13.48px' },
+        { top: '78.99%', left: '45.26%', size: '12.31px' },
+        { top: '47.77%', left: '25.05%', size: '13.66px' },
+        { top: '12.36%', left: '6.38%', size: '13.05px' },
+        { top: '74.74%', left: '41.39%', size: '13.33px' },
+        { top: '19.03%', left: '0.34%', size: '10.34px' },
+        { top: '94.33%', left: '4.96%', size: '10.13px' },
+        { top: '44.38%', left: '3.63%', size: '10.87px' },
+        { top: '64.52%', left: '38.41%', size: '14.33px' },
+        { top: '69.35%', left: '37.43%', size: '14.85px' },
+        { top: '17.30%', left: '3.40%', size: '13.16px' },
+        { top: '37.41%', left: '44.27%', size: '9.68px' },
+        { top: '0.91%', left: '15.68%', size: '14.86px' },
+        { top: '45.63%', left: '26.53%', size: '10.28px' },
+        { top: '21.08%', left: '5.33%', size: '8.15px' },
+        { top: '55.14%', left: '2.93%', size: '10.43px' },
+        { top: '67.71%', left: '0.52%', size: '11.30px' },
+        { top: '42.86%', left: '23.33%', size: '7.51px' },
+        { top: '77.35%', left: '33.50%', size: '11.15px' },
+        { top: '39.19%', left: '14.69%', size: '13.49px' },
+        { top: '59.27%', left: '2.17%', size: '10.63px' },
+        { top: '75.62%', left: '43.24%', size: '8.66px' },
+        { top: '78.63%', left: '46.25%', size: '10.83px' },
+        { top: '15.41%', left: '46.45%', size: '8.71px' },
+        { top: '90.83%', left: '29.57%', size: '8.52px' },
+        { top: '71.00%', left: '17.75%', size: '7.31px' },
+        { top: '9.11%', left: '27.96%', size: '10.06px' },
+    ];
+
+    for (const circle of circles) {
+        let element = document.createElement('div');
+
+        element.style.borderRadius = '50%';
+        element.style.top = circle.top;
+        element.style.left = circle.left;
+        element.style.width = circle.size;
+        element.style.height = circle.size;
+        element.style.position = 'absolute';
+        if (circle.color) {
+            element.style.backgroundColor = circle.color;
+        } else {
+            element.style.backgroundColor = '#3c3c3c';
+        }
+
+        if (circle.zIndex) {
+            element.style.zIndex = circle.zIndex;
+        } else {
+            element.style.zIndex = '3';
+        }
+
+        if (circle.overflow) {
+            element.style.overflow = 'hidden';
+        }
+
+        if (circle.boxShadow) {
+            element.style.boxShadow = circle.boxShadow;
+        }
+
+        document.body.appendChild(element);
+
+        if (circle.children) {
+            for (const child of circle.children) {
+                let childElement = document.createElement('div');
+
+                childElement.style.borderRadius = '50%';
+                childElement.style.top = child.top;
+                childElement.style.left = child.left;
+                childElement.style.width = child.size;
+                childElement.style.height = child.size;
+                childElement.style.backgroundColor = child.color;
+                childElement.style.position = 'absolute';
+
+                element.appendChild(childElement);
+            }
+        }
+    }
+
+    document.querySelector('.HaveAccount').addEventListener('click', () => {
+        document.querySelectorAll('.option-forms').forEach(form => form.classList.add('hidden'));
+        document.querySelector('.option-forms').classList.remove('hidden');
+        document.querySelector('.OptionSign').classList.add('active');
+        document.querySelector('.OptionReg').classList.remove('active');
+    });
+    document.querySelector('#OptionSign').addEventListener('click', () => {
+        document.querySelectorAll('.option-forms').forEach(form => form.classList.add('hidden'));
+        document.querySelector('.option-forms').classList.remove('hidden');
+        document.querySelector('.OptionSign').classList.add('active');
+        document.querySelector('.OptionReg').classList.remove('active');
+    });
+    document.querySelector('#OptionReg').addEventListener('click', () => {
+        document.querySelectorAll('.option-forms').forEach(form => form.classList.add('hidden'));
+        document.querySelectorAll('.option-forms')[1].classList.remove('hidden');
+        document.querySelector('.OptionReg').classList.add('active');
+        document.querySelector('.OptionSign').classList.remove('active');
+    });
+    document.querySelector('.ForgotPassword').addEventListener('click', () => {
+        document.querySelectorAll('.option-forms').forEach(form => form.classList.add('hidden'));
+        document.querySelectorAll('.option-forms')[2].classList.remove('hidden');
+        document.querySelector('.OptionReg').classList.remove('active');
+        document.querySelector('.OptionSign').classList.remove('active');
+        document.querySelector('.ResetBack').addEventListener('click', () => {
+            document.querySelectorAll('.option-forms').forEach(form => form.classList.add('hidden'));
+            document.querySelector('.option-forms').classList.remove('hidden');
+            document.querySelector('.OptionReg').classList.remove('active');
+            document.querySelector('.OptionSign').classList.add('active');
+        });
+    });
+</script>
+</html>

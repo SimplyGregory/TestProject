@@ -222,7 +222,7 @@
         color: rgba(29, 29, 29, 0.9);
         font-family: 'Arial Black', sans-serif;
         font-size: 9px;
-        position: absolute;
+        position: relative;
         top: 85%;
         width: 50%;
         left: 25%;
@@ -232,7 +232,7 @@
         color: rgba(29, 29, 29, 0.9);
         font-family: 'Arial Black', sans-serif;
         font-size: 9px;
-        position: absolute;
+        position: relative;
         top: 74%;
         width: 50%;
         left: 25%;
@@ -531,8 +531,16 @@
                     
                     if (!input.validity.valid) {
                         input.classList.add('invalid');
+                        const error = input.nextElementSibling;
+                        if (error && error.classList.contains('input-error')) {
+                            error.classList.add('invalid');
+                        }
                     } else {
                         input.classList.remove('invalid');
+                        const error = input.nextElementSibling;
+                        if (error && error.classList.contains('input-error')) {
+                            error.classList.remove('invalid');
+                        }
                     }
                 });
             }

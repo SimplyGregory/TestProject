@@ -531,6 +531,8 @@
                     
                     if (!input.validity.valid) {
                         input.classList.add('invalid');
+                    } else {
+                        input.classList.remove('invalid');
                     }
                 });
             }

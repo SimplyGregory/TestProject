@@ -223,9 +223,6 @@
         font-family: 'Arial Black', sans-serif;
         font-size: 9px;
         position: relative;
-        top: 85%;
-        width: 50%;
-        left: 25%;
     }
 
     .policy1 {
@@ -233,9 +230,6 @@
         font-family: 'Arial Black', sans-serif;
         font-size: 9px;
         position: relative;
-        top: 74%;
-        width: 50%;
-        left: 25%;
     }
 
     .TermsLink {
@@ -284,9 +278,9 @@
                 <input type="password" id="password" minlength="8" maxlength="20" required>
                 <span class="input-error">Password is required</span>
                 <button type="submit">Sign In</button>
+                <span class="policy1">By clicking Sign In, Sign in with Google or Sign in with Github, you agree to our <a href="terms.html" class="TermsLink">Terms and Conditions</a> and <a href="privacy.html" class="TermsLink">Privacy Policy</a>.</span>
+                <div class="ForgotPassword">Forgot Password?</div>
             </form>
-            <span class="policy1">By clicking Sign In, Sign in with Google or Sign in with Github, you agree to our <a href="terms.html" class="TermsLink">Terms and Conditions</a> and <a href="privacy.html" class="TermsLink">Privacy Policy</a>.</span>
-            <div class="ForgotPassword">Forgot Password?</div>
         </div>
         <div class="option-forms hidden">
             <a class="FormTitle">Register</a>
@@ -301,14 +295,14 @@
                 <input type="password" id="password" name="password" minlength="8" maxlength="20" required>
                 <span class="input-error">Password is required</span>
                 <button type="submit">Sign Up</button>
+                <span class="policy">By clicking Sign up, Sign in with Google or Sign in with Github, you agree to our <a href="terms.html" class="TermsLink">Terms and Conditions</a> and <a href="privacy.html" class="TermsLink">Privacy Policy</a>.</span>
+                <div class="HaveAccount">Already have an account?</div>
             </form>
-            <span class="policy">By clicking Sign up, Sign in with Google or Sign in with Github, you agree to our <a href="terms.html" class="TermsLink">Terms and Conditions</a> and <a href="privacy.html" class="TermsLink">Privacy Policy</a>.</span>
-            <div class="HaveAccount">Already have an account?</div>
         </div>
         <div class="option-forms hidden">
             <a class="FormTitle">Forgot Password</a>
-            <button class="ResetBack">Back</button>
             <form class="LoginForm" novalidate>
+                <button class="ResetBack">Back</button>
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
                 <span class="input-error">Email is required</span>

@@ -519,6 +519,21 @@
     });
 
     const LoginForm = document.getElementsByClassName('LoginForm');
-    
+
+    for (const form of LoginForm) {
+        form.addEventListener('submit', (e) => {
+            
+            if (!form.checkValidity()) {
+                e.preventDefault();
+                
+                const inputs = form.querySelectorAll('input');
+                inputs.forEach(input => {
+                    if (!input.checkValidity()) {
+                        input.classList.add('invalid');
+                    }
+                });
+            }
+        });
+    }
 </script>
 </html>

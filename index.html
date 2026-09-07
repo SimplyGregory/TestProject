@@ -259,11 +259,13 @@
         </div>
         <div class="option-forms">
             <a class="FormTitle">Log In</a>
-            <form class="LoginForm">
+            <form class="LoginForm" novalidate>
                 <label for="email">Email</label>
                 <input type="email" id="email" required>
+                <span class="email-error">Email is required</span>
                 <label for="password">Password</label>
                 <input type="password" id="password" minlength="8" maxlength="20" required>
+                <span class="password-error">Password is required</span>
                 <button type="submit">Sign In</button>
             </form>
             <span class="policy1">By clicking Sign In, Sign in with Google or Sign in with Github, you agree to our <a href="terms.html" class="TermsLink">Terms and Conditions</a> and <a href="privacy.html" class="TermsLink">Privacy Policy</a>.</span>
@@ -271,13 +273,16 @@
         </div>
         <div class="option-forms hidden">
             <a class="FormTitle">Register</a>
-            <form class="LoginForm">
+            <form class="LoginForm" novalidate>
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
+                <span class="username-error">Username is required</span>
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
+                <span class="email-error">Email is required</span>
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" minlength="8" maxlength="20" required>
+                <span class="password-error">Password is required</span>
                 <button type="submit">Sign Up</button>
             </form>
             <span class="policy">By clicking Sign up, Sign in with Google or Sign in with Github, you agree to our <a href="terms.html" class="TermsLink">Terms and Conditions</a> and <a href="privacy.html" class="TermsLink">Privacy Policy</a>.</span>
@@ -286,9 +291,10 @@
         <div class="option-forms hidden">
             <a class="FormTitle">Forgot Password</a>
             <button class="ResetBack">Back</button>
-            <form class="LoginForm">
+            <form class="LoginForm" novalidate>
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
+                <span class="email-error">Email is required</span>
                 <button type="submit">Reset Password</button>
             </form>
         </div>

@@ -13,6 +13,15 @@
     </div>
 </body>
 <style>
+    
+    body {
+        overflow: hidden;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;  
+        font-family: 'Arial Black', sans-serif;
+    }
+
     .option-buttons {
         position: absolute;
         top: 3%;
@@ -25,6 +34,43 @@
 
     .option-buttons button:hover {
         text-decoration: underline;
+    }
+    .OptionSign {
+        background-color: transparent;
+        border: 0px solid transparent;
+        width: 80px;
+        height: 30px;
+        color: #1d1d1d;
+        cursor: pointer;
+        font-family: inherit;
+    }
+
+    .OptionReg {
+        background-color: transparent;
+        border: 0px solid transparent;
+        width: 80px;
+        height: 30px;
+        color: #1d1d1d;
+        cursor: pointer;
+        font-family: inherit;
+    }
+    .OptionSign.active {
+        background-color: #373737;
+        width: 80px;
+        height: 30px;
+        border: 0px solid transparent;
+        color: #929292;
+        cursor: pointer;
+        font-family: inherit;
+    }
+    .OptionReg.active {
+        background-color: #373737;
+        width: 80px;
+        height: 30px;
+        border: 0px solid transparent;
+        color: #929292;
+        cursor: pointer;
+        font-family: inherit;
     }
 </style>
 </html>

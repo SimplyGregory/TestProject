@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="option-buttons">
-        <button>%EMAIL%<span class="email-caret">^</span></button>
+        <button class="email-button">%EMAIL%<span class="email-caret">^</span></button>
     </div>
 </body>
 <style>
@@ -52,14 +52,18 @@
         font-family: inherit;
     }
 
-    .option-buttons button:hover {
-        text-decoration: underline;
-    }
-
     .email-caret {
         position: relative;
         display: inline-block;
-        top: -2px;
+        top: 1.6px;
+        left: 2px;
     }
+
+    .email-button {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    
 </style>
 </html>

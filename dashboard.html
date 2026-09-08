@@ -58,11 +58,13 @@
         display: inline-block;
         position: relative;
         top: 4.5px;
+        transform-origin: center center;
     }
 </style>
 <script>
     document.querySelector('.username-button').addEventListener('click', function() {
         const caret = document.querySelector('.username-caret');
+
         caret.style.transform = caret.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
     });
 </script>

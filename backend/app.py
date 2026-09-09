@@ -14,10 +14,6 @@ DATABASE = "database.db"
 def hello_world():
     return render_template("login.html")
 
-@app.route("/send-login", methods=["GET", "POST"])
-def attempt_login():
-    print("hello")
-
 @app.route("/send-register", methods=["GET", "POST"])
 def attempt_register():
     if request.method == "POST":
@@ -33,11 +29,12 @@ def attempt_register():
         c.execute("INSERT INTO users (username, email, password) VALUES (?, ?, ?)", (username, email, password))
         conn.commit()
         conn.close()
-        return redirect(url_for(""))
+        return redirect(url_for("dashboard"))
 
-@app.route("/send-forgot-password", methods=["GET", "POST"])
-def attempt_forgot_password():
-    print("hello")
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
+
 
 def create_login_tables():
     conn = sqlite3.connect(DATABASE)

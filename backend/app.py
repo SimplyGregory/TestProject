@@ -15,7 +15,15 @@ DATABASE = "database.db"
 def hello_world():
     if "session_cookie" in request.cookies:
         sessionID = request.cookies.get("session_cookie")
-        
+
+        conn = sqlite3.connect(DATABASE)
+        c = conn.cursor()
+        c.execute("SELECT * FROM users WHERE sessionID = ?", (sessionID,))
+        user = c.fetchone()
+        if user:
+            conn.close()
+            return redirect(url_for("dashboard"))
+
     return render_template("login.html")
 
 @app.route("/send-register", methods=["GET", "POST"])
@@ -40,7 +48,7 @@ def attempt_register():
 
 @app.route("/dashboard")
 def dashboard():
-    return render_template("dashboard.html")
+    return render_template("../frontend/private/index.html")
 
 
 def create_login_tables():

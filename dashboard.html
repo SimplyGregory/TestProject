@@ -11,7 +11,7 @@
             <span class="username">username</span>
             <span class="username-caret">^</span>
         </button>
-        <button>Home</button>
+        <button class="active">Home</button>
     </div>
     <div class="caret-container hidden">
         <button>Settings</button>
@@ -45,8 +45,10 @@
 
     .option-buttons button.active {
         background-color: #373737;
-        height: 20px;
+        height: 30px;
         color: #929292;
+        position: relative;
+        top: -4px;
     }
 
     .option-buttons button {

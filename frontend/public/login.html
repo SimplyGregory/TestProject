@@ -285,7 +285,7 @@
         </div>
         <div class="option-forms">
             <a class="FormTitle">Log In</a>
-            <form id="LoginForm" class="LoginForm login" novalidate method="post">
+            <form id="LoginForm" class="LoginForm login" novalidate method="post" action="/send-login">
                 <label for="email">Email</label>
                 <input type="email" id="email" required>
                 <span class="input-error">Email is required</span>
@@ -299,7 +299,7 @@
         </div>
         <div class="option-forms hidden">
             <a class="FormTitle">Register</a>
-            <form id="RegisterForm" class="LoginForm" novalidate method="post">
+            <form id="RegisterForm" class="LoginForm" novalidate method="post" action="/send-register">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" minlength="5" maxlength="15" required>
                 <span class="input-error">Username is required</span>
@@ -316,7 +316,7 @@
         </div>
         <div class="option-forms hidden">
             <a class="FormTitle">Forgot Password</a>
-            <form class="LoginForm" novalidate method="post">
+            <form class="LoginForm" novalidate method="post" action="/send-forgot-password">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
                 <span class="input-error">Email is required</span>

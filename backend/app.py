@@ -14,7 +14,17 @@ DATABASE = "database.db"
 def hello_world():
     return render_template("login.html")
 
+@app.route("/send-login", methods=["POST"])
+def attempt_login():
+    print("hello")
 
+@app.route("/send-register", methods=["POST"])
+def attempt_register():
+    print("hello")
+
+@app.route("/send-forgot-password", methods=["POST"])
+def attempt_forgot_password():
+    print("hello")
 
 def create_login_tables():
     conn = sqlite3.connect(DATABASE)

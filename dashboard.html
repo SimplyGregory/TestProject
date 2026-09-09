@@ -121,7 +121,7 @@
         caretContainer.classList.toggle('hidden');
     });
 
-    document.querySelectorAll('.option-buttons:not(:has(span))').forEach(button => {
+    document.querySelectorAll('.option-buttons button:not(:has(span))').forEach(button => {
         button.addEventListener('click', function(event) {
             const buttons = document.querySelectorAll('.option-buttons button');
             buttons.forEach(button => button.classList.remove('active'));

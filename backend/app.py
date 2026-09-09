@@ -14,6 +14,8 @@ DATABASE = "database.db"
 def hello_world():
     return render_template("login.html")
 
+
+
 def create_login_tables():
     conn = sqlite3.connect(DATABASE)
     c = conn.cursor()

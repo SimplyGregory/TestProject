@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IB_CS_APP</title>
+</head>
+<body>
+    <div class="option-buttons">
+        <button class="username-button">
+            <span class="username">username</span>
+            <span class="username-caret">^</span>
+        </button>
+        <button class="active">Home</button>
+    </div>
+    <div class="caret-container hidden">
+        <button>Settings</button>
+        <form method="POST" action="/send-logout"><button>Log Out</button></form>
+    </div>
+</body>
+<style>
+    
+    body {
+        background-color: #bdbdbd;
+        overflow: hidden;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;  
+        font-family: 'Arial Black', sans-serif;
+    }
+
+    .option-buttons {
+        position: absolute;
+        top: 3%;
+        right: 3%;
+        z-index: 12;
+        flex-direction: row;
+        display: inline-flex;
+        gap: 10px;
+        justify-content: flex-end;
+        text-align: right;
+        direction: rtl;
+        
+    }
+
+    .option-buttons button.active {
+        background-color: #373737;
+        height: 30px;
+        color: #929292;
+        position: relative;
+        top: -4px;
+    }
+
+    .option-buttons button {
+        background-color: transparent;
+        border: 0px solid transparent;
+        width: 100%;
+        height: 20px;
+        color: #1d1d1d;
+        cursor: pointer;
+        font-family: inherit;
+    }
+
+    .option-buttons button:hover span:first-child {
+        text-decoration: underline;
+    }
+
+    .option-buttons button:not(:has(span)):hover {
+        text-decoration: underline;
+    }
+
+    .username-button {
+        align-items: center;
+        display: inline-flex;
+        font-size: 14px;
+        width: 0%;
+
+    }
+    .username-caret {
+        position: relative;
+        transform-origin: center 40%;
+        font-size: 18px;
+        top: 4px;
+        left: 110%;
+    }
+
+    .caret-container {
+        position: absolute;
+        top: 6.5%;
+        right: 1.8%;
+        width: 100px;
+        height: 60px;
+        background-color: #373737;
+    }
+    .caret-container button {
+        width: 90%;
+        margin-top: 4px;
+        margin-left: 5%;
+        height: 40%;
+        background-color: #bdbdbd;
+        border: 0px solid transparent;
+        color: #1d1d1d;
+        cursor: pointer;
+        font-family: inherit;
+    }
+
+    .caret-container button:hover {
+        background-color: #a0a0a0;
+    }
+
+    .caret-container.hidden {
+        display: none;
+    }
+</style>
+<script>
+    document.querySelector('.username-button').addEventListener('click', function() {
+        const caret = document.querySelector('.username-caret');
+        const caretContainer = document.querySelector('.caret-container');
+
+        caret.style.transform = caret.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
+        caretContainer.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.option-buttons button:not(:has(span))').forEach(button => {
+        button.addEventListener('click', function(event) {
+            const buttons = document.querySelectorAll('.option-buttons button');
+            buttons.forEach(button => button.classList.remove('active'));
+            if (event.target.tagName === 'BUTTON') {
+                event.target.classList.add('active');
+            }
+        });
+    });
+</script>
+</html>

@@ -13,6 +13,9 @@ DATABASE = "database.db"
 
 @app.route("/")
 def hello_world():
+    if "session_cookie" in request.cookies:
+        sessionID = request.cookies.get("session_cookie")
+        
     return render_template("login.html")
 
 @app.route("/send-register", methods=["GET", "POST"])

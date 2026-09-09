@@ -121,7 +121,7 @@
         caretContainer.classList.toggle('hidden');
     });
 
-    document.querySelector('.option-buttons').addEventListener('click', function(event) {
+    document.querySelector('.option-buttons:not(:has(span))').addEventListener('click', function(event) {
         const buttons = document.querySelectorAll('.option-buttons button');
         buttons.forEach(button => button.classList.remove('active'));
         if (event.target.tagName === 'BUTTON') {

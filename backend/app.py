@@ -49,6 +49,19 @@ def attempt_register():
 @app.route("/dashboard")
 def dashboard():
     if "session_cookie" not in request.cookies:
+        return redirect(url_for("hello_world"))
+
+    sessionID = request.cookies.get("session_cookie")
+    conn = sqlite3.connect(DATABASE)
+    c = conn.cursor()
+    c.execute("SELECT * FROM users WHERE sessionID = ?", (sessionID,))
+    user = c.fetchone()
+    conn.close()
+    if not user:
+        response = redirect(url_for("hello_world"))
+        response.set_cookie("session_cookie", "", max_age=0)
+        return response
+    
     return render_template("private/index.html")
 
 

@@ -43,6 +43,12 @@
         
     }
 
+    .option-buttons button.active {
+        background-color: #373737;
+        height: 20px;
+        color: #929292;
+    }
+
     .option-buttons button {
         background-color: transparent;
         border: 0px solid transparent;
@@ -54,6 +60,10 @@
     }
 
     .option-buttons button:hover span:first-child {
+        text-decoration: underline;
+    }
+
+    .option-buttons button:not(:has(span)):hover {
         text-decoration: underline;
     }
 
@@ -107,6 +117,14 @@
 
         caret.style.transform = caret.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
         caretContainer.classList.toggle('hidden');
+    });
+
+    document.querySelector('.option-buttons').addEventListener('click', function(event) {
+        const buttons = document.querySelectorAll('.option-buttons button');
+        buttons.forEach(button => button.classList.remove('active'));
+        if (event.target.tagName === 'BUTTON') {
+            event.target.classList.add('active');
+        }
     });
 </script>
 </html>

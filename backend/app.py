@@ -14,8 +14,21 @@ DATABASE = "database.db"
 def hello_world():
     return render_template("login.html")
 
+def create_login_tables():
+    conn = sqlite3.connect(DATABASE)
+    c = conn.cursor()
 
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE,
+            email TEXT,
+            password TEXT
+            )''')
+    conn.commit()
+    conn.close()
 
 if __name__ == "__main__":
+    create_login_tables()
     app.run(debug=True)
     

@@ -48,6 +48,7 @@ def attempt_register():
 
 @app.route("/dashboard")
 def dashboard():
+    if "session_cookie" not in request.cookies:
     return render_template("private/index.html")
 
 

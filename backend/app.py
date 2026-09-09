@@ -21,7 +21,19 @@ def attempt_login():
 @app.route("/send-register", methods=["GET", "POST"])
 def attempt_register():
     if request.method == "POST":
-        username = 
+        username = request.form.get("username")
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        conn = sqlite3.connect(DATABASE)
+        c = conn.cursor()
+        c.execute("SELECT * FROM users WHERE email = ? AND username = ?", (email, username))
+        if c.fetchone():
+            return "Username or Email already exists"
+        c.execute("INSERT INTO users (username, email, password) VALUES (?, ?, ?)", (username, email, password))
+        conn.commit()
+        conn.close()
+        return redirect(url_for(""))
 
 @app.route("/send-forgot-password", methods=["GET", "POST"])
 def attempt_forgot_password():

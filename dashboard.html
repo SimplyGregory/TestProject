@@ -13,7 +13,7 @@
         </button>
         <button>Home</button>
     </div>
-    <div class="caret-container">
+    <div class="caret-container hidden">
         <button>Settings</button>
         <button>Log Out</button>
     </div>
@@ -74,14 +74,35 @@
         right: 1.8%;
         width: 100px;
         height: 60px;
-        background-color: #9a9a9a;
+        background-color: #373737;
+    }
+    .caret-container button {
+        width: 90%;
+        margin-top: 4px;
+        margin-left: 5%;
+        height: 40%;
+        background-color: #bdbdbd;
+        border: 0px solid transparent;
+        color: #1d1d1d;
+        cursor: pointer;
+        font-family: inherit;
+    }
+
+    .caret-container button:hover {
+        background-color: #a0a0a0;
+    }
+
+    .caret-container.hidden {
+        display: none;
     }
 </style>
 <script>
     document.querySelector('.username-button').addEventListener('click', function() {
         const caret = document.querySelector('.username-caret');
+        const caretContainer = document.querySelector('.caret-container');
 
         caret.style.transform = caret.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
+        caretContainer.classList.toggle('hidden');
     });
 </script>
 </html>

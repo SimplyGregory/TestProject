@@ -7,7 +7,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
 import uuid
 
-app = Flask(__name__, template_folder="../frontend/public")
+app = Flask(__name__, template_folder="../frontend/")
 app.secret_key = "7H6dJd0DKDd-gD6h2KD"
 DATABASE = "database.db"
 
@@ -24,7 +24,7 @@ def hello_world():
             conn.close()
             return redirect(url_for("dashboard"))
 
-    return render_template("login.html")
+    return render_template("public/login.html")
 
 @app.route("/send-register", methods=["GET", "POST"])
 def attempt_register():
@@ -48,7 +48,7 @@ def attempt_register():
 
 @app.route("/dashboard")
 def dashboard():
-    return render_template("../frontend/private/index.html")
+    return render_template("private/index.html")
 
 
 def create_login_tables():

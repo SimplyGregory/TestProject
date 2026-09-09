@@ -5,6 +5,7 @@
 
 from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
+import uuid
 
 app = Flask(__name__, template_folder="../frontend/public")
 app.secret_key = "7H6dJd0DKDd-gD6h2KD"
@@ -26,10 +27,13 @@ def attempt_register():
         c.execute("SELECT * FROM users WHERE email = ? AND username = ?", (email, username))
         if c.fetchone():
             return "Username or Email already exists"
-        c.execute("INSERT INTO users (username, email, password) VALUES (?, ?, ?)", (username, email, password))
+        sessionID = str(uuid.uuid4())
+        c.execute("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, password, sessionID))
         conn.commit()
         conn.close()
-        return redirect(url_for("dashboard"))
+        response = redirect(url_for("dashboard"))
+        response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24)
+        return response
 
 @app.route("/dashboard")
 def dashboard():
@@ -44,8 +48,9 @@ def create_login_tables():
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT UNIQUE,
-            email TEXT,
-            password TEXT
+            email TEXT UNIQUE,
+            password TEXT,
+            sessionID TEXT UNIQUE
             )''')
     conn.commit()
     conn.close()

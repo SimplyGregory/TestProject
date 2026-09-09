@@ -14,15 +14,16 @@ DATABASE = "database.db"
 def hello_world():
     return render_template("login.html")
 
-@app.route("/send-login", methods=["POST"])
+@app.route("/send-login", methods=["GET", "POST"])
 def attempt_login():
     print("hello")
 
-@app.route("/send-register", methods=["POST"])
+@app.route("/send-register", methods=["GET", "POST"])
 def attempt_register():
-    print("hello")
+    if request.method == "POST":
+        username = 
 
-@app.route("/send-forgot-password", methods=["POST"])
+@app.route("/send-forgot-password", methods=["GET", "POST"])
 def attempt_forgot_password():
     print("hello")
 

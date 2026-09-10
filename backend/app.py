@@ -190,6 +190,13 @@ def google_callback():
     c = conn.cursor()
 
     c.execute("SELECT * FROM users WHERE email = ?", (email,))
+    user = c.fetchone()
+
+    if not user:
+        sessionId = str(uuid.uuid4())
+        username = id_info["name"]
+        c.execute("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, None, sessionId))
+        conn.commit()
 
 def create_login_tables():
     conn = sqlite3.connect(DATABASE)

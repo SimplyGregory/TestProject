@@ -197,6 +197,13 @@ def google_callback():
         username = id_info["name"]
         c.execute("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, None, sessionId))
         conn.commit()
+        user = c.lastrowid
+    else:
+        user = user[0]
+
+    conn.close()
+    return redirect(url_for("dashboard"))
+
 
 def create_login_tables():
     conn = sqlite3.connect(DATABASE)

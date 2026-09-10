@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__, template_folder="../frontend/")
-app.secret_key = os.getenv("FLASK_SECRET_KEY", "7H6dJd0DKDd-gD6h2KD")
+app.secret_key = "7H6dJd0DKDd-gD6h2KD"
 DATABASE = "database.db"
 
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"

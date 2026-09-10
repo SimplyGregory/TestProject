@@ -184,8 +184,12 @@ def google_callback():
         audience=os.getenv("GOOGLE_CLIENT_ID")
     )
 
-    session["id_info"] = id_info
-    return redirect(url_for("dashboard"))
+    email = id_info["email"]
+
+    conn = sqlite3.connect(DATABASE)
+    c = conn.cursor()
+
+    c.execute("SELECT * FROM users WHERE email = ?", (email,))
 
 def create_login_tables():
     conn = sqlite3.connect(DATABASE)

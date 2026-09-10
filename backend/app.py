@@ -191,6 +191,7 @@ def google_callback():
 
     c.execute("SELECT * FROM users WHERE email = ?", (email,))
     user = c.fetchone()
+    sessionId = None
 
     if not user:
         sessionId = str(uuid.uuid4())

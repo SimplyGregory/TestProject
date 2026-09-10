@@ -200,7 +200,7 @@ def google_callback():
         conn.commit()
         user = c.lastrowid
     else:
-        sessionId = user[3]
+        sessionId = user[4]
 
     conn.close()
 

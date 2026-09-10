@@ -155,7 +155,7 @@ def google_callback():
     redirect_uri = request.base_url
     authorization_response = request.url
 
-    flow = flow = Flow.from_client_config(
+    flow = Flow.from_client_config(
         client_config={
             "web": {
                 "client_id": os.getenv("GOOGLE_CLIENT_ID"),

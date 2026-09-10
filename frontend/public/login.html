@@ -226,7 +226,11 @@
         font-family: inherit;
         font-size: 9px;
         position: relative;
+<<<<<<< HEAD
         top: 90px;
+=======
+        top: 88px;
+>>>>>>> a1f89ad2867c630859a9a07df629ccd8157087f6
         display: inline-block;
         width: 80%;
         line-height: 1.5;
@@ -278,7 +282,10 @@
 
 </style>
 <body>
+<<<<<<< HEAD
 
+=======
+>>>>>>> a1f89ad2867c630859a9a07df629ccd8157087f6
     <div id="Login">
         <div class="option-buttons">
             <button id="OptionSign" class="OptionSign active">Log In</button>
@@ -288,6 +295,7 @@
             <a class="FormTitle">Log In</a>
             <form id="LoginForm" class="LoginForm login" novalidate method="post" action="/send-login">
                 <label for="email">Email</label>
+<<<<<<< HEAD
                 <input type="email" id="email" name="email"  required>
                 <span class="input-error">Email is required</span>
                 <label for="password">Password</label>
@@ -295,6 +303,15 @@
                 <span class="input-error">Password is required</span>
                 <button class="submit" type="submit">Sign In</button>
                 <span class="policy1">By clicking Sign In or Sign in with Google you agree to our <a class="TermsLink">Terms and Conditions</a> and <a class="TermsLink">Privacy Policy</a>.</span>
+=======
+                <input type="email" id="email" required>
+                <span class="input-error">Email is required</span>
+                <label for="password">Password</label>
+                <input type="password" id="password" minlength="8" maxlength="20" required>
+                <span class="input-error">Password is required</span>
+                <button class="submit" type="submit">Sign In</button>
+                <span class="policy1">By clicking Sign In, Sign in with Google or Sign in with Github, you agree to our <a class="TermsLink">Terms and Conditions</a> and <a class="TermsLink">Privacy Policy</a>.</span>
+>>>>>>> a1f89ad2867c630859a9a07df629ccd8157087f6
                 <div class="ForgotPassword">Forgot Password?</div>
             </form>
         </div>
@@ -311,12 +328,17 @@
                 <input type="password" id="password" name="password" minlength="8" maxlength="20" required>
                 <span class="input-error">Password is required</span>
                 <button class="submit" type="submit">Sign Up</button>
+<<<<<<< HEAD
                 <span class="policy">By clicking Sign up or Sign in with Google, you agree to our <a href="terms.html" class="TermsLink">Terms and Conditions</a> and <a href="privacy.html" class="TermsLink">Privacy Policy</a>.</span>
+=======
+                <span class="policy">By clicking Sign up, Sign in with Google or Sign in with Github, you agree to our <a href="terms.html" class="TermsLink">Terms and Conditions</a> and <a href="privacy.html" class="TermsLink">Privacy Policy</a>.</span>
+>>>>>>> a1f89ad2867c630859a9a07df629ccd8157087f6
                 <div class="HaveAccount">Already have an account?</div>
             </form>
         </div>
         <div class="option-forms hidden">
             <a class="FormTitle">Forgot Password</a>
+<<<<<<< HEAD
             <form class="LoginForm" novalidate method="post" action="/reset-password">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
@@ -324,6 +346,12 @@
                 <label for="newpassword">New Password</label>
                 <input type="password" id="newpassword" name="newpassword" minlength="8" maxlength="20" required>
                 <span class="input-error">Password is required</span>
+=======
+            <form class="LoginForm" novalidate method="post" action="/send-forgot-password">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <span class="input-error">Email is required</span>
+>>>>>>> a1f89ad2867c630859a9a07df629ccd8157087f6
                 <button class="submit" type="submit">Reset Password</button>
                 <button class="ResetBack">Back</button>
             </form>
@@ -331,7 +359,12 @@
     </div>
     <text id="getStarted">Get Started</text>
     <div class="signin-container">
+<<<<<<< HEAD
         <button onclick="window.location.href='/google-login'" class="signin">Sign in with Google</button>
+=======
+        <button class="signin">Sign in with Google</button>
+        <button class="signin">Sign in with Github</button>
+>>>>>>> a1f89ad2867c630859a9a07df629ccd8157087f6
     </div>
 </body>
 <script>

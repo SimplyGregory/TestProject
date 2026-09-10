@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Flask==3.1.3
 google-auth
 google-auth-oauthlib
 python-dotenv
+=======
+Flask==3.1.3
+>>>>>>> a1f89ad2867c630859a9a07df629ccd8157087f6

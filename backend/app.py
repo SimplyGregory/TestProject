@@ -1,13 +1,18 @@
 # https://flask.palletsprojects.com/en/stable/quickstart/
 # Reference for starting example
 # https://www.sqlitetutorial.net/sqlite-python/creating-database/ SQLite tut
+<<<<<<< HEAD
 # https://medium.com/@icodewithben/flask-sqlite-login-and-register-form-48640743bf55
 # https://developers.google.com/identity/sign-in/web/sign-in
 # https://jaggedarray.hashnode.dev/flask-google-login#heading-conclusion
+=======
+#https://medium.com/@icodewithben/flask-sqlite-login-and-register-form-48640743bf55
+>>>>>>> a1f89ad2867c630859a9a07df629ccd8157087f6
 
 from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
 import uuid
+<<<<<<< HEAD
 from google_auth_oauthlib.flow import Flow
 from google.oauth2 import id_token
 from google.auth.transport import requests as google_auth_requests
@@ -22,6 +27,13 @@ DATABASE = "database.db"
 
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
+=======
+
+app = Flask(__name__, template_folder="../frontend/")
+app.secret_key = "7H6dJd0DKDd-gD6h2KD"
+DATABASE = "database.db"
+
+>>>>>>> a1f89ad2867c630859a9a07df629ccd8157087f6
 @app.route("/")
 def hello_world():
     if "session_cookie" in request.cookies:
@@ -40,8 +52,13 @@ def hello_world():
 @app.route("/send-register", methods=["GET", "POST"])
 def attempt_register():
     if request.method == "POST":
+<<<<<<< HEAD
         username = request.form.get("username").lower()
         email = request.form.get("email").lower()
+=======
+        username = request.form.get("username")
+        email = request.form.get("email")
+>>>>>>> a1f89ad2867c630859a9a07df629ccd8157087f6
         password = request.form.get("password")
 
         conn = sqlite3.connect(DATABASE)
@@ -51,14 +68,21 @@ def attempt_register():
             return "Username or Email already exists"
         sessionID = str(uuid.uuid4())
         c.execute("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, password, sessionID))
+<<<<<<< HEAD
         
+=======
+>>>>>>> a1f89ad2867c630859a9a07df629ccd8157087f6
         conn.commit()
         conn.close()
         response = redirect(url_for("dashboard"))
         response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24)
         return response
 
+<<<<<<< HEAD
 @app.route("/dashboard", methods=["GET", "POST"])
+=======
+@app.route("/dashboard")
+>>>>>>> a1f89ad2867c630859a9a07df629ccd8157087f6
 def dashboard():
     if "session_cookie" not in request.cookies:
         return redirect(url_for("hello_world"))
@@ -73,6 +97,7 @@ def dashboard():
         response = redirect(url_for("hello_world"))
         response.set_cookie("session_cookie", "", max_age=0)
         return response
+<<<<<<< HEAD
 
     return render_template("private/index.html", username=user[1])
 
@@ -181,6 +206,11 @@ def google_callback():
         request=google_auth_requests.Request()
         
     )
+=======
+    
+    return render_template("private/index.html")
+
+>>>>>>> a1f89ad2867c630859a9a07df629ccd8157087f6
 
 def create_login_tables():
     conn = sqlite3.connect(DATABASE)
@@ -199,5 +229,9 @@ def create_login_tables():
 
 if __name__ == "__main__":
     create_login_tables()
+<<<<<<< HEAD
     app.run()
+=======
+    app.run(debug=True)
+>>>>>>> a1f89ad2867c630859a9a07df629ccd8157087f6
     

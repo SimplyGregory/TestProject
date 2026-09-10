@@ -178,9 +178,12 @@ def google_callback():
 
     id_info = id_token.verify_oauth2_token(
         id_token=credentials.id_token,
-        request=google_auth_requests.Request()
-        
+        request=google_auth_requests.Request(),
+        audience=os.getenv("GOOGLE_CLIENT_ID")
     )
+
+    session["id_info"] = id_info
+    return redirect(session.get("final_redirect", url_for("dashboard")))
 
 def create_login_tables():
     conn = sqlite3.connect(DATABASE)

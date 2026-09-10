@@ -202,5 +202,5 @@ def create_login_tables():
 
 if __name__ == "__main__":
     create_login_tables()
-    app.run()
+    app.run(debug=True)
     

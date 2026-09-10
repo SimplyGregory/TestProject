@@ -35,6 +35,9 @@ def hello_world():
             conn.close()
             return redirect(url_for("dashboard"))
 
+        conn.commit()
+        conn.close()
+
     return render_template("public/login.html")
 
 @app.route("/send-register", methods=["GET", "POST"])
@@ -65,6 +68,7 @@ def dashboard():
 
     sessionID = request.cookies.get("session_cookie")
     conn = sqlite3.connect(DATABASE)
+    conn.row_factory = sqlite3.Row
     c = conn.cursor()
     c.execute("SELECT * FROM users WHERE sessionID = ?", (sessionID,))
     user = c.fetchone()
@@ -74,7 +78,7 @@ def dashboard():
         response.set_cookie("session_cookie", "", max_age=0)
         return response
 
-    return render_template("private/index.html", username=user[1])
+    return render_template("private/index.html", username=user["username"])
 
 @app.route("/send-logout", methods=["GET", "POST"])
 def logout():
@@ -92,15 +96,16 @@ def login():
         email = request.form.get("email").lower()
         password = request.form.get("password")
         conn = sqlite3.connect(DATABASE)
+        conn.row_factory = sqlite3.Row
         c = conn.cursor()
 
         c.execute("SELECT * FROM users WHERE LOWER(email) = ?", (email,))
         user = c.fetchone()
 
         if user:
-            correct_pass = user[3]
+            correct_pass = user["password"]
             if password == correct_pass:
-                sessionID = user[4]
+                sessionID = user["sessionID"]
                 response = redirect(url_for("dashboard"))
                 response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24)
 
@@ -187,6 +192,7 @@ def google_callback():
     email = id_info["email"]
 
     conn = sqlite3.connect(DATABASE)
+    conn.row_factory = sqlite3.Row
     c = conn.cursor()
 
     c.execute("SELECT * FROM users WHERE email = ?", (email,))
@@ -198,9 +204,11 @@ def google_callback():
         username = id_info["name"]
         c.execute("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, None, sessionId))
         conn.commit()
-        user = c.lastrowid
+
+        c.execute("SELECT * FROM users WHERE id = ?", (c.lastrowid,))
+        user = c.fetchone()
     else:
-        sessionId = user[4]
+        sessionId = user["sessionID"]
 
     conn.close()
 

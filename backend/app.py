@@ -204,8 +204,9 @@ def google_callback():
 
     conn.close()
 
-    response = url_for("dashboard")
-    return redirect(session.get("final_redirect", url_for("dashboard")))
+    response = redirect(url_for("dashboard"))
+    response.set_cookie("session_cookie", sessionId, max_age=60 * 60 * 24)
+    return response
 
 
 def create_login_tables():

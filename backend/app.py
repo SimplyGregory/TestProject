@@ -145,6 +145,7 @@ def google_login():
     )
 
     session["state"] = state
+    session["code_verifier"] = flow.code_verifier
     session["final_redirect"] = url_for("dashboard")
 
     return redirect(authorization_url)
@@ -173,6 +174,7 @@ def google_callback():
     )
 
     flow.redirect_uri = redirect_uri
+    flow.code_verifier = session["code_verifier"]
     flow.fetch_token(authorization_response=authorization_response)
     credentials = flow.credentials
 

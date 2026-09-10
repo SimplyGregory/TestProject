@@ -204,7 +204,7 @@ def google_callback():
 
     conn.close()
 
-    session["session_cookie"] = sessionId
+    response = url_for("dashboard")
     return redirect(session.get("final_redirect", url_for("dashboard")))
 
 

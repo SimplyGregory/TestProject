@@ -204,7 +204,7 @@ def google_callback():
     conn.close()
 
     session["session_cookie"] = sessionId
-    return redirect(url_for("dashboard"))
+    return redirect(session.get("final_redirect", url_for("dashboard")))
 
 
 def create_login_tables():
@@ -224,5 +224,5 @@ def create_login_tables():
 
 if __name__ == "__main__":
     create_login_tables()
-    app.run(debug=True)
+    app.run()
     

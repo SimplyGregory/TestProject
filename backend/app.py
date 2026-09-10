@@ -199,9 +199,11 @@ def google_callback():
         conn.commit()
         user = c.lastrowid
     else:
-        user = user[0]
+        sessionId = user[3]
 
     conn.close()
+
+    session["session_cookie"] = sessionId
     return redirect(url_for("dashboard"))
 
 

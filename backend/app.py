@@ -183,7 +183,7 @@ def google_callback():
     )
 
     session["id_info"] = id_info
-    return redirect(session.get("final_redirect", url_for("dashboard")))
+    return redirect(url_for("dashboard"))
 
 def create_login_tables():
     conn = sqlite3.connect(DATABASE)

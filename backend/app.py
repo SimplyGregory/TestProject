@@ -187,7 +187,7 @@ def google_callback():
     if not user_data:
         sessionId = str(uuid.uuid4())
         username = id_info["name"]
-        database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (email,), True, True)
+        database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, None, sessionId))
         c.execute("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, None, sessionId))
         conn.commit()
 

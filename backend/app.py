@@ -209,7 +209,7 @@ def google_callback():
     return response
 
 if __name__ == "__main__":
-    #CREATE ACCOUNTS TABLE IF 
+    #CREATE ACCOUNTS TABLE IF N/A
     database_action('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, email TEXT UNIQUE, password TEXT, sessionID TEXT UNIQUE)''', None)
     
     app.run()

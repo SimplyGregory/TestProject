@@ -77,14 +77,14 @@
                                 <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/7159c0b5d4250a5aea4f396d53f17f0c.svg">
                             </div>
                             <span class="nav-link__label">More</span>
-                            <div class="_3zpnU D0iFS _1o3g5 xw9u1 hidden" style="left: 72px; position: fixed; top: 337px; transform: none; z-index: 220;">
-                                <div class="_36bu_">
-                                    <div class="_3j0nh">
-                                        <button class="_1gEmM _7jW2t _3QrGV GHXZL">
-                                            <span class="_9lHjd">Settings</span>
+                            <div class="more-menu more-menu more-menu more-menu hidden" style="left: 72px; position: fixed; top: 337px; transform: none; z-index: 220;">
+                                <div class="more-menu__panel">
+                                    <div class="more-menu__list">
+                                        <button class="more-menu__item more-menu__item more-menu__item more-menu__item">
+                                            <span>Settings</span>
                                         </button>
-                                        <button class="_1gEmM _7jW2t _3QrGV GHXZL">
-                                            <span class="_9lHjd">Log Out</span>
+                                        <button class="more-menu__item more-menu__item more-menu__item more-menu__item">
+                                            <span>Log Out</span>
                                         </button>
                                     </div>
                                 </div>
@@ -314,39 +314,39 @@
         position: fixed;
     }
 
-    ._3zpnU._1o3g5 {
+    ._3zpnU.more-menu {
         position: absolute;
     }
 
-    .D0iFS._1o3g5 {
+    .more-menu.more-menu {
         left: 100%;
         top: 50%;
         transform: translateY(-50%);
     }
 
-    .j5zXd, .xw9u1 {
+    .j5zXd, .more-menu {
         position: fixed;
     }
 
-    .xw9u1 {
+    .more-menu {
         width: -moz-fit-content;
         width: fit-content;
     }
 
-    .GHXZL:hover {
+    .more-menu__item:hover {
         background-color: rgb(32, 47, 54);
     }
 
-    ._3zpnU {
+    .more-menu{
         box-sizing: border-box;
         position: relative;
     }
 
-    .D0iFS {
+    .more-menu {
         margin-left: 8px;
     }
 
-    ._36bu_ {
+    .more-menu__panel {
         background-color: var(--web-ui_popover-background-color, rgb(19, 31, 36));
         border: 2px solid var(--web-ui_popover-border-color, rgb(55, 70, 79));
         border-radius: var(--web-ui_popover-border-radius, 15px);
@@ -355,19 +355,19 @@
         transform: translateZ(0);
     }
 
-    ._1fv9a, ._3j0nh {
+    ._1fv9a, .more-menu__list {
         padding: 8px 0;
     }
 
-    ._7jW2t:not(._1ZhE5) {
+    .more-menu__item:not(._1ZhE5) {
         outline: none;
     }
 
-    ._3QrGV {
+    .more-menu__item {
         height: 40px;
     }
 
-    .GHXZL {
+    .more-menu__item {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         --web-ui_button-filter-hover: none;
@@ -383,14 +383,14 @@
         width: 100%;
     }
 
-    ._1gEmM {
+    .more-menu__item {
         background: none;
         border: none;
         padding: 0;
         transition: filter .2s;
     }
 
-    ._7jW2t {
+    .more-menu__item {
         -webkit-tap-highlight-color: transparent;
         -webkit-touch-callout: none;
         cursor: pointer;
@@ -400,11 +400,6 @@
         transform: translateZ(0);
     }
 
-    ._9lHjd {
-        -webkit-user-select: inherit;
-        -moz-user-select: inherit;
-        user-select: inherit;
-    }
 </style>
 <script>
     document.querySelector('.username-button').addEventListener('click', function() {

@@ -190,9 +190,9 @@ def google_callback():
         database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, None, sessionId))
 
 
-        user = database_action("SELECT * FROM users WHERE id = ?", ("cursor.lastrowid,"))
+        user_data = database_action("SELECT * FROM users WHERE id = ?", ("cursor.lastrowid,"))
     else:
-        sessionId = user["sessionID"]
+        sessionId = user_data["sessionID"]
 
     response = redirect(url_for("dashboard"))
     response.set_cookie("session_cookie", sessionId, max_age=60 * 60 * 24)

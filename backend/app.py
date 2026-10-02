@@ -180,18 +180,14 @@ def google_callback():
     )
 
     email = id_info["email"]
-
-    conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row
-    c = conn.cursor()
-
-    c.execute("SELECT * FROM users WHERE email = ?", (email,))
-    user = c.fetchone()
     sessionId = None
 
-    if not user:
+    user_data = database_action("SELECT * FROM users WHERE email = ?", (email,), True, True)
+
+    if not user_data:
         sessionId = str(uuid.uuid4())
         username = id_info["name"]
+        database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (email,), True, True)
         c.execute("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, None, sessionId))
         conn.commit()
 

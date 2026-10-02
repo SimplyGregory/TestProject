@@ -21,6 +21,9 @@ def database_action(SQL, params, read = False, row_val = False):
     connection = sqlite3.connect(DATABASE)
     if row_val:
         connection.row_factory = sqlite3.Row
+
+    if params is not None and not isinstance(params, (tuple, list, dict)):
+        print(params)
     cursor = connection.cursor()
 
     sql_code = str(SQL)
@@ -101,7 +104,7 @@ def login():
     email, password = form.get("email").lower(), request.form.get("password")
     response=redirect(url_for("login_index"))
 
-    user_data = database_action("SELECT * FROM users WHERE LOWER(email) = ?", '(email,)', True, True)
+    user_data = database_action("SELECT * FROM users WHERE LOWER(email) = ?", (email,), True, True)
 
     if user_data:
         if password == user_data["password"]:

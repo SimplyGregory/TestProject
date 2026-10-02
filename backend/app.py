@@ -188,15 +188,11 @@ def google_callback():
         sessionId = str(uuid.uuid4())
         username = id_info["name"]
         database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, None, sessionId))
-        c.execute("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, None, sessionId))
-        conn.commit()
 
-        c.execute("SELECT * FROM users WHERE id = ?", (c.lastrowid,))
-        user = c.fetchone()
+
+        user = database_action("SELECT * FROM users WHERE id = ?", ("cursor.lastrowid,"))
     else:
         sessionId = user["sessionID"]
-
-    conn.close()
 
     response = redirect(url_for("dashboard"))
     response.set_cookie("session_cookie", sessionId, max_age=60 * 60 * 24)

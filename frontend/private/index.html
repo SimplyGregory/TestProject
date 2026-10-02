@@ -415,9 +415,9 @@
     });
 
 
-    document.querySelector("nav-link").forEach(button => {
+    document.querySelector("nav-link:span").forEach(button => {
         button.addEventListener('click', function(event) {
-            const buttons = document.querySelectorAll('.option-buttons button');
+            const buttons = document.querySelectorAll('.nav-link:span');
             buttons.forEach(button => button.classList.remove('active'));
             if (event.target.tagName === 'BUTTON') {
                 event.target.classList.add('active');

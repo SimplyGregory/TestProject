@@ -24,7 +24,7 @@ def database_action(SQL, params, read = False, row_val = False):
     cursor = connection.cursor()
 
     sql_code = str(SQL)
-    
+
     if params:    
         cursor.execute(sql_code, params)
     else:
@@ -42,7 +42,7 @@ def login_index():
     if "session_cookie" in request.cookies:
 
         sessionID = request.cookies.get("session_cookie")
-        user_data = database_action("SELECT * FROM users WHERE sessionID = ?", (sessionID,), True)
+        user_data = database_action("SELECT * FROM users WHERE sessionID = ?", '(sessionID,)', True)
 
         if user_data:
             return redirect(url_for("dashboard"))
@@ -56,11 +56,11 @@ def attempt_register():
     form = request.form
     username, email, password = form.get("username").lower(), form.get("email").lower(), form.get("password")
 
-    if database_action("SELECT * FROM users WHERE email = ? AND username = ?", (email, username), True):
+    if database_action("SELECT * FROM users WHERE email = ? AND username = ?", '(email, username)', True):
         return "Username or Email already exists"
     
     sessionID = str(uuid.uuid4())
-    database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, password, sessionID))
+    database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", '(username, email, password, sessionID)')
         
     response = redirect(url_for("dashboard"))
     response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24)
@@ -74,7 +74,7 @@ def dashboard():
     
     sessionID = request.cookies.get("session_cookie")
 
-    user_data = database_action("SELECT * FROM users WHERE sessionID = ?", (sessionID,), True, True)
+    user_data = database_action("SELECT * FROM users WHERE sessionID = ?", '(sessionID,)', True, True)
 
     if not user_data:
         response = redirect(url_for("login_index"))
@@ -101,7 +101,7 @@ def login():
     email, password = form.get("email").lower(), request.form.get("password")
     response=redirect(url_for("login_index"))
 
-    user_data = database_action("SELECT * FROM users WHERE LOWER(email) = ?", (email,), True, True)
+    user_data = database_action("SELECT * FROM users WHERE LOWER(email) = ?", '(email,)', True, True)
 
     if user_data:
         if password == user_data["password"]:
@@ -191,12 +191,12 @@ def google_callback():
     email = id_info["email"]
     sessionId = None
 
-    user_data = database_action("SELECT * FROM users WHERE email = ?", (email,), True, True)
+    user_data = database_action("SELECT * FROM users WHERE email = ?", '(email,)', True, True)
 
     if not user_data:
         sessionId = str(uuid.uuid4())
         username = id_info["name"]
-        database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, None, sessionId))
+        database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", '(username, email, None, sessionId)')
 
 
         user_data = database_action("SELECT * FROM users WHERE id = ?", ("cursor.lastrowid,"))

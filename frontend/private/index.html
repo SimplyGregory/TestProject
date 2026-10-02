@@ -415,6 +415,14 @@
     });
 
 
-    document.querySelector("")
+    document.querySelector("nav-link").forEach(button => {
+        button.addEventListener('click', function(event) {
+            const buttons = document.querySelectorAll('.option-buttons button');
+            buttons.forEach(button => button.classList.remove('active'));
+            if (event.target.tagName === 'BUTTON') {
+                event.target.classList.add('active');
+            }
+        });
+    })
 </script>
 </html>

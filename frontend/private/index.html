@@ -183,7 +183,7 @@
         background-color: #a0a0a0;
     }
 
-    .hidden {
+    .caret-container.hidden {
         display: none;
     }
 
@@ -312,12 +312,16 @@
         position: fixed;
     }
 
-    .nav-link:hover .nav-link_tooltip, .nav-link:focus-visible .nav-link__tooltip {
-        visibility: visible;
+    .nav-link__tooltip.hidden {
+        visibility: hidden;
     }
 
-    .more-menu {
-        position: absolute;
+    .more-menu.hidden {
+        visibility: hidden;
+    }
+
+    .nav-link:hover .nav-link__tooltip, .nav-link:focus-visible .nav-link__tooltip {
+        visibility: visible;
     }
 
     .more-menu.more-menu {

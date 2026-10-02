@@ -26,8 +26,11 @@ def database_action(SQL, params, read = False, row_val = False):
     sql_code = str(SQL)
     args = sql_code.split(", ", maxsplit=1)
 
-    cursor.execute(args[0], params)
-
+    if params != None:
+        cursor.execute(args[0], params)
+    else:
+        cursor.execute(args[0])
+        
     if read == True:
         return cursor.fetchone()
     
@@ -200,20 +203,7 @@ def google_callback():
 
 
 def create_login_tables():
-    conn = sqlite3.connect(DATABASE)
-    c = conn.cursor()
-
-    c.execute('''
-        CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT UNIQUE,
-            email TEXT UNIQUE,
-            password TEXT,
-            sessionID TEXT UNIQUE
-            )''')
-    
-    conn.commit()
-    conn.close()
+    database_action('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, email TEXT UNIQUE, password TEXT, sessionID TEXT UNIQUE)''', None)
 
 if __name__ == "__main__":
     create_login_tables()

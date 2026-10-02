@@ -98,15 +98,10 @@ def login():
     user_data = database_action("SELECT * FROM users WHERE LOWER(email) = ?", (email,), True, True)
 
     if user_data:
-        correct_pass = user_data["password"]
-        if password == correct_pass:
-            sessionID = user_data["sessionID"]
+        if password == user_data["password"]:
             response = redirect(url_for("dashboard"))
-            response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24)
+            response.set_cookie("session_cookie", user_data["sessionID"], max_age=60 * 60 * 24)
 
-       
-    conn.commit()
-    conn.close()
     return response
 
 @app.route("/reset-password", methods=["GET", "POST"])

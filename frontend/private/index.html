@@ -18,17 +18,17 @@
         <form method="POST" action="/send-logout"><button>Log Out</button></form>
     </div>
     <div id="side_bar">
-        <div class="sidebar _14v8V">
-            <div class="_3vxyy">
-                <a class="_3qEOY">
-                    <img class="sOuBs" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/70a4be81077a8037698067f583816ff9.svg">
-                    <img class="_1C091" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/0cecd302cf0bcd0f73d51768feff75fe.svg">
+        <div class="sidebar sidebar">
+            <div class="sidebar__logo">
+                <a class="sidebar__logo-link">
+                    <img class="sidebar__logo-full" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/70a4be81077a8037698067f583816ff9.svg">
+                    <img class="sidebar__logo-compact" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/0cecd302cf0bcd0f73d51768feff75fe.svg">
                 </a>
             </div>
-            <div class="_2uLXp">
-                <div class="_3glZ0">
-                    <a data-test="home-nav" aria-current="page" class="_2dvyl" href="/learn">
-                        <span class="_22Pme _33YLo p3liX YAEPa _348_2"><div class="_4fxfA">
+            <div class="sidebar__nav">
+                <div class="sidebar__item">
+                    <a data-test="home-nav" aria-current="page" class="nav-link" href="/learn">
+                        <span class="nav-link nav-link nav-link nav-link nav-link--active"><div class="nav-link__icon">
                             <img class="_101n8" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/784035717e2ff1d448c0f6cc4efc89fb.svg">
                         </div>
                         <span class="_1AZJt">Learn</span>
@@ -37,16 +37,16 @@
                 </a>
             </div>
             <div class="">
-                <a class="_2dvyl">
-                    <span class="_22Pme _33YLo p3liX YAEPa _3Dchg">
-                        <div class="_4fxfA">
+                <a class="nav-link">
+                    <span class="nav-link nav-link nav-link nav-link">
+                        <div class="nav-link__icon">
                             <img class="_101n8" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/ca9178510134b4b0893dbac30b6670aa.svg">
                         </div>
                         <span class="_1AZJt">Leaderboards</span>
                     </span></a></div><div class="">
-                        <a class="_2dvyl">
-                            <span class="_22Pme _33YLo p3liX YAEPa _3Dchg">
-                                <div class="_4fxfA">
+                        <a class="nav-link">
+                            <span class="nav-link nav-link nav-link nav-link">
+                                <div class="nav-link__icon">
                                     <img class="_101n8" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/7ef36bae3f9d68fc763d3451b5167836.svg">
                                 </div>
                                 <span class="_1AZJt">Quests</span>
@@ -54,9 +54,9 @@
                         </a>
                     </div>
                     <div class="">
-                        <a class="_2dvyl">
-                        <span class="_22Pme _33YLo p3liX YAEPa _3Dchg">
-                            <div class="_4fxfA">
+                        <a class="nav-link">
+                        <span class="nav-link nav-link nav-link nav-link">
+                            <div class="nav-link__icon">
                                 <img class="_101n8" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/0e58a94dda219766d98c7796b910beee.svg">
                             </div>
                             <span class="_1AZJt">Shop</span>
@@ -64,10 +64,10 @@
                     </a>
                 </div>
                 <div class="">
-                    <div class="_2dvyl">
-                        <span class="_3tK_c _2jmSd _22Pme _33YLo" role="button" tabindex="0">
-                            <span class="_2jmSd _22Pme _33YLo p3liX YAEPa _3Dchg">
-                                <div class="_4fxfA">
+                    <div class="nav-link">
+                        <span class="nav-link--menu-trigger nav-link--menu-trigger nav-link nav-link" role="button" tabindex="0">
+                            <span class="nav-link--menu-trigger nav-link nav-link nav-link nav-link">
+                                <div class="nav-link__icon">
                                     <img class="_101n8" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/7159c0b5d4250a5aea4f396d53f17f0c.svg">
                                 </div>
                                 <span class="_1AZJt">More</span>
@@ -210,28 +210,28 @@
         border: none;
     }
 
-    ._1C091 {
+    .sidebar__logo-compact {
         display: initial;
         height: 40px;
         width: 40px;
     }
-    .sOuBs {
+    .sidebar__logo-full {
         display: none;
         height: 30px;
         width: 128px;
     }
-    ._3qEOY {
+    .sidebar__logo-link {
         display: block;
         height: 100%;
         width: -moz-fit-content;
         width: fit-content;
     }
-    ._3vxyy {
+    .sidebar__logo {
         box-sizing: content-box;
         height: 39px;
         padding: 36px 0 25px 10px;
     }
-    ._14v8V {
+    .sidebar {
     left: 0;
     position: fixed !important;
     }
@@ -256,7 +256,7 @@
         font: 500 17px / 25px duolingo-sans, sans-serif;
         scrollbar-width: none;
     }
-    ._3glZ0 ._1AZJt {
+    .sidebar__item ._1AZJt {
         color: rgb(73, 192, 248);
     }
     ._1AZJt {
@@ -265,6 +265,7 @@
         font-size: 15px;
         font-weight: 700;
         text-transform: uppercase;
+        transition: none;
         -webkit-user-select: none;
         -moz-user-select: none;
         user-select: none;
@@ -274,51 +275,57 @@
     }
     ._101n8 {
         height: 32px;
+        padding-right: 0;
         transition: filter .2s;
         width: 32px;
     }
-    ._4fxfA {
+    .nav-link__icon {
         display: flex;
         position: relative;
     }
-    ._348_2 {
+    .nav-link--active {
         background-color: rgb(32, 47, 54);
         border: 2px solid rgb(63, 133, 167);
         border-radius: 12px;
     }
-    .YAEPa {
+    .nav-link {
         border: 2px solid transparent;
         padding: 0;
     }
-    .p3liX {
+    .nav-link {
         height: 48px;
     }
-    ._22Pme {
+    .nav-link {
         justify-content: center;
         position: relative;
     }
-    ._33YLo {
+    .nav-link {
         align-items: center;
         display: flex;
         flex-direction: row;
     }
-    ._2dvyl {
+    .nav-link {
         width: 100%;
     }
 
-    ._348_2 {
+    .nav-link--active {
         background-color: rgb(32, 47, 54);
         border: 2px solid rgb(63, 133, 167);
         border-radius: 12px;
     }
     .j5zXd {
         background-color: rgb(220, 230, 236);
+        border: none;
         border-radius: 8px;
         color: rgb(19, 31, 36);
         font-size: 15px;
         left: 88px;
         padding: 7px 12px;
         text-decoration: none;
+    }
+
+    .j5zXd, .xw9u1 {
+        position: fixed;
     }
 </style>
 <script>

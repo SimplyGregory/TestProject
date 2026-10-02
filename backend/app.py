@@ -50,6 +50,7 @@ def login_index():
 
     return render_template("public/login.html")
 
+#ACCOUNT REGISTER
 @app.route("/send-register", methods=["POST"])
 def attempt_register():
 
@@ -66,6 +67,7 @@ def attempt_register():
     response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24)
     return response
 
+#PRIVATE DASHBOARD
 @app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
     if "session_cookie" not in request.cookies:
@@ -82,6 +84,7 @@ def dashboard():
 
     return render_template("private/index.html", username=user_data["username"])
 
+#LOGOUT
 @app.route("/send-logout", methods=["GET", "POST"])
 def logout():
     if "session_cookie" not in request.cookies:
@@ -90,7 +93,8 @@ def logout():
     response = redirect(url_for("login_index"))
     response.set_cookie("session_cookie", "", max_age=0)
     return response
-    
+
+#LOGIN
 @app.route("/send-login", methods=["POST"])
 def login():
 
@@ -107,12 +111,14 @@ def login():
 
     return response
 
+#RESET (NOT BUILT BC NOT NEEDED FOR SUCCESS CRITERIA)
 @app.route("/reset-password", methods=["POST"])
 def reset_password():
 
     pass
     return redirect(url_for("login_index"))
 
+#GOOGLE LOGIN
 @app.route("/google-login", methods=["GET"])
 def google_login():
     flow = Flow.from_client_config(
@@ -148,6 +154,7 @@ def google_login():
 
     return redirect(authorization_url)
 
+#GOOGLE CALLBACK REDIRECT
 @app.route("/google-callback", methods=["GET"])
 def google_callback():
     session_state=session["state"]
@@ -201,11 +208,9 @@ def google_callback():
     response.set_cookie("session_cookie", sessionId, max_age=60 * 60 * 24)
     return response
 
-
-def create_login_tables():
-    database_action('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, email TEXT UNIQUE, password TEXT, sessionID TEXT UNIQUE)''', None)
-
 if __name__ == "__main__":
-    create_login_tables()
+    #CREATE ACCOUNTS TABLE IF 
+    database_action('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, email TEXT UNIQUE, password TEXT, sessionID TEXT UNIQUE)''', None)
+    
     app.run()
     

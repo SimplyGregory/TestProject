@@ -24,8 +24,8 @@ def database_action(SQL, params, read = False, row_val = False):
     cursor = connection.cursor()
 
     sql_code = str(SQL)
-
-    if params != None:
+    print(params)
+    if params:
         args = sql_code.split(", ", maxsplit=1)
         cursor.execute(args[0], params)
     else:

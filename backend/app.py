@@ -24,12 +24,14 @@ def database_action(SQL, params, read = False, row_val = False):
     cursor = connection.cursor()
 
     sql_code = str(SQL)
-    print(params)
-    if params:
-        args = sql_code.split(", ", maxsplit=1)
-        cursor.execute(args[0], params)
-    else:
-        cursor.execute(sql_code)
+    try:
+        if params:
+            args = sql_code.split(", ", maxsplit=1)
+            cursor.execute(args[0], params)
+        else:
+            cursor.execute(sql_code)
+    except Exception as e:
+        print(e)
 
     if read == True:
         return cursor.fetchone()

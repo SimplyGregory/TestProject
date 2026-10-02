@@ -29,7 +29,7 @@ def database_action(SQL, params, read = False, row_val = False):
         args = sql_code.split(", ", maxsplit=1)
         cursor.execute(args[0], params)
     else:
-        cursor.execute(args)
+        cursor.execute(sql_code)
 
     if read == True:
         return cursor.fetchone()

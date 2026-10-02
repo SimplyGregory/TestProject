@@ -199,7 +199,7 @@ def google_callback():
         database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", '(username, email, None, sessionId)')
 
 
-        user_data = database_action("SELECT * FROM users WHERE id = ?", ("cursor.lastrowid,"))
+        user_data = database_action("SELECT * FROM users WHERE id = ?", ("cursor.lastrowid",))
     else:
         sessionId = user_data["sessionID"]
 

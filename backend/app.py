@@ -104,10 +104,11 @@ def login():
 
     return response
 
-@app.route("/reset-password", methods=["GET", "POST"])
+@app.route("/reset-password", methods=["POST"])
 def reset_password():
-    if request.method == "POST":
-        return redirect(url_for("login_index"))
+
+    pass
+    return redirect(url_for("login_index"))
 
 @app.route("/google-login", methods=["GET"])
 def google_login():
@@ -120,9 +121,8 @@ def google_login():
                 "auth_uri": "https://accounts.google.com/o/oauth2/auth",
                 "token_uri": "https://oauth2.googleapis.com/token"
             }
-        }
-
-        ,scopes=[
+        },
+        scopes=[
             "https://www.googleapis.com/auth/userinfo.email"
             ,"https://www.googleapis.com/auth/userinfo.profile"
             ,"openid"
@@ -159,13 +159,13 @@ def google_callback():
                 "auth_uri": "https://accounts.google.com/o/oauth2/auth",
                 "token_uri": "https://oauth2.googleapis.com/token"
             }
-        }
-        ,scopes=[
+        },
+        scopes=[
             "https://www.googleapis.com/auth/userinfo.email"
             ,"https://www.googleapis.com/auth/userinfo.profile"
             ,"openid"
-        ]
-        ,state=session_state
+        ],
+        state=session_state
     )
 
     flow.redirect_uri = redirect_uri

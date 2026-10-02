@@ -22,8 +22,6 @@ def database_action(SQL, params, read = False, row_val = False):
     if row_val:
         connection.row_factory = sqlite3.Row
 
-    if params is not None and not isinstance(params, (tuple, list, dict)):
-        print(params)
     cursor = connection.cursor()
 
     sql_code = str(SQL)
@@ -33,10 +31,14 @@ def database_action(SQL, params, read = False, row_val = False):
     else:
         cursor.execute(sql_code)
 
+    value = None
     if read == True:
-        return cursor.fetchone()
+        value = cursor.fetchone()
+
+    connection.commit()
+    connection.close()
     
-    return None
+    return value
 
 
 #BASE DOMAIN REDIRECT

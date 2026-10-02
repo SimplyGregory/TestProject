@@ -312,7 +312,9 @@
         position: fixed;
     }
 
-    .nav-link:hover .nav-link_tooltip, .nav
+    .nav-link:hover .nav-link_tooltip, .nav-link:focus-visible .nav-link__tooltip {
+        visibility: visible;
+    }
 
     .more-menu {
         position: absolute;

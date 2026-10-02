@@ -1,10 +1,4 @@
-# https://flask.palletsprojects.com/en/stable/quickstart/
-# Reference for starting example
-# https://www.sqlitetutorial.net/sqlite-python/creating-database/ SQLite tut
-# https://medium.com/@icodewithben/flask-sqlite-login-and-register-form-48640743bf55
-# https://developers.google.com/identity/sign-in/web/sign-in
-# https://jaggedarray.hashnode.dev/flask-google-login#heading-conclusion
-
+#IMPORTED LIBRARIES FOR THE BACKEND
 from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
 import uuid
@@ -12,87 +6,92 @@ from google_auth_oauthlib.flow import Flow
 from google.oauth2 import id_token
 from google.auth.transport import requests as google_auth_requests
 import os
-from dotenv import load_dotenv
+from dotenv import load_dotenv                                                                                                                                                                  
 
+#LOADING ENV AND CONFIG FLASK APP
 load_dotenv()
-
 app = Flask(__name__, template_folder="../frontend/")
-app.secret_key = "7H6dJd0DKDd-gD6h2KD"
-DATABASE = "database.db"
 
+#UPLOADING ENV FOR CONFIGURATIONS
+app.secret_key, DATABASE = os.getenv("SECRET_KEY"), "database.db"
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
+#COMPRESS DATABASE WRITTING
+def database_action(SQL, params, read = False, row_val = False):
+    connection = sqlite3.connect(DATABASE)
+    if row_val:
+        connection.row_factory = sqlite3.Row
+    cursor = connection.cursor()
+
+    sql_code = str(SQL)
+    args = sql_code.split(", ", maxsplit=1)
+
+    cursor.execute(args[0], params)
+
+    if read == True:
+        return cursor.fetchone()
+    
+    return None
+
+
+#BASE DOMAIN REDIRECT
 @app.route("/")
-def hello_world():
+def login_index():
     if "session_cookie" in request.cookies:
+
         sessionID = request.cookies.get("session_cookie")
+        user_data = database_action("SELECT * FROM users WHERE sessionID = ?", (sessionID,), True)
 
-        conn = sqlite3.connect(DATABASE)
-        c = conn.cursor()
-        c.execute("SELECT * FROM users WHERE sessionID = ?", (sessionID,))
-        user = c.fetchone()
-        if user:
-            conn.close()
+        if user_data:
             return redirect(url_for("dashboard"))
-
-        conn.commit()
-        conn.close()
 
     return render_template("public/login.html")
 
-@app.route("/send-register", methods=["GET", "POST"])
+@app.route("/send-register", methods=["POST"])
 def attempt_register():
-    if request.method == "POST":
-        username = request.form.get("username").lower()
-        email = request.form.get("email").lower()
-        password = request.form.get("password")
 
-        conn = sqlite3.connect(DATABASE)
-        c = conn.cursor()
-        c.execute("SELECT * FROM users WHERE email = ? AND username = ?", (email, username))
-        if c.fetchone():
-            return "Username or Email already exists"
-        sessionID = str(uuid.uuid4())
-        c.execute("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, password, sessionID))
+    form = request.form
+    username, email, password = form.get("username").lower(), form.get("email").lower(), form.get("password")
+
+    if database_action("SELECT * FROM users WHERE email = ? AND username = ?", (email, username), True):
+        return "Username or Email already exists"
+    
+    sessionID = str(uuid.uuid4())
+    database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, password, sessionID))
         
-        conn.commit()
-        conn.close()
-        response = redirect(url_for("dashboard"))
-        response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24)
-        return response
+    response = redirect(url_for("dashboard"))
+    response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24)
+    return response
 
 @app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
     if "session_cookie" not in request.cookies:
-        return redirect(url_for("hello_world"))
-
+        return redirect(url_for("login_index"))
+    
     sessionID = request.cookies.get("session_cookie")
-    conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row
-    c = conn.cursor()
-    c.execute("SELECT * FROM users WHERE sessionID = ?", (sessionID,))
-    user = c.fetchone()
-    conn.close()
-    if not user:
-        response = redirect(url_for("hello_world"))
+
+    user_data = database_action("SELECT * FROM users WHERE sessionID = ?", (sessionID,), True, True)
+
+    if not user_data:
+        response = redirect(url_for("login_index"))
         response.set_cookie("session_cookie", "", max_age=0)
         return response
 
-    return render_template("private/index.html", username=user["username"])
+    return render_template("private/index.html", username=user_data["username"])
 
 @app.route("/send-logout", methods=["GET", "POST"])
 def logout():
     if "session_cookie" not in request.cookies:
-        return redirect(url_for("hello_world"))
+        return redirect(url_for("login_index"))
 
-    response = redirect(url_for("hello_world"))
+    response = redirect(url_for("login_index"))
     response.set_cookie("session_cookie", "", max_age=0)
     return response
     
 @app.route("/send-login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        response=redirect(url_for("hello_world"))
+        response=redirect(url_for("login_index"))
         email = request.form.get("email").lower()
         password = request.form.get("password")
         conn = sqlite3.connect(DATABASE)
@@ -117,7 +116,7 @@ def login():
 @app.route("/reset-password", methods=["GET", "POST"])
 def reset_password():
     if request.method == "POST":
-        return redirect(url_for("hello_world"))
+        return redirect(url_for("login_index"))
 
 @app.route("/google-login", methods=["GET"])
 def google_login():
@@ -229,6 +228,7 @@ def create_login_tables():
             password TEXT,
             sessionID TEXT UNIQUE
             )''')
+    
     conn.commit()
     conn.close()
 

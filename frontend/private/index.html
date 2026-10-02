@@ -17,11 +17,21 @@
         <button>Settings</button>
         <form method="POST" action="/send-logout"><button>Log Out</button></form>
     </div>
+    <div id="side_bar">
+        <a id="title">pylingo</a>
+        <ul id="side_bar_buttons">
+            <li>LEARN</li>
+            <li>LEADERBOARD</li>
+            <li>QUESTS</li>
+            <li>PROFILE</li>
+            <li>MORE</li>
+        </ul>
+    </div>
 </body>
 <style>
     
     body {
-        background-color: #bdbdbd;
+        background-color: #ffffff;
         overflow: hidden;
         -webkit-user-select: none;
         -ms-user-select: none;
@@ -94,7 +104,7 @@
         margin-top: 4px;
         margin-left: 5%;
         height: 40%;
-        background-color: #bdbdbd;
+        background-color: #ffffff;
         border: 0px solid transparent;
         color: #1d1d1d;
         cursor: pointer;
@@ -107,6 +117,41 @@
 
     .caret-container.hidden {
         display: none;
+    }
+
+    #side_bar {
+        border-right: 3px solid rgba(223, 223, 223, 0.7);
+        width: 250px;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+    #title {
+        color: #82b853;
+        position: relative;
+        top: 15px;
+        left: 25px;
+        font-size: 30px;
+        font-family: "Feather", "Fredoka", "Nunito", sans-serif;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+
+    }
+
+    #side_bar_buttons {
+        position: relative;
+        top: 30px;
+        margin: 10px;
+        columns: 1;
+        list-style-type: none;
+
+    }
+    #side_bar_button li {
+        width: 80%;
+        height: 20px;
+        background: none;
+        border: none;
     }
 </style>
 <script>

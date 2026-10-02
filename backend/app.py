@@ -90,21 +90,17 @@ def logout():
     
 @app.route("/send-login", methods=["POST"])
 def login():
-    
+
+    form = request.form
+    email, password = form.get("email").lower(), request.form.get("password")
     response=redirect(url_for("login_index"))
-    email = request.form.get("email").lower()
-    password = request.form.get("password")
-    conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row
-    c = conn.cursor()
 
-    c.execute("SELECT * FROM users WHERE LOWER(email) = ?", (email,))
-    user = c.fetchone()
+    user_data = database_action("SELECT * FROM users WHERE LOWER(email) = ?", (email,), True, True)
 
-    if user:
-        correct_pass = user["password"]
+    if user_data:
+        correct_pass = user_data["password"]
         if password == correct_pass:
-            sessionID = user["sessionID"]
+            sessionID = user_data["sessionID"]
             response = redirect(url_for("dashboard"))
             response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24)
 

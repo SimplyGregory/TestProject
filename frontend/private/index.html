@@ -29,10 +29,10 @@
                 <div class="sidebar__item">
                     <a data-test="home-nav" aria-current="page" class="nav-link" href="/learn">
                         <span class="nav-link nav-link nav-link nav-link nav-link--active"><div class="nav-link__icon">
-                            <img class="_101n8" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/784035717e2ff1d448c0f6cc4efc89fb.svg">
+                            <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/784035717e2ff1d448c0f6cc4efc89fb.svg">
                         </div>
-                        <span class="_1AZJt">Learn</span>
-                        <div class="j5zXd" style="transform: translateY(0px); z-index: 310;">Learn</div>
+                        <span class="nav-link__label">Learn</span>
+                        <div class="nav-link__tooltip" style="transform: translateY(0px); z-index: 310;">Learn</div>
                     </span>
                 </a>
             </div>
@@ -40,16 +40,16 @@
                 <a class="nav-link">
                     <span class="nav-link nav-link nav-link nav-link">
                         <div class="nav-link__icon">
-                            <img class="_101n8" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/ca9178510134b4b0893dbac30b6670aa.svg">
+                            <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/ca9178510134b4b0893dbac30b6670aa.svg">
                         </div>
-                        <span class="_1AZJt">Leaderboards</span>
+                        <span class="nav-link__label">Leaderboards</span>
                     </span></a></div><div class="">
                         <a class="nav-link">
                             <span class="nav-link nav-link nav-link nav-link">
                                 <div class="nav-link__icon">
-                                    <img class="_101n8" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/7ef36bae3f9d68fc763d3451b5167836.svg">
+                                    <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/7ef36bae3f9d68fc763d3451b5167836.svg">
                                 </div>
-                                <span class="_1AZJt">Quests</span>
+                                <span class="nav-link__label">Quests</span>
                             </span>
                         </a>
                     </div>
@@ -57,9 +57,9 @@
                         <a class="nav-link">
                         <span class="nav-link nav-link nav-link nav-link">
                             <div class="nav-link__icon">
-                                <img class="_101n8" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/0e58a94dda219766d98c7796b910beee.svg">
+                                <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/0e58a94dda219766d98c7796b910beee.svg">
                             </div>
-                            <span class="_1AZJt">Shop</span>
+                            <span class="nav-link__label">Shop</span>
                         </span>
                     </a>
                 </div>
@@ -68,9 +68,9 @@
                         <span class="nav-link--menu-trigger nav-link--menu-trigger nav-link nav-link" role="button" tabindex="0">
                             <span class="nav-link--menu-trigger nav-link nav-link nav-link nav-link">
                                 <div class="nav-link__icon">
-                                    <img class="_101n8" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/7159c0b5d4250a5aea4f396d53f17f0c.svg">
+                                    <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/7159c0b5d4250a5aea4f396d53f17f0c.svg">
                                 </div>
-                                <span class="_1AZJt">More</span>
+                                <span class="nav-link__label">More</span>
                             </span>
                         </span>
                     </div>
@@ -232,8 +232,8 @@
         padding: 36px 0 25px 10px;
     }
     .sidebar {
-    left: 0;
-    position: fixed !important;
+        left: 0;
+        position: fixed !important;
     }
     .sidebar {
         background-color: rgb(19, 31, 36);
@@ -256,10 +256,10 @@
         font: 500 17px / 25px duolingo-sans, sans-serif;
         scrollbar-width: none;
     }
-    .sidebar__item ._1AZJt {
+    .sidebar__item .nav-link__label {
         color: rgb(73, 192, 248);
     }
-    ._1AZJt {
+    .nav-link__label {
         color: rgb(220, 230, 236);
         display: none;
         font-size: 15px;
@@ -270,10 +270,10 @@
         -moz-user-select: none;
         user-select: none;
     }
-    ._1AZJt {
+    .nav-link__label {
         letter-spacing: .8px;
     }
-    ._101n8 {
+    .nav-link__icon img {
         height: 32px;
         padding-right: 0;
         transition: filter .2s;
@@ -313,7 +313,7 @@
         border: 2px solid rgb(63, 133, 167);
         border-radius: 12px;
     }
-    .j5zXd {
+    .nav-link__tooltip {
         background-color: rgb(220, 230, 236);
         border: none;
         border-radius: 8px;
@@ -324,7 +324,7 @@
         text-decoration: none;
     }
 
-    .j5zXd, .xw9u1 {
+    .nav-link__tooltip{
         position: fixed;
     }
 </style>

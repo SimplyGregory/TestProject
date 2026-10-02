@@ -88,30 +88,30 @@ def logout():
     response.set_cookie("session_cookie", "", max_age=0)
     return response
     
-@app.route("/send-login", methods=["GET", "POST"])
+@app.route("/send-login", methods=["POST"])
 def login():
-    if request.method == "POST":
-        response=redirect(url_for("login_index"))
-        email = request.form.get("email").lower()
-        password = request.form.get("password")
-        conn = sqlite3.connect(DATABASE)
-        conn.row_factory = sqlite3.Row
-        c = conn.cursor()
+    
+    response=redirect(url_for("login_index"))
+    email = request.form.get("email").lower()
+    password = request.form.get("password")
+    conn = sqlite3.connect(DATABASE)
+    conn.row_factory = sqlite3.Row
+    c = conn.cursor()
 
-        c.execute("SELECT * FROM users WHERE LOWER(email) = ?", (email,))
-        user = c.fetchone()
+    c.execute("SELECT * FROM users WHERE LOWER(email) = ?", (email,))
+    user = c.fetchone()
 
-        if user:
-            correct_pass = user["password"]
-            if password == correct_pass:
-                sessionID = user["sessionID"]
-                response = redirect(url_for("dashboard"))
-                response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24)
+    if user:
+        correct_pass = user["password"]
+        if password == correct_pass:
+            sessionID = user["sessionID"]
+            response = redirect(url_for("dashboard"))
+            response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24)
 
        
-        conn.commit()
-        conn.close()
-        return response
+    conn.commit()
+    conn.close()
+    return response
 
 @app.route("/reset-password", methods=["GET", "POST"])
 def reset_password():

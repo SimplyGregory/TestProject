@@ -60,7 +60,7 @@
             </div>
             <div class="">
                 <a class="nav-link" href="">
-                    <span class="nav-link nav-link">
+                    <span class="nav-link">
                         <div class="nav-link__icon">
                             <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/0e58a94dda219766d98c7796b910beee.svg">
                         </div>
@@ -71,7 +71,7 @@
             </div>
             <div class="">
                 <div class="nav-link" href="">
-                    <span class="nav-link--menu-trigger nav-link--menu-trigger nav-link nav-link" role="button" tabindex="0">
+                    <span class="nav-link--menu-trigger nav-link--menu-trigger nav-link" role="button" tabindex="0">
                         <span class="nav-link--menu-trigger nav-link">
                             <div class="nav-link__icon">
                                 <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/7159c0b5d4250a5aea4f396d53f17f0c.svg">
@@ -183,7 +183,7 @@
         background-color: #a0a0a0;
     }
 
-    .caret-container.hidden {
+    .hidden {
         display: none;
     }
 
@@ -312,15 +312,9 @@
         position: fixed;
     }
 
-    .nav-link__tooltip.hidden {
-        visibility: hidden;
-    }
+    .nav-link:hover .nav-link_tooltip, .nav
 
-    .more-menu.hidden {
-        visibility: hidden;
-    }
-
-    ._3zpnU.more-menu {
+    .more-menu {
         position: absolute;
     }
 
@@ -413,16 +407,5 @@
             }
         });
     });
-
-
-    document.querySelector("nav-link:span").forEach(button => {
-        button.addEventListener('click', function(event) {
-            const buttons = document.querySelectorAll('.nav-link:span');
-            buttons.forEach(button => button.classList.remove('active'));
-            if (event.target.tagName === 'BUTTON') {
-                event.target.classList.add('active');
-            }
-        });
-    })
 </script>
 </html>

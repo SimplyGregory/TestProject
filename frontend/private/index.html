@@ -9,53 +9,53 @@
 <body>
     <div id="side">
         <div class="sidebar">
-            <div class="sidebar__logo">
-                <a class="sidebar__logo-link">
-                    <img class="sidebar__logo-compact" src="/media/side_logo.png">
+            <div class="sidebar_logo">
+                <a class="sidebar_logo-link">
+                    <img class="sidebar_logo-compact" src="/media/side_logo.png">
                 </a>
             </div>
-            <div class="sidebar__nav">
-                <div class="sidebar__item">
+            <div class="sidebar_nav">
+                <div class="sidebar_item">
                     <a class="nav-link" href="">
                         <span class="nav-link nav-link--active">
-                            <div class="nav-link__icon">
+                            <div class="nav-link_icon">
                             <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/784035717e2ff1d448c0f6cc4efc89fb.svg">
                         </div>
-                        <span class="nav-link__label">Learn</span>
-                        <div class="nav-link__tooltip hidden" style="transform: translateY(0px); z-index: 310;">Learn</div>
+                        <span class="nav-link_label">Learn</span>
+                        <div class="nav-link_tooltip hidden" style="transform: translateY(0px); z-index: 310;">Learn</div>
                     </span>
                 </a>
             </div>
             <div class="">
                 <a class="nav-link" href="">
                     <span class="nav-link">
-                        <div class="nav-link__icon">
+                        <div class="nav-link_icon">
                             <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/ca9178510134b4b0893dbac30b6670aa.svg">
                         </div>
-                        <span class="nav-link__label">Leaderboards</span>
-                        <div class="nav-link__tooltip hidden" style="transform: translateY(0px); z-index: 310;">Leaderboards</div>
+                        <span class="nav-link_label">Leaderboards</span>
+                        <div class="nav-link_tooltip hidden" style="transform: translateY(0px); z-index: 310;">Leaderboards</div>
                     </span>
                 </a>
             </div>
             <div class="">
                 <a class="nav-link"  href="">
                     <span class="nav-link">
-                        <div class="nav-link__icon">
+                        <div class="nav-link_icon">
                             <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/7ef36bae3f9d68fc763d3451b5167836.svg">
                         </div>
-                        <span class="nav-link__label">Quests</span>
-                        <div class="nav-link__tooltip hidden" style="transform: translateY(0px); z-index: 310;">Quests</div>
+                        <span class="nav-link_label">Quests</span>
+                        <div class="nav-link_tooltip hidden" style="transform: translateY(0px); z-index: 310;">Quests</div>
                     </span>
                 </a>
             </div>
             <div class="">
                 <a class="nav-link" href="">
                     <span class="nav-link">
-                        <div class="nav-link__icon">
+                        <div class="nav-link_icon">
                             <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/0e58a94dda219766d98c7796b910beee.svg">
                         </div>
-                        <span class="nav-link__label">Shop</span>
-                        <div class="nav-link__tooltip hidden" style="transform: translateY(0px); z-index: 310;">Shop</div>
+                        <span class="nav-link_label">Shop</span>
+                        <div class="nav-link_tooltip hidden" style="transform: translateY(0px); z-index: 310;">Shop</div>
                     </span>
                 </a>
             </div>
@@ -63,18 +63,18 @@
                 <div class="nav-link" href="">
                     <span class="nav-link--menu-trigger nav-link--menu-trigger nav-link" role="button" tabindex="0">
                         <span class="nav-link--menu-trigger nav-link">
-                            <div class="nav-link__icon">
+                            <div class="nav-link_icon">
                                 <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/7159c0b5d4250a5aea4f396d53f17f0c.svg">
                             </div>
-                            <span class="nav-link__label">More</span>
+                            <span class="nav-link_label">More</span>
                             <div class="more-menu hidden" style="left: 72px; position: fixed; top: 337px; transform: none; z-index: 220;">
-                                <div class="more-menu__panel">
-                                    <div class="more-menu__list">
-                                        <button class="more-menu__item">
+                                <div class="more-menu_panel">
+                                    <div class="more-menu_list">
+                                        <button class="more-menu_item">
                                             <span>Settings</span>
                                         </button>
                                         <form method="POST" action="/send-logout">
-                                            <button type="submit" class="more-menu__item">
+                                            <button type="submit" class="more-menu_item">
                                                 <span>Log Out</span>
                                             </button>
                                         </form>
@@ -179,20 +179,20 @@
         display: none;
     }
 
-    .sidebar__logo-compact {
+    .sidebar_logo-compact {
         display: initial;
         height: 40px;
         width: 40px;
     }
     
-    .sidebar__logo-link {
+    .sidebar_logo-link {
         display: block;
         height: 100%;
         width: -moz-fit-content;
         width: fit-content;
     }
 
-    .sidebar__logo {
+    .sidebar_logo {
         box-sizing: content-box;
         height: 39px;
         padding: 36px 0 25px 10px;
@@ -215,17 +215,17 @@
         scrollbar-width: none;
     }
 
-    .sidebar__nav {
+    .sidebar_nav {
         gap: 8px;
         display: flex;
         flex-direction: column;
     }
 
-    .sidebar__item .nav-link__label {
+    .sidebar_item .nav-link_label {
         color: rgb(73, 192, 248);
     }
 
-    .nav-link__label {
+    .nav-link_label {
         color: rgb(220, 230, 236);
         display: none;
         font-size: 15px;
@@ -235,14 +235,14 @@
         letter-spacing: .8px;
     }
 
-    .nav-link__icon img {
+    .nav-link_icon img {
         height: 32px;
         padding-right: 0;
         transition: filter .2s;
         width: 32px;
     }
 
-    .nav-link__icon {
+    .nav-link_icon {
         display: flex;
         position: relative;
     }
@@ -271,7 +271,7 @@
         border-radius: 12px;
     }
 
-    .nav-link__tooltip {
+    .nav-link_tooltip {
         background-color: rgb(220, 230, 236);
         border: none;
         border-radius: 8px;
@@ -283,7 +283,7 @@
         position: fixed;
     }
 
-    .nav-link__tooltip.hidden {
+    .nav-link_tooltip.hidden {
         visibility: hidden;
     }
 
@@ -291,11 +291,11 @@
         visibility: hidden;
     }
 
-    .nav-link:hover .nav-link__tooltip, .nav-link:hover .more-menu, .nav-link:focus-visible .nav-link__tooltip, .nav-link-visible .more-menu {
+    .nav-link:hover .nav-link_tooltip, .nav-link:hover .more-menu, .nav-link:focus-visible .nav-link_tooltip, .nav-link-visible .more-menu {
         visibility: visible;
     }
 
-    .more-menu__item:hover {
+    .more-menu_item:hover {
         background-color: rgb(32, 47, 54);
     }
 
@@ -307,7 +307,7 @@
         position: relative;
     }
 
-    .more-menu__panel {
+    .more-menu_panel {
         background-color: var(--web-ui_popover-background-color, rgb(19, 31, 36));
         border: 2px solid var(--web-ui_popover-border-color, rgb(55, 70, 79));
         border-radius: var(--web-ui_popover-border-radius, 15px);
@@ -316,11 +316,11 @@
         transform: translateZ(0);
     }
 
-    .more-menu__list {
+    .more-menu_list {
         padding: 8px 0;
     }
 
-    .more-menu__item {
+    .more-menu_item {
         background: none;
         border: none;
         transition: filter .2s;

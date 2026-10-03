@@ -217,4 +217,7 @@ if __name__ == "__main__":
     database_action('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, email TEXT UNIQUE, password TEXT, sessionID TEXT UNIQUE)''', None)
     
     app.run()
-    
+
+    number = 1
+    if len(number) > 3:
+        print(number[0])

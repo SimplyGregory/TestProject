@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 #LOADING ENV AND CONFIG FLASK APP
 load_dotenv()
-app = Flask(__name__, template_folder="../frontend/")
+app = Flask(__name__, template_folder="../frontend/", static_folder="../frontend/media", static_url_path="/media")
 
 #UPLOADING ENV FOR CONFIGURATIONS
 app.secret_key, DATABASE = os.getenv("SECRET_KEY"), "database.db"

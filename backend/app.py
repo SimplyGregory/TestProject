@@ -3,6 +3,7 @@
 #IMPORTED LIBRARIES FOR THE BACKEND
 from flask import Flask, render_template, request, redirect, url_for, session
 from google.auth.transport import requests as google_auth_requests
+from argon2.exceptions import VerifyMismatchError
 from google_auth_oauthlib.flow import Flow
 from google.oauth2 import id_token
 from argon2 import PasswordHasher

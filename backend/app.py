@@ -107,6 +107,7 @@ def logout():
 @app.route("/send-login", methods=["POST"])
 def login():
 
+    ph = PasswordHasher()
     form = request.form
     email, password = form.get("email").lower(), request.form.get("password")
     response=redirect(url_for("login_index"))

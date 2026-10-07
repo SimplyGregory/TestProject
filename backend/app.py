@@ -1,12 +1,15 @@
+# https://mojoauth.com/security-guides/argon2-in-python#how-to-install-argon2-for-python
+
 #IMPORTED LIBRARIES FOR THE BACKEND
 from flask import Flask, render_template, request, redirect, url_for, session
-import sqlite3
-import uuid
+from google.auth.transport import requests as google_auth_requests
 from google_auth_oauthlib.flow import Flow
 from google.oauth2 import id_token
-from google.auth.transport import requests as google_auth_requests
+from argon2 import PasswordHasher
+from dotenv import load_dotenv     
 import os
-from dotenv import load_dotenv                                                                                                                                                                  
+import sqlite3
+import uuid                                                                                                                                                             
 
 #LOADING ENV AND CONFIG FLASK APP
 load_dotenv()

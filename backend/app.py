@@ -116,9 +116,12 @@ def login():
     user_data = database_action("SELECT * FROM users WHERE LOWER(email) = ?", (email,), True, True)
 
     if user_data:
-        if password == user_data["password"]:
+        try:
+            ph.verify(user_data["password"], password)
             response = redirect(url_for("dashboard"))
             response.set_cookie("session_cookie", user_data["sessionID"], max_age=60 * 60 * 24)
+        except VerifyMismatchError:
+            print("Incorrect Password!")
 
     return response
 

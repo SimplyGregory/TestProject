@@ -61,12 +61,14 @@ def login_index():
 @app.route("/send-register", methods=["POST"])
 def attempt_register():
 
+    ph = PasswordHasher()
     form = request.form
     username, email, password = form.get("username").lower(), form.get("email").lower(), form.get("password")
 
     if database_action("SELECT * FROM users WHERE email = ? AND username = ?", (email, username), True):
         return "Username or Email already exists"
-    
+
+    password = ph.hash(password)
     sessionID = str(uuid.uuid4())
     database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, password, sessionID))
         

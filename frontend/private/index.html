@@ -3,95 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pylingo</title>
-    <link rel="icon" href="/media/logo.png">
+    <title>IB_CS_APP</title>
 </head>
 <body>
-    <div id="side">
-        <div class="sidebar">
-            <div class="sidebar_logo">
-                <a class="sidebar_logo-link">
-                    <img class="sidebar_logo-compact" src="/media/side_logo.png">
-                </a>
-            </div>
-            <div class="sidebar_nav">
-                <div class="sidebar_item">
-                    <a class="nav-link" href="">
-                        <span class="nav-link nav-link--active">
-                            <div class="nav-link_icon">
-                            <img src="/media/learn.png">
-                        </div>
-                        <span class="nav-link_label">Learn</span>
-                        <div class="nav-link_tooltip hidden" style="transform: translateY(0px); z-index: 310;">Learn</div>
-                    </span>
-                </a>
-            </div>
-            <div class="">
-                <a class="nav-link" href="">
-                    <span class="nav-link">
-                        <div class="nav-link_icon">
-                            <img src="/media/leaderboard.png">
-                        </div>
-                        <span class="nav-link_label">Leaderboards</span>
-                        <div class="nav-link_tooltip hidden" style="transform: translateY(0px); z-index: 310;">Leaderboards</div>
-                    </span>
-                </a>
-            </div>
-            <div class="">
-                <a class="nav-link"  href="">
-                    <span class="nav-link">
-                        <div class="nav-link_icon">
-                            <img src="/media/quest.png">
-                        </div>
-                        <span class="nav-link_label">Quests</span>
-                        <div class="nav-link_tooltip hidden" style="transform: translateY(0px); z-index: 310;">Quests</div>
-                    </span>
-                </a>
-            </div>
-            <div class="">
-                <a class="nav-link" href="">
-                    <span class="nav-link">
-                        <div class="nav-link_icon">
-                            <img src="/media/shop.png">
-                        </div>
-                        <span class="nav-link_label">Shop</span>
-                        <div class="nav-link_tooltip hidden" style="transform: translateY(0px); z-index: 310;">Shop</div>
-                    </span>
-                </a>
-            </div>
-            <div class="">
-                <div class="nav-link" href="">
-                    <span class="nav-link--menu-trigger nav-link--menu-trigger nav-link" role="button" tabindex="0">
-                        <span class="nav-link--menu-trigger nav-link">
-                            <div class="nav-link_icon">
-                                <img src="/media/menu.png">
-                            </div>
-                            <span class="nav-link_label">More</span>
-                            <div class="more-menu hidden" style="left: 72px; position: fixed; top: 337px; transform: none; z-index: 220;">
-                                <div class="more-menu_panel">
-                                    <div class="more-menu_list">
-                                        <button class="more-menu_item">
-                                            <span>Settings</span>
-                                        </button>
-                                        <form method="POST" action="/send-logout">
-                                            <button type="submit" class="more-menu_item">
-                                                <span>Log Out</span>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </span>
-                    </span>
-                </div>
-            </div>
-        </div>
+    <div class="option-buttons">
+        <button class="username-button">
+            <span class="username">{{ username }}</span>
+            <span class="username-caret">^</span>
+        </button>
+        <button class="active">Home</button>
+    </div>
+    <div class="caret-container hidden">
+        <button>Settings</button>
+        <form method="POST" action="/send-logout"><button>Log Out</button></form>
     </div>
 </body>
 <style>
     
     body {
-        background-color: rgb(19, 31, 36);
+        background-color: #bdbdbd;
         overflow: hidden;
         -webkit-user-select: none;
         -ms-user-select: none;
@@ -137,173 +67,65 @@
         text-decoration: underline;
     }
 
-    .sidebar_logo-compact {
-        display: initial;
-        height: 40px;
-        width: 40px;
-    }
-    
-    .sidebar_logo-link {
-        display: block;
-        height: 100%;
-        width: -moz-fit-content;
-        width: fit-content;
-    }
-
-    .sidebar_logo {
-        box-sizing: content-box;
-        height: 39px;
-        padding: 36px 0 25px 10px;
-    }
-
-    .sidebar {
-        left: 0;
-        background-color: rgb(19, 31, 36);
-        border-right: var(--web-ui_navbar-border-right, 2px solid rgb(55, 70, 79));
-        box-sizing: border-box;
-        color: rgb(82, 101, 109);
-        height: 100vh;
-        padding: 0 16px;
-        top: var(--web-ui_topbar-top, 0);
-        width: calc(var(--web-ui_navbar-width-no-labels, 56px) + 32px);
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        -ms-overflow-style: none;
-        font: 500 17px / 25px duolingo-sans, sans-serif;
-        scrollbar-width: none;
-    }
-
-    .sidebar_nav {
-        gap: 8px;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .sidebar_item .nav-link_label {
-        color: rgb(73, 192, 248);
-    }
-
-    .nav-link_label {
-        color: rgb(220, 230, 236);
-        display: none;
-        font-size: 15px;
-        font-weight: 700;
-        text-transform: uppercase;
-        transition: none;
-        letter-spacing: .8px;
-    }
-
-    .nav-link_icon img {
-        height: 32px;
-        padding-right: 0;
-        transition: filter .2s;
-        width: 32px;
-    }
-
-    .nav-link_icon {
-        display: flex;
-        position: relative;
-    }
-
-    .nav-link {
-        border: 2px solid transparent;
-        padding: 0;
-        justify-content: center;
-        position: relative;
+    .username-button {
         align-items: center;
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        height: 48px;
-        border-radius: 12px;
-        cursor: pointer;
-    }
-
-    .nav-link:hover {
-        background-color: rgb(32, 47, 54);
-    }
-
-    .nav-link--active {
-        background-color: rgb(32, 47, 54);
-        border: 2px solid rgb(63, 133, 167);
-        border-radius: 12px;
-    }
-
-    .nav-link_tooltip {
-        background-color: rgb(220, 230, 236);
-        border: none;
-        border-radius: 8px;
-        color: rgb(19, 31, 36);
-        font-size: 15px;
-        left: 88px;
-        padding: 7px 12px;
-        text-decoration: none;
-        position: fixed;
-    }
-
-    .nav-link_tooltip.hidden {
-        visibility: hidden;
-    }
-
-
-    .nav-link:hover .nav-link_tooltip, .nav-link:hover .more-menu, .nav-link:focus-visible .nav-link_tooltip, .nav-link-visible .more-menu {
-        visibility: visible;
-    }
-
-    .more-menu{
-        width: -moz-fit-content;
-        width: fit-content;
-        margin-left: 8px;
-        box-sizing: border-box;
-        position: relative;
-    }
-
-    .more-menu_panel {
-        background-color: var(--web-ui_popover-background-color, rgb(19, 31, 36));
-        border: 2px solid var(--web-ui_popover-border-color, rgb(55, 70, 79));
-        border-radius: var(--web-ui_popover-border-radius, 15px);
-        box-sizing: border-box;
-        overflow: hidden;
-        transform: translateZ(0);
-    }
-
-    .more-menu_list {
-        padding: 8px 0;
-    }
-
-    .more-menu_item {
-        background: none;
-        border: none;
-        transition: filter .2s;
-        -webkit-tap-highlight-color: transparent;
-        -webkit-touch-callout: none;
-        cursor: pointer;
         display: inline-flex;
+        font-size: 14px;
+
+    }
+    .username-caret {
         position: relative;
-        touch-action: manipulation;
-        transform: translateZ(0);
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        --web-ui_button-filter-hover: none;
-        align-items: center;
-        box-sizing: border-box;
-        color: rgb(220, 230, 236);
-        font: 700 15px / 16px duolingo-sans, sans-serif;
-        min-width: 100px;
-        padding: 0 40px 0 20px;
-        text-transform: uppercase;
-        white-space: nowrap;
-        width: 100%;
-        height: 40px;
+        transform-origin: center 40%;
+        font-size: 18px;
+        top: 4px;
+        left: 110%;
     }
 
-    .more-menu.hidden {
-        visibility: hidden;
+    .caret-container {
+        position: absolute;
+        top: 7.5%;
+        right: 1.8%;
+        width: 100px;
+        height: 60px;
+        background-color: #373737;
+    }
+    .caret-container button {
+        width: 90%;
+        margin-top: 4px;
+        margin-left: 5%;
+        height: 40%;
+        background-color: #bdbdbd;
+        border: 0px solid transparent;
+        color: #1d1d1d;
+        cursor: pointer;
+        font-family: inherit;
     }
 
-    .more-menu_item:hover {
-        background-color: rgb(32, 47, 54);
+    .caret-container button:hover {
+        background-color: #a0a0a0;
     }
 
+    .caret-container.hidden {
+        display: none;
+    }
 </style>
+<script>
+    document.querySelector('.username-button').addEventListener('click', function() {
+        const caret = document.querySelector('.username-caret');
+        const caretContainer = document.querySelector('.caret-container');
+
+        caret.style.transform = caret.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
+        caretContainer.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.option-buttons button:not(:has(span))').forEach(button => {
+        button.addEventListener('click', function(event) {
+            const buttons = document.querySelectorAll('.option-buttons button');
+            buttons.forEach(button => button.classList.remove('active'));
+            if (event.target.tagName === 'BUTTON') {
+                event.target.classList.add('active');
+            }
+        });
+    });
+</script>
 </html>

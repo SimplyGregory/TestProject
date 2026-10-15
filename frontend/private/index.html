@@ -25,8 +25,9 @@
                 <span>streak: {{ streak }}</span>
             </div>
         </div>
-        <div id="leaderboard" class="hidden">
+        <div id="leaderboard" hidden>
             <div class="container">
+                <span>streak: {{ streak }}</span>
                 <a>Leaderboard</a>
                 <ul class="leaderboard-list">
                     {% for rank, name in leaderboard %}
@@ -133,9 +134,6 @@
         right: 150px;
         top: 10%;
     }
-    .hidden {
-        visibility: hidden;
-    }
 </style>
 <script>
     document.querySelector('.username-button').addEventListener('click', function() {
@@ -153,12 +151,12 @@
             if (event.target.tagName === 'BUTTON') {
                 event.target.classList.add('active');
                 if (button.id == "leaderboardButton") {
-                    document.getElementById("learn").hidden = false
-                    document.getElementById("leaderboard").hidden = true
-                }
-                else {
                     document.getElementById("learn").hidden = true
                     document.getElementById("leaderboard").hidden = false
+                }
+                else {
+                    document.getElementById("learn").hidden = false
+                    document.getElementById("leaderboard").hidden = true
                 }
             }
         });

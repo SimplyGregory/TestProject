@@ -11,11 +11,29 @@
             <span class="username">{{ username }}</span>
             <span class="username-caret">^</span>
         </button>
-        <button class="active">Home</button>
+        <button class="active">LEARN</button>
+        <button>LEADERBOARD</button>
     </div>
     <div class="caret-container hidden">
         <button>Settings</button>
         <form method="POST" action="/send-logout"><button>Log Out</button></form>
+    </div>
+
+    <div id="body">
+        <div id="learn">
+            <div id="statistics">
+                <span>streak: {{ streak }}</span>
+            </div>
+        </div>
+        <div id="leaderboard" class="">
+            <div class="container">
+                <a>Leaderboard</a>
+                <ul class="leaderboard-list">
+                    <div> 1. {{ leaderboard[0] }}</div>
+                    <div>{{ leaderboard_placement }}. {{ username }}</div>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 <style>
@@ -107,6 +125,11 @@
 
     .caret-container.hidden {
         display: none;
+    }
+    #statistics {
+        position: absolute;
+        right: 150px;
+        top: 10%;
     }
 </style>
 <script>

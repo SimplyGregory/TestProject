@@ -1,4 +1,7 @@
 # https://mojoauth.com/security-guides/argon2-in-python#how-to-install-argon2-for-python
+# https://flask.palletsprojects.com/en/stable/quickstart/
+# https://www.sqlitetutorial.net/sqlite-python/creating-database/ SQLite tut
+# https://medium.com/@icodewithben/flask-sqlite-login-and-register-form-48640743bf55
 
 #IMPORTED LIBRARIES FOR THE BACKEND
 from flask import Flask, render_template, request, redirect, url_for, session
@@ -21,7 +24,7 @@ app.secret_key, DATABASE = os.getenv("SECRET_KEY"), "database.db"
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
 #COMPRESS DATABASE WRITTING
-def database_action(SQL, params, read = False, row_val = False):
+def database_action(SQL, params, read = False, row_val = False, fetch_one = True):
     connection = sqlite3.connect(DATABASE)
     if row_val:
         connection.row_factory = sqlite3.Row
@@ -37,7 +40,10 @@ def database_action(SQL, params, read = False, row_val = False):
 
     value = None
     if read == True:
-        value = cursor.fetchone()
+        if fetch_one:
+            value = cursor.fetchone()
+        else:
+            value = cursor.fetchall()
 
     connection.commit()
     connection.close()
@@ -66,12 +72,13 @@ def attempt_register():
     form = request.form
     username, email, password = form.get("username").lower(), form.get("email").lower(), form.get("password")
 
-    if database_action("SELECT * FROM users WHERE email = ? AND username = ?", (email, username), True):
+    if database_action("SELECT * FROM users WHERE email = ? or username = ?", (email, username), True):
         return "Username or Email already exists"
 
     password = ph.hash(password)
     sessionID = str(uuid.uuid4())
     database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, password, sessionID))
+    database_action("INSERT INTO statistics (username, streak, is_active, lesson_count) VALUES (?, ?, ?, ?)", (username, 6, False, 0))
         
     response = redirect(url_for("dashboard"))
     response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24)
@@ -86,16 +93,32 @@ def dashboard():
     sessionID = request.cookies.get("session_cookie")
 
     user_data = database_action("SELECT * FROM users WHERE sessionID = ?", (sessionID,), True, True)
+    statistics_data = database_action("SELECT * FROM statistics WHERE username = ?", (user_data["username"],), True, True)
 
     if not user_data:
         response = redirect(url_for("login_index"))
         response.set_cookie("session_cookie", "", max_age=0)
         return response
+    
+    if not statistics_data:
+        database_action("INSERT INTO statistics (username, streak, is_active, lesson_count) VALUES (?, ?, ?, ?)", (user_data["username"], 0, False, 0))
+        statistics_data = database_action("SELECT * FROM statistics WHERE username = ?", (user_data["username"],), True, True)
+    
+    leaderboard = database_action("SELECT RANK() OVER (ORDER BY streak DESC) AS standard_rank, username FROM statistics ORDER BY standard_rank ASC LIMIT 100", None, True, True, False)
+    leaderboard_placement = database_action("SELECT standard_rank FROM (SELECT RANK() OVER (ORDER BY streak DESC) AS standard_rank, username FROM statistics) ranked WHERE username = ?", (user_data["username"],), True, True)
+    context = {
+        'username': user_data["username"],
+        'streak': statistics_data["streak"],
+        'is_active': statistics_data["is_active"],
+        'completed_lessons': statistics_data["lesson_count"],
+        'leaderboard': dict(leaderboard),
+        'leaderboard_placement': leaderboard_placement[0]
+    }
 
-    return render_template("private/index.html", username=user_data["username"])
+    return render_template("private/index.html", **context)
 
 #LOGOUT
-@app.route("/send-logout", methods=["GET", "POST"])
+@app.route("/send-logout", methods=["POST"])
 def logout():
     if "session_cookie" not in request.cookies:
         return redirect(url_for("login_index"))
@@ -110,10 +133,10 @@ def login():
 
     ph = PasswordHasher()
     form = request.form
-    email, password = form.get("email").lower(), request.form.get("password")
+    input, password = form.get("email").lower(), request.form.get("password")
     response=redirect(url_for("login_index"))
 
-    user_data = database_action("SELECT * FROM users WHERE LOWER(email) = ?", (email,), True, True)
+    user_data = database_action("SELECT * FROM users WHERE LOWER(email) = ? or username = ?", (input, input), True, True)
 
     if user_data:
         try:
@@ -219,11 +242,11 @@ def google_callback():
         sessionId = user_data["sessionID"]
 
     response = redirect(url_for("dashboard"))
-    response.set_cookie("session_cookie", sessionId, max_age=60 * 60 * 24)
+    response.set_cookie("session_cookie", sessionId, max_age=60 * 60 * 24 * 30)
     return response
 
 if __name__ == "__main__":
-    #CREATE ACCOUNTS TABLE IF N/A
+    #CREATE ACCOUNTS TABLE IF N/A, CREATE STATS TABLE IF N/A
     database_action('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, email TEXT UNIQUE, password TEXT, sessionID TEXT UNIQUE)''', None)
-    
+    database_action('''CREATE TABLE IF NOT EXISTS statistics (username TEXT UNIQUE PRIMARY KEY, streak INTEGER, is_active BOOLEAN, lesson_count INTEGER)''', None)
     app.run()

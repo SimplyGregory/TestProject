@@ -29,7 +29,9 @@
             <div class="container">
                 <a>Leaderboard</a>
                 <ul class="leaderboard-list">
-                    <div> 1. </div>
+                    {% for rank, name in leaderboard %}
+                        <li>{{ rank }}. {{ name }}</li>
+                    {% endfor %}
                     <div>Your Rank: {{ leaderboard_placement}}. {{ username }}</div>
                 </ul>
             </div>

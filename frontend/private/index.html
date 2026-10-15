@@ -11,8 +11,8 @@
             <span class="username">{{ username }}</span>
             <span class="username-caret">^</span>
         </button>
-        <button class="active">LEARN</button>
-        <button>LEADERBOARD</button>
+        <button class="active" id="learnButton">LEARN</button>
+        <button id="leaderboardButton">LEADERBOARD</button>
     </div>
     <div class="caret-container hidden">
         <button>Settings</button>
@@ -25,7 +25,7 @@
                 <span>streak: {{ streak }}</span>
             </div>
         </div>
-        <div id="leaderboard" class="">
+        <div id="leaderboard" class="hidden">
             <div class="container">
                 <a>Leaderboard</a>
                 <ul class="leaderboard-list">
@@ -149,6 +149,12 @@
             buttons.forEach(button => button.classList.remove('active'));
             if (event.target.tagName === 'BUTTON') {
                 event.target.classList.add('active');
+                if (button.id == "leaderboardButton") {
+
+                }
+                else {
+
+                }
             }
         });
     });

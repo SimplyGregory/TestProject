@@ -106,13 +106,12 @@ def dashboard():
     
     leaderboard = database_action("SELECT RANK() OVER (ORDER BY streak DESC) AS standard_rank, username FROM statistics ORDER BY standard_rank ASC LIMIT 100", None, True, True, False)
     leaderboard_placement = database_action("SELECT standard_rank FROM (SELECT RANK() OVER (ORDER BY streak DESC) AS standard_rank, username FROM statistics) ranked WHERE username = ?", (user_data["username"],), True, True)
-    print([len(leaderboard), [tuple(r) for r in leaderboard[:5]]])
     context = {
         'username': user_data["username"],
         'streak': statistics_data["streak"],
         'is_active': statistics_data["is_active"],
         'completed_lessons': statistics_data["lesson_count"],
-        'leaderboard': dict(leaderboard),
+        'leaderboard': [(row["standard_rank"], row["username"]) for row in leaderboard],
         'leaderboard_placement': leaderboard_placement[0]
     }
 

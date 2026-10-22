@@ -2,6 +2,7 @@
 # https://flask.palletsprojects.com/en/stable/quickstart/
 # https://www.sqlitetutorial.net/sqlite-python/creating-database/ SQLite tut
 # https://medium.com/@icodewithben/flask-sqlite-login-and-register-form-48640743bf55
+# https://www.geeksforgeeks.org/python/python-using-for-loop-in-flask/
 
 #IMPORTED LIBRARIES FOR THE BACKEND
 from flask import Flask, render_template, request, redirect, url_for, session
@@ -78,7 +79,7 @@ def attempt_register():
     password = ph.hash(password)
     sessionID = str(uuid.uuid4())
     database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, password, sessionID))
-    database_action("INSERT INTO statistics (username, streak, is_active, lesson_count) VALUES (?, ?, ?, ?)", (username, 6, False, 0))
+    database_action("INSERT INTO statistics (username, streak, is_active, lesson_count) VALUES (?, ?, ?, ?)", (username, 0, False, 0))
         
     response = redirect(url_for("dashboard"))
     response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24)

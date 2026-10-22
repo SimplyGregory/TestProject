@@ -1,0 +1,37 @@
+1.
+food = str(input("Favorite food?")).lower()
+if food == "pasta":
+    print("Go to Italy")
+else:
+    print(f"{food}, will never replace pasta!")
+
+2.
+number = int(input("What is your number?"))
+choice = str(input("What is your bool? (True/False)"))
+
+if choice == "True":
+    print(number*2)
+else:
+    print(number**2)
+
+7.
+color = str(input("What is your favorite color?")).lower()
+num = int(input("What is your lucky number? (1-10)"))
+
+if color == "green" and num > 3:
+    print(f"In {num} years, you'll buy a {color} bicycle.")
+elif num < 4:
+    print(f"I suppose you wanted a {color} ball {num} years ago.")
+else:
+    print(f"{num} is not so lucky!")
+
+8.
+num1 = int(input("Put a number!"))
+num2 = int(input("Put another number!"))
+
+if num1 > num2:
+    print(f"Biggest number is {num1}")
+elif num2 > num1:
+    print(f"Biggest number is {num2}")
+else:
+    print("Both numbers are the same!")

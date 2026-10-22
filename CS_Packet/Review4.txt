@@ -1,0 +1,22 @@
+2.
+number = int(input("What is your number?"))
+word = str(input("What is your word?"))
+
+for i in range(number):
+    for letter in word:
+        print(letter)
+
+4.
+secret = 7
+attempts = 0
+guessed = False
+
+while attempts < 3 and guessed == False:
+    guess = int(input("Guess a number between 1 and 20!"))
+    attempts += 1
+    if guess == secret:
+        print(f"You got it in {attempts} attempts!")
+        guessed = True
+
+if guessed == False:
+    print("The game is locked. Try again later!")

@@ -1,0 +1,34 @@
+1.
+stack = []
+max_size = 7
+
+def push(word):
+    if len(stack) < max_size:
+        stack.append(word)
+    else:
+        print("The stack is full!")
+
+push("apple")
+push("banana")
+push("cherry")
+push("grape")
+push("mango")
+
+print(f"The top element is {stack[-1]}")
+
+stack.pop()
+stack.pop()
+
+print(f"The top element is {stack[-1]}")
+
+2.
+queue = [1, 2, 3, 4, 5]
+stack = []
+
+while len(queue) > 0:
+    stack.append(queue.pop(0))
+
+while len(stack) > 0:
+    queue.append(stack.pop())
+
+print(queue)

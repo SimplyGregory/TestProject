@@ -1,0 +1,29 @@
+1.
+import time
+
+print("What's the funnies joke!")
+time.sleep(1.5)
+print("This one!")
+
+2. 
+name = str(input("What is your name"))
+print(f"Welcome Back, {name}!")\
+
+3.
+a = 8
+b = 3
+
+E = (a < b) or (a > 5)
+print(f"a: {e}")
+
+E = not (a >= b)
+print(f"b: {e}")
+
+E = (a < 8) and (b > 3)
+print(f"c: {e}")
+
+E = (a == 8)
+print(f"d: {e}")
+
+E = not (a == b) or (a > b)
+print(f"e: {e}")

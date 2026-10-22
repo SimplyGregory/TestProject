@@ -27,13 +27,12 @@
         </div>
         <div id="leaderboard" hidden>
             <div class="container">
-                <span>streak: {{ streak }}</span>
                 <a>Leaderboard</a>
                 <ul class="leaderboard-list">
                     {% for rank, name in leaderboard %}
                         <li>{{ rank }}. {{ name }}</li>
                     {% endfor %}
-                    <div>Your Rank: {{ leaderboard_placement}}. {{ username }}</div>
+                    <div>Your Rank: {{ leaderboard_placement}}. {{ username }}, streak: {{ streak }}</div>
                 </ul>
             </div>
         </div>

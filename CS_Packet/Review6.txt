@@ -1,0 +1,27 @@
+1.
+colours = ["red", "blue", "green", "yellow", "purple"]
+
+colours.insert(3, "orange")
+colours[1] = "pink"
+colours.pop()
+
+print(colours)
+
+3.
+numbers = [5, 10, 20]
+
+second = numbers[1]
+numbers.append(second)
+
+print(f"The first index of {second} is {numbers.index(second)}")
+
+4.
+values = [3, 6, 9, 12]
+
+print(values)
+
+temp = values[1]
+values[1] = values[2]
+values[2] = temp
+
+print(values)

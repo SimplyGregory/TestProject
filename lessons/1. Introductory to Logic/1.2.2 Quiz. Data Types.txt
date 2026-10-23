@@ -1,0 +1,3 @@
+--Predict data type result
+--Picking correct data type
+--input()/how to find/set data type

@@ -1,0 +1,4 @@
+--What conditionals are & order
+--choosing correct conditionals
+--differences between while/For
+--Finding infinite loops

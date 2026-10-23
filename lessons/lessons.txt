@@ -81,6 +81,7 @@ Secondary Courses:
   5 Selectable Units
 
   1: Flask
+  1.1
   2: Beautiful Soup
   3: Requests
   4: sqlite3

@@ -81,8 +81,17 @@ Secondary Courses:
   5 Selectable Units
 
   1: Flask
-  1.1
+  1.1 Lesson. Learning flask
+  1.1.2 Final Test. flask
   2: Beautiful Soup
+  2.1 Lesson. Learning bs4
+  2.1.2 Final Test. bs4
   3: Requests
+  3.1 Lesson. Learning requests
+  3.1.2 Final Test. requests
   4: sqlite3
+  4.1 Lesson. Learning sqlite3
+  4.1.2 Final Test. sqlite3
   5: os
+  5.1 Lesson. Learning os
+  5.1.2 Final Test. os

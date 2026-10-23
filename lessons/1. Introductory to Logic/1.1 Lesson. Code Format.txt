@@ -1,0 +1,5 @@
+--Order code runs
+--Indentation & meaning
+--Comments & computer translation
+--dot notation & object placement
+--reading/understanding code

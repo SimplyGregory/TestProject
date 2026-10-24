@@ -3,3 +3,11 @@ b: False
 c: False
 d: True
 e: True
+
+a: string
+b: int 
+c: string
+d: bool
+e: float
+
+legal:

@@ -1,0 +1,2 @@
+--Predicting loop outcomes
+--choosing conditional senarios

@@ -73,3 +73,6 @@ for i in range(2):
 
 for row in result:
     print(row)
+
+Reflection:
+The most challenging thing was creating multi-dimention arrays as it required multiple interacting for loops. I used online example to create my arrays. I learned how to use matrix calculation in python, which would be usful in the future for programs that require 3rd dimention math.

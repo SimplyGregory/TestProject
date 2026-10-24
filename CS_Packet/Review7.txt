@@ -7,6 +7,23 @@ colours.pop()
 
 print(colours)
 
+2.
+numbers = [4, 8, 15]
+
+numbers.append(16)
+numbers.append(23)
+numbers.append(42)
+
+print(f"The size of the list is {len(numbers)}")
+print(f"The first element is {numbers[0]}")
+
+first = numbers[0]
+
+for i in range(1, len(numbers)):
+    numbers[i] = first
+
+print(numbers)
+
 3.
 numbers = [5, 10, 20]
 

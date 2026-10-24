@@ -11,3 +11,11 @@ d: bool
 e: float
 
 legal:
+num_Val
+_pizzaApple
+personsAge
+
+illegal:
+else
+1pizza
+$money

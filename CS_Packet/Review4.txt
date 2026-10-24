@@ -1,3 +1,9 @@
+1.
+number = int(input("What is your number?"))
+
+for i in range(1, number + 1):
+    print(i)
+
 2.
 number = int(input("What is your number?"))
 word = str(input("What is your word?"))
@@ -5,6 +11,16 @@ word = str(input("What is your word?"))
 for i in range(number):
     for letter in word:
         print(letter)
+
+3.
+total = 0
+
+for i in range(10):
+    num = int(input("Put a number!"))
+    if num % 2 == 0:
+        total += num
+
+print(f"The sum of all even numbers is {total}")
 
 4.
 secret = 7
@@ -20,3 +36,11 @@ while attempts < 3 and guessed == False:
 
 if guessed == False:
     print("The game is locked. Try again later!")
+
+5.
+answer = str(input("Do you want an apple?")).lower()
+
+while answer != "yes":
+    answer = str(input("Do you want an apple?")).lower()
+
+print("Apples are delicious, aren't they? Let's have one!")

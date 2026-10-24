@@ -14,7 +14,77 @@ if choice == "True":
 else:
     print(number**2)
 
+3.
+name = str(input("What is your name?"))
+gender = str(input("What is your gender? (Male/Female)")).lower()
+age = int(input("What is your age?"))
 
+if gender == "female":
+    retire_age = 62
+else:
+    retire_age = 65
+
+if age >= retire_age:
+    print(f"{name}, you are eligible for retirement!")
+else:
+    print(f"{name}, you need to wait {retire_age - age} years to get your pension.")
+
+4.
+base = float(input("What is the base of the triangle?"))
+height = float(input("What is the height of the triangle?"))
+hypotenuse = float(input("What is the hypotenuse of the triangle?"))
+
+area = (base * height) / 2
+print(f"The area of the triangle is {area}")
+
+5.
+choice = str(input("Convert to Celsius or Fahrenheit? (C/F)")).lower()
+temp = float(input("What is your temperature?"))
+
+if choice == "c":
+    print(f"{temp} Fahrenheit is {(temp - 32) * 5 / 9} Celsius")
+elif choice == "f":
+    print(f"{temp} Celsius is {(temp * 9 / 5) + 32} Fahrenheit")
+else:
+    print("That is not a choice!")
+
+6.
+score = 0
+missed = []
+
+answer1 = str(input("What is the capital of France?")).lower()
+if answer1 == "paris":
+    score = score + 1
+else:
+    missed.append("France - Paris")
+
+answer2 = str(input("What is the capital of Japan?")).lower()
+if answer2 == "tokyo":
+    score = score + 1
+else:
+    missed.append("Japan - Tokyo")
+
+answer3 = str(input("What is the capital of Spain?")).lower()
+if answer3 == "madrid":
+    score = score + 1
+else:
+    missed.append("Spain - Madrid")
+
+answer4 = str(input("What is the capital of Egypt?")).lower()
+if answer4 == "cairo":
+    score = score + 1
+else:
+    missed.append("Egypt - Cairo")
+
+answer5 = str(input("What is the capital of Canada?")).lower()
+if answer5 == "ottawa":
+    score = score + 1
+else:
+    missed.append("Canada - Ottawa")
+
+print(f"Your score is {score}/5")
+for question in missed:
+    print(f"You missed: {question}")
 
 7.
 color = str(input("What is your favorite color?")).lower()

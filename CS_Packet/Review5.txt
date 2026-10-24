@@ -14,8 +14,8 @@ def odds(n):
         if i % 2 != 0:
             print(i)
 
-n = int(input("What is your number?"))
-odds(n)
+num = int(input("What is your number?"))
+odds(num)
 
 3.
 def perfect(n):

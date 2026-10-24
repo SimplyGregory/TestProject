@@ -50,37 +50,37 @@ else:
 
 6.
 score = 0
-missed = []
+missed = {}
 
 answer1 = str(input("What is the capital of France?")).lower()
 if answer1 == "paris":
     score = score + 1
 else:
-    missed.append("France - Paris")
+    missed.append("France: Paris")
 
 answer2 = str(input("What is the capital of Japan?")).lower()
 if answer2 == "tokyo":
     score = score + 1
 else:
-    missed.append("Japan - Tokyo")
+    missed.append("Japan: Tokyo")
 
 answer3 = str(input("What is the capital of Spain?")).lower()
 if answer3 == "madrid":
     score = score + 1
 else:
-    missed.append("Spain - Madrid")
+    missed.append("Spain: Madrid")
 
 answer4 = str(input("What is the capital of Egypt?")).lower()
 if answer4 == "cairo":
     score = score + 1
 else:
-    missed.append("Egypt - Cairo")
+    missed.append("Egypt: Cairo")
 
 answer5 = str(input("What is the capital of Canada?")).lower()
 if answer5 == "ottawa":
     score = score + 1
 else:
-    missed.append("Canada - Ottawa")
+    missed.append("Canada: Ottawa")
 
 print(f"Your score is {score}/5")
 for question in missed:

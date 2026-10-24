@@ -41,3 +41,6 @@ def palindrome(word):
 
 word = str(input("What is your word?"))
 print(palindrome(word))
+
+reflection:
+I used lots of prints to debug any issues. In the future I can avoid errors by reviewing my code better when I write it.

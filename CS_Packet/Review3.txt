@@ -14,6 +14,8 @@ if choice == "True":
 else:
     print(number**2)
 
+
+
 7.
 color = str(input("What is your favorite color?")).lower()
 num = int(input("What is your lucky number? (1-10)"))

@@ -7,7 +7,7 @@ print("This one!")
 
 2. 
 name = str(input("What is your name"))
-print(f"Welcome Back, {name}!")\
+print(f"Welcome Back, {name}!")
 
 3.
 a = 8

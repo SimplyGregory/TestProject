@@ -10,11 +10,12 @@
     <link rel="stylesheet" href="../style.css">
 
     <style>
-        body {
+        body::before {
+            content: "";
             position: fixed;
             inset: -2vmax;
             background: url("../media/background.png") center / cover no-repeat;
-            filter: blur(0.4vmax);
+            
             z-index: -1;
         }
     </style>

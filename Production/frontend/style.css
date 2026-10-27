@@ -1,0 +1,30 @@
+@import url('https://googleapis.com');
+
+:root {
+    /* Dark Mode */
+    --black-background: #181719;
+    --black-foreground: #27242c;
+    --black-foreground2: #3d3a41;
+    --black-text: #ffffff;
+    --black-text2: #f3f3f9;
+
+    /* White Mode */
+    --black-background: #f4f2f7;
+    --black-foreground: #ffffff;
+    --black-foreground2: #f9f9f9;
+    --black-text: #27242c;
+    --black-text2: #8a8a8e;
+
+    --font: 'Roboto Slab', serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+
+  background-color: var(--black-background);
+}

@@ -1,0 +1,5 @@
+--what is a database
+--why is it better than storing info in python script
+--how to interact
+--difference in connections, cursors, and committing
+--preventing SQL injection

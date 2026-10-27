@@ -1,0 +1,5 @@
+--what is pip and how to use
+--versioning of libraries and why it matters
+--requirement.txt and installing 3rd party libraries
+--virtual environments and their use cases
+--checking if library is installed

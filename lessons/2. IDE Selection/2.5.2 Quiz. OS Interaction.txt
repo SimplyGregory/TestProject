@@ -1,0 +1,2 @@
+--differences of window/mac/linux paths
+--differences in commands over different os

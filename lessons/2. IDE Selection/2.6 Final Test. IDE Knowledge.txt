@@ -1,0 +1,5 @@
+--diagnosing why program won't running
+--Reading and identifying cause through traceback
+--Choosing the best IDE
+--Fixing broken paths
+--Picking correct debugging approach

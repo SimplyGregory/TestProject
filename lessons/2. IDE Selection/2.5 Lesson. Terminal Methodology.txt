@@ -1,0 +1,5 @@
+--what is terminal and why use interactions
+--navigation through terminal
+--running python
+--differences in system vs python shell
+--differences in window/mac/linux terminals

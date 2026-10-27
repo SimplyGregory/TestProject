@@ -1,0 +1,3 @@
+--after affect of memory from variables
+--simulations of variables for muttable and immutable
+--importance of object name

@@ -1,0 +1,3 @@
+--why a project might need a requirements file
+--when happens when 2 projects need different version and how to Fixing
+-- what is pinning a version

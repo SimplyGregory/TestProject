@@ -1,0 +1,4 @@
+--imports and simplicities of python
+--readability and ease of use
+--basic naming convesion
+--using prints to understand code process

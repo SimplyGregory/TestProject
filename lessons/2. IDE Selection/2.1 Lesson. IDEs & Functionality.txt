@@ -1,0 +1,5 @@
+--What is an IDE compared to text editors
+--Common Opens of IDEs
+--Key features that make coding easier
+--installing python for IDE
+--Choosing properly based on understandability and features

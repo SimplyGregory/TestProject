@@ -8,14 +8,18 @@
     --black-text: #ffffff;
     --black-text2: #f3f3f9;
 
-    /* White Mode */
-    --black-background: #f4f2f7;
-    --black-foreground: #ffffff;
-    --black-foreground2: #f9f9f9;
-    --black-text: #27242c;
-    --black-text2: #8a8a8e;
-
     --font: 'Roboto Slab', serif;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        /* White Mode */
+        --black-background: #f4f2f7;
+        --black-foreground: #ffffff;
+        --black-foreground2: #f9f9f9;
+        --black-text: #27242c;
+        --black-text2: #8a8a8e;
+    }
 }
 
 html {

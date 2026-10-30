@@ -3,6 +3,7 @@
 # https://www.sqlitetutorial.net/sqlite-python/creating-database/ SQLite tut
 # https://medium.com/@icodewithben/flask-sqlite-login-and-register-form-48640743bf55
 # https://www.geeksforgeeks.org/python/python-using-for-loop-in-flask/
+# https://www.svgviewer.dev/s/492029/eye
 
 #IMPORTED LIBRARIES FOR THE BACKEND
 from flask import Flask, render_template, request, redirect, url_for, session

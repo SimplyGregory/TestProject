@@ -3,3 +3,4 @@ google-auth
 google-auth-oauthlib
 python-dotenv
 argon2-cffi
+email-validator

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.25">
+    <title>Dashboard | Pylingo</title>
+    <link rel="icon" type="image/x-icon" href="../content/media/favicon.ico">
+    <link rel="stylesheet" href="../content/style.css">
+
+    <style>
+        #side_bar {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 13%;
+            background-color: var(--foreground);
+            min-width: 150px;
+        }
+        .side_logo img {
+            position: relative;
+            width: 85%;
+            height: auto;
+            padding-left: 9%;
+            padding-right: 9%;
+            margin-top: 10% !important;
+        }
+
+        .option_icon img {
+            width: 40% !important;
+            min-width: 20px;
+            height: auto;
+            position: relative;
+        }
+
+        #side_bar_options {
+            color: var(--text);
+            list-style-type: none;
+            padding-bottom: 3%;
+            position: relative;
+            padding: 0 10%;
+        }
+
+        #side_bar_options li {
+            padding-bottom: 8%;
+            display: flex;
+            position: relative;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            justify-content: flex-start;
+        }
+
+        #side_bar_options li button {
+            background: transparent;
+            border: transparent;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .option_name {
+            font-size: 1vw;
+            font-weight: lighter;
+            position: relative;
+            color: var(--text);
+        }
+    </style>
+</head>
+<body>
+    <div id="side_bar">
+        <picture class="side_logo">
+            <source srcset="../content/media/logo_White.png" media="(prefers-color-scheme: dark)">
+            <img src="../content/media/logo_Black.png">
+        </picture>
+        <ul id="side_bar_options">
+            <li><button><picture class="option_icon">
+            <source srcset="../content/media/home_White.png" media="(prefers-color-scheme: dark)">
+            <img src="../content/media/home_Black.png">
+        </picture><span class="option_name">Home</span></button>
+            </li>
+
+            <li id="side_bar_options">
+                <li><button><picture class="option_icon">
+                <source srcset="../content/media/leaderboard_White.png" media="(prefers-color-scheme: dark)">
+                <img src="../content/media/leaderboard_Black.png">
+            </picture><span class="option_name">Leaderboard</span></button>
+                </li>
+            <li><button><picture class="option_icon">
+                <source srcset="../content/media/settings_White.png" media="(prefers-color-scheme: dark)">
+                <img src="../content/media/settings_Black.png">
+            </picture><span  class="option_name">Settings</span></button></li>
+        </ul>
+    </div>
+</body>
+    <script>
+        const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    </script>
+</html>

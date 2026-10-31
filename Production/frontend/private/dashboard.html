@@ -122,6 +122,14 @@
             border: 8px;
         }
 
+        #streak {
+            right: 6cqw;
+            position: absolute;
+            height: 30px;
+            width: auto;
+            background-color: brown;
+        }
+
     </style>
 </head>
 <body style="margin: 0;">
@@ -156,10 +164,14 @@
             <span id="greeting">Good morning,</span>
             <span id="username">Username!</span>
         </div>
-        <div id="upper_right">
-            
-            <img class="profile">
+        <div id="streak">
+            <img class="streak_icon">
+            <div id="streak_text">
+                <span class="streak_count"></span>
+                <span>day streak</span>
+            </div>
         </div>
+        <img class="profile">
     </div>
 </body>
     <script>

@@ -123,11 +123,24 @@
         }
 
         #streak {
-            right: 8cqw;
+            right: 9cqw;
             top: 2cqw;
             position: absolute;
+            width: clamp(60px, 15cqw, 240px);
             height: clamp(20px, 5cqw, 80px);;
-            background-color: brown;
+            
+        }
+
+        .streak_icon {
+            aspect-ratio: 1 / 1;
+            width: clamp(10px, 2.5cqw, 40px);;
+        }
+        
+        #streak_text {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            left: 30%;
         }
 
     </style>

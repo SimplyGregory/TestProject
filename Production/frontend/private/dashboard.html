@@ -10,13 +10,16 @@
 
     <style>
 
-        
+        :root {
+            --sidebar_width: max(13vw, 150px);
+        }
+
         #side_bar {
             position: fixed;
             top: 0px;
             left: 0px;
             height: 100%;
-            width: 13%;
+            width: var(--sidebar_width);
             background-color: var(--foreground);
             min-width: 150px;
             container-type: inline-size;
@@ -83,12 +86,13 @@
         }
 
         #main_body {
+            margin-left: var(--sidebar_width);
             min-height: 100vh;
             box-sizing: border-box;
         }
     </style>
 </head>
-<body>
+<body style="margin: 0;">
     <div id="side_bar">
         <picture class="side_logo">
             <source srcset="../content/media/logo_White.png" media="(prefers-color-scheme: dark)">
@@ -116,7 +120,9 @@
     </div>
 
     <div id="main_body">
-
+        <div>
+            
+        </div>
     </div>
 </body>
     <script>

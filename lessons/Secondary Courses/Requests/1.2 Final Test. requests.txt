@@ -1,0 +1,4 @@
+--defining status codes
+--handing error safely
+--what method to proprly use (get post)
+--calling data in json

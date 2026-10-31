@@ -1,0 +1,3 @@
+--comparing mutliple libraries
+--warning signs of a library
+--when to use a library vs create the code

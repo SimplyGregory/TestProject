@@ -1,0 +1,3 @@
+--senarios of incorrect path for file Finding
+--methods to change files using python
+--basic terminal usage and impact

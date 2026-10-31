@@ -1,0 +1,5 @@
+--choosing and justifying the use of specific data types
+--explaining mutability
+--properly handing exceptions
+--improving readability of code senarios
+--finding answer within documentation (user needs to go to website)

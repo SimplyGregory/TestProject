@@ -1,0 +1,4 @@
+-- GET and post
+--different status codes (404, 202, 302)
+--reading JSON responses
+--timeout/error handling

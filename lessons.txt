@@ -1,0 +1,86 @@
+*After Course is completed, certificate is given to the user
+
+Primarily Course:
+  5 Units
+
+  1: Introductory to Logic
+    1.1 Lesson. Code Format
+    1.1 Quiz. Code Format
+    1.2 Lesson. Variables & Data Types
+    1.2.1 Quiz. Variable Usage
+    1.2.2 Quiz. Data Types
+    1.3 Lesson. Conditionals & Loops
+    1.3 Quiz. Conditionals & Loops
+    1.4 Lesson. Operations & Expressions
+    1.4.1 Quiz. Arithmetic
+    1.4.2 Quiz. Comparison
+    1.4.3 Quiz. Logical
+    1.5 Lesson. Functions & Modularity
+    1.5.1 Quiz. Functions & Modularity
+    1.6 Final Test. Python Programming
+
+  2: IDE Selection
+    2.1 Lesson. IDEs & Functionality
+    2.1.1 Quiz. IDE Usage
+    2.1.2 Quiz. IDE Functionality
+    2.2 Lesson. IDE Environment
+    2.2 Quiz. IDE Environment 
+    2.3 Lesson. Paths & File System
+    2.3 Quiz. Path & File System
+    2.4 Lesson. Error Handling
+    2.4.1 Quiz. Error Finding
+    2.4.2 Quiz. Handling
+    2.5 Lesson. Terminal Methodology
+    2.5.1 Quiz. Terminal Inputs
+    2.5.2 Quiz. OS Interaction
+    2.6 Final Test. IDE Knowledge
+
+  3: Python Fundamentals
+    3.1 Lesson. Python Principals
+    3.1 Quiz. Python Principals
+    3.2 Lesson. Python Internals
+    3.2 Quiz. Internals Understanding
+    3.3 Lesson. Data Structure
+    3.3.1 Quiz. Data Structures
+    3.3.2 Quiz. Choosing a Structure
+    3.4 Lesson. Exceptions
+    3.4.1 Quiz. Understanding Exceptions
+    3.4.2 Quiz. Handling Exceptions
+    3.5 Lesson. Python.com & Resources
+    3.5 Quiz. Finding Resources
+    3.6 Final Test. Understanding Python
+
+  4: Advances in Libraries
+    4.1 Lesson. Finding Libraries
+    4.1.1 Quiz. Where are Libraries
+    4.1.2 Quiz. Selecting Library
+    4.2 Lesson. Installing a Library
+    4.2.1 Quiz. Requirements
+    4.2.2 Quiz. Installing Libraries
+    4.3 Lesson. Proper Setup
+    4.3 Quiz. Library Integration
+    4.4 Lesson. Perfecting Usage
+    4.4 Quiz. Understanding Individual Libraries
+    4.5 Unit: Selecting Library Unit
+
+  5: Code Efficiency
+    5.1 Lesson. Library
+    5.1 Quiz. Program Streamline
+    5.2 Lesson. Optimization Methodology
+    5.2 Quiz. Optimization Mastery
+    5.3 Lesson. Design Consequences
+    5.3.1 Quiz. Issues to Find
+    5.3.2 Quiz. Better Approaches
+    5.4 Lesson. Computational Thinking
+    5.5 Lesson. Python Architecture
+    5.6 Final Test. Code Efficiency
+
+
+Secondary Courses:
+  5 Selectable Units
+
+  1: Flask
+  2: Beautiful Soup
+  3: Requests
+  4: sqlite3
+  5: os

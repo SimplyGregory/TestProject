@@ -1,0 +1,5 @@
+--What a function is
+--Parameters inside functions
+--Differences in return and Predicting
+--global vs local variables
+--Spliting large step into smaller ones

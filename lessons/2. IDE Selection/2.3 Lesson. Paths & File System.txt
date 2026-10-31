@@ -1,0 +1,4 @@
+--Absolute vs relative path
+--opening files with open()
+--file modes Reading, write, append
+--why closing files matter

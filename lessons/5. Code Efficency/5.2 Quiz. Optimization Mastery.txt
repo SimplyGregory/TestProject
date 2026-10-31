@@ -1,0 +1,3 @@
+--Which part of program is bottle neck senarios
+--why slow code is unreliable
+--approaches for writing code

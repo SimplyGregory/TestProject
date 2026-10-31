@@ -1,0 +1,4 @@
+--finding and fixing bottlenecks
+--choosing order of production
+--organize large project
+--condensing structure into micro steps

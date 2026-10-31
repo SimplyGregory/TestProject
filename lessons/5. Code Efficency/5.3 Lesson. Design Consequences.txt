@@ -1,0 +1,5 @@
+--how eaarly choice effect later work
+--copy & pasted code as future problems
+--readability vs speed tradeoffs
+--easy code changing vs working narrowing
+--refactoring old code without changing its meaning

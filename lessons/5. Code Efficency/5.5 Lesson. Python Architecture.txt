@@ -1,0 +1,3 @@
+--keeping settings and env out of the file
+--structure of multiple files
+--splitting project into multiple files

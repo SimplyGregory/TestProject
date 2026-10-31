@@ -1,0 +1,3 @@
+--what is PyPI used for?
+--where to find library documentation
+-- determining if you need a standrd vs 3rd party library

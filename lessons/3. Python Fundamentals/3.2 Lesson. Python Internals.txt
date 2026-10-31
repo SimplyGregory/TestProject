@@ -1,0 +1,5 @@
+--python running process (interpreter and bytecode)
+--anything is an object
+--muttative vs immutable variable and data types
+--how similar names objects can break stuff
+--how python interacts with memory

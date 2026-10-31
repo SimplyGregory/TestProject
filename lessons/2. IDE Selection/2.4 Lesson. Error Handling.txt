@@ -1,0 +1,4 @@
+--syntax vs runtime vs logic errors
+--common error types
+--narrowing error with print
+--reading error messages effectively

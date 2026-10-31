@@ -1,0 +1,516 @@
+Unit 1: Introduction to Logic (concept-first, no typing)
+
+1.1 Lesson: Code Format
+
+Code runs top to bottom, one instruction at a time
+Indentation groups lines into blocks and changes meaning, not just looks
+Comments are notes for humans that the computer ignores
+Dot notation: things like text.upper() are objects with built-in abilities
+Reading code is a skill of its own, done before writing it
+
+1.1 Quiz: Code Format
+
+Predict the order lines will run in
+Why moving a line’s indentation changes what the program does
+What the dot means in name.upper() and where upper comes from
+
+1.2 Lesson: Variables & Data Types
+
+A variable is a name pointing to a value, not a box that “is” the value
+Assignment (=) gives a value; it doesn’t state equality
+Variables can be reassigned, and the old value is lost
+Core types: text, whole numbers, decimals, True/False
+Why type matters: "5" + "5" and 5 + 5 give different results
+
+1.2.1 Quiz: Variable Usage
+
+Trace a variable’s value through several reassignments
+Why a descriptive name helps more than x
+What happens to the old value after reassignment
+
+1.2.2 Quiz: Data Types
+
+Predict the result when types are mixed
+Pick the right type for a real situation (age, price, name, logged in)
+Why user input arrives as text even when someone types a number
+
+1.3 Lesson: Conditionals & Loops
+
+Conditions are questions that answer True or False
+if / elif / else let a program choose a path
+for loops repeat over a known set of things
+while loops repeat until something changes
+Infinite loops: why they happen and how to spot one
+
+1.3 Quiz: Conditionals & Loops
+
+Trace which branch runs for a given value
+Predict how many times a loop runs
+Choose between for and while for a scenario and explain why
+
+1.4 Lesson: Operations & Expressions
+
+An expression is anything that produces a value
+Arithmetic, including // (floor division) and % (remainder)
+Comparisons always produce True or False
+and, or, and not combine conditions
+Order of operations and using parentheses for clarity
+
+1.4.1 Quiz: Arithmetic
+
+Real uses of %, like checking even or odd
+Why / and // give different answers
+Predict results where order of operations matters
+
+1.4.2 Quiz: Comparison
+
+The difference between = and == and why mixing them up breaks things
+What a comparison actually produces
+Predict the result of comparing text values
+
+1.4.3 Quiz: Logical
+
+Turn a real-world rule into and / or
+When or lets something through that you didn’t intend
+What not does to a condition
+
+1.5 Lesson: Functions & Modularity
+
+Functions package steps so you can reuse them instead of copying code
+Parameters are a function’s inputs, and return is its output
+Return vs print: handing back a value vs showing it
+Variables made inside a function stay inside it (scope)
+Splitting a big problem into small named pieces
+
+1.5 Quiz: Functions & Modularity
+
+Why a function that only prints can’t give its result to the rest of the program
+What happens to a variable created inside a function after it ends
+When repeated code should become a function
+
+1.6 Final Test: Python Programming
+
+Trace a short program that combines variables, conditions, and loops
+Find the logic error in code that runs but gives the wrong answer
+Explain why a piece of code behaves the way it does
+Choose the right tool (loop type, condition, function) for a scenario
+Return vs print in a realistic situation
+Unit 2: IDE Selection
+
+2.1 Lesson: IDEs & Functionality
+
+What an IDE is compared to a plain text editor
+Common options (VS Code, PyCharm, Thonny, IDLE) and who each suits
+Key features: highlighting, autocomplete, error underlining, debugger
+Python itself is installed separately from the IDE
+Choosing based on UI, needs, and computer resources
+
+2.1.1 Quiz: IDE Usage
+
+Which IDE fits a described learner or project
+Why a beginner might prefer a simpler IDE
+What the IDE does vs what Python does
+
+2.1.2 Quiz: IDE Functionality
+
+What problem autocomplete or highlighting solves
+What a red underline is telling you
+What a debugger offers that print doesn’t
+
+2.2 Lesson: IDE Environment
+
+Selecting which Python interpreter the IDE uses
+Running a whole file vs typing in the interactive shell (REPL)
+Organizing a project folder
+Where output and errors appear
+Extensions and settings worth knowing about
+
+2.2 Quiz: IDE Environment
+
+Why code might run in one place but not another (different interpreter)
+When the REPL is useful vs running a file
+Why a project folder matters
+
+2.3 Lesson: Paths & File System
+
+Absolute vs relative paths
+The working directory and why it changes what a relative path means
+Opening files with with open(...)
+File modes: read, write, append, and that write overwrites
+Why closing files matters and how with handles it
+
+2.3 Quiz: Paths & File System
+
+Why a “file not found” error happens when the file clearly exists
+What happens to existing content when opening in write mode
+Where a relative path points from a given folder
+
+2.4 Lesson: Error Handling
+
+Reading a traceback from the bottom up
+Syntax vs runtime vs logic errors
+Common errors: NameError, TypeError, IndentationError
+Using prints to narrow down where things go wrong
+Searching an error message effectively
+
+2.4.1 Quiz: Error Finding
+
+Which line a traceback is actually pointing to
+Which kind of error a scenario describes
+Why logic errors are the hardest to find
+
+2.4.2 Quiz: Handling
+
+Choose a debugging strategy for a described problem
+Why changing random things until it works is risky
+What to check first when code suddenly breaks
+
+2.5 Lesson: Terminal Methodology
+
+What the terminal is and why programmers use it
+Navigating folders (cd, ls / dir)
+Running a Python file from the terminal
+The system shell vs the Python shell
+Differences between Windows and Mac/Linux terminals
+
+2.5.1 Quiz: Terminal Inputs
+
+Why “python is not recognized” happens (PATH)
+How the current folder affects running a file
+Which shell you’re in and how to tell
+
+2.5.2 Quiz: OS Interaction
+
+Why paths look different on Windows vs Mac/Linux
+What permissions errors mean
+Why the same command might behave differently across systems
+
+2.6 Final Test: IDE Knowledge
+
+Diagnose why a program won’t run from a described setup
+Read a traceback and identify the cause
+Choose an IDE and justify it for a scenario
+Fix a broken file path
+Pick the right debugging approach for a problem
+Unit 3: Python Fundamentals
+
+3.1 Lesson: Python Principles
+
+The Zen of Python (import this) and what it values
+Readability over cleverness
+Naming conventions and basic style (PEP 8)
+Testing with prints to check values as code runs
+assert as a simple automatic check
+
+3.1 Quiz: Python Principles
+
+Which of two working versions is more “Pythonic” and why
+Why readable code matters when it already works
+Where to put a print to find a specific problem
+
+3.2 Lesson: Python Internals
+
+How Python runs code (interpreter, bytecode basics)
+Everything is an object
+Mutable vs immutable types
+Two names can point to the same object
+Basic memory and garbage collection ideas
+
+3.2 Quiz: Internals Understanding
+
+Why changing a “copied” list also changes the original
+Why strings can’t be changed in place
+What happens to an object nothing points to anymore
+
+3.3 Lesson: Data Structures
+
+Lists, tuples, dictionaries, and sets
+Ordered vs unordered, changeable vs fixed
+Looking things up by key vs by position
+Nesting structures (a list of dictionaries)
+Speed differences, like checking membership in a set vs a list
+
+3.3.1 Quiz: Data Structures
+
+What each structure can and can’t do
+Predict the result of modifying a structure
+Why a set removes duplicates
+
+3.3.2 Quiz: Choosing a Structure
+
+Pick a structure for a real scenario (phone book, coordinates, unique tags)
+Explain why another structure would be worse
+When to nest structures
+
+3.4 Lesson: Exceptions
+
+An exception is Python signaling something went wrong
+try / except / else / finally
+Catching specific errors vs catching everything
+Raising your own exceptions
+When not to catch an error
+
+3.4.1 Quiz: Understanding Exceptions
+
+What happens to a program when an exception isn’t handled
+How exceptions differ from syntax errors
+Which exception a scenario would raise
+
+3.4.2 Quiz: Handling Exceptions
+
+Why a bare except: can hide real bugs
+When finally is useful
+Whether a given error should be handled or allowed to crash
+
+3.5 Lesson: Python.org & Resources
+
+Navigating the official documentation
+Reading a documentation page (parameters, returns, examples)
+help() and dir() inside Python
+Judging forum answers by date and quality
+Using AI tools to learn without letting them replace understanding
+
+3.5 Quiz: Finding Resources
+
+Where to look first for a given question
+How to tell if an online answer is outdated
+What a documentation page is telling you
+
+3.6 Final Test: Understanding Python
+
+Choose and justify a data structure
+Explain a mutability surprise
+Handle an exception appropriately for a scenario
+Improve the readability of working code
+Find an answer using documentation
+Unit 4: Advances in Libraries
+
+4.1 Lesson: Finding Libraries
+
+What a library is and why you don’t need to build everything
+Standard library vs third-party
+PyPI as the main source
+Judging a library: maintenance, docs, popularity, license
+Searching for a library by the problem you have
+
+4.1.1 Quiz: Where are Libraries
+
+Whether a need is covered by the standard library
+What PyPI is for
+Where to find a library’s documentation
+
+4.1.2 Quiz: Selecting Library
+
+Compare two described libraries and pick one
+Warning signs of an abandoned library
+Why the most popular option isn’t always the right one
+
+4.2 Lesson: Installing a Library
+
+What pip is and how pip install works
+Versions and why they matter
+requirements.txt for recording dependencies
+Virtual environments and why they prevent conflicts
+Checking what’s installed
+
+4.2.1 Quiz: Requirements
+
+Why a project needs a requirements file
+What happens when two projects need different versions
+What pinning a version means
+
+4.2.2 Quiz: Installing Libraries
+
+Why an installed library might still not import (wrong environment)
+Where pip installs things
+What to do when an install fails
+
+4.3 Lesson: Proper Setup
+
+import x vs from x import y vs aliases
+Where imports go in a file
+Confirming an install worked
+Not naming your own file the same as a library (e.g. requests.py)
+Keeping a project’s setup reproducible
+
+4.3 Quiz: Library Integration
+
+Why naming a file random.py breaks things
+Which import style fits a situation
+Why an import works in one folder but not another
+
+4.4 Lesson: Perfecting Usage
+
+Reading a library’s quickstart and docs
+Exploring a library with help() and dir()
+Learning from official examples
+Reading errors that come from inside a library
+Using only what you need
+
+4.4 Quiz: Understanding Individual Libraries
+
+Find how to do something from a docs excerpt
+What an error from inside a library usually means about your own code
+Whether the docs or an example is the better starting point
+
+4.5 Final Test: Working with Libraries
+
+Choose a library for a described problem
+Diagnose an import or install problem
+Set up a project with dependencies recorded
+Use documentation to complete a task
+Explain environment and version issues
+Unit 5: Code Efficiency
+
+5.1 Lesson: Libraries for Efficiency
+
+Built-ins like sum, sorted, and max instead of hand-written loops
+Standard library helpers (collections, itertools)
+Why built-ins are often faster
+Writing less code to do the same thing
+When a library is worth adding just for speed
+
+5.1 Quiz: Program Streamline
+
+Replace a loop with a built-in and explain the benefit
+Which standard tool fits a problem
+When shorter code is actually less clear
+
+5.2 Lesson: Optimization Methodology
+
+Make it work, then make it fast
+Measuring before optimizing (time, timeit)
+Finding the real bottleneck
+Big-O intuition: how work grows with data
+Avoiding premature optimization
+
+5.2 Quiz: Optimization Mastery
+
+Which part of a program is the likely bottleneck
+Why guessing at slow code is unreliable
+How two approaches scale as data grows
+
+5.3 Lesson: Design Consequences
+
+How early choices affect later work
+Copy-pasted code and global variables as future problems
+Readability vs speed tradeoffs
+Code that’s easy to change vs code that just works now
+Refactoring: improving code without changing what it does
+
+5.3.1 Quiz: Tradeoffs
+
+Choose between readability and speed for a scenario
+Predict the problem a design choice will cause later
+When a tradeoff is worth making
+
+5.3.2 Quiz: Refactoring Decisions
+
+What should be refactored in a given snippet
+Why refactoring shouldn’t change behavior
+When code is good enough to leave alone
+
+5.4 Lesson: Computational Thinking
+
+Decomposition: breaking problems into parts
+Pattern recognition across problems
+Abstraction: focusing on what matters
+Designing an algorithm step by step
+Planning before writing code
+
+5.5 Lesson: Python Architecture
+
+Splitting a project into modules and packages
+if __name__ == "__main__": and why it exists
+Separating concerns (input, logic, output)
+Folder structure for larger projects
+Keeping settings out of the main code
+
+5.6 Final Test: Code Efficiency
+
+Find and fix a bottleneck
+Improve a design while keeping behavior the same
+Choose the efficient built-in or structure
+Break down and plan a described problem
+Organize a small project’s structure
+Secondary Courses
+
+Flask: Lesson
+
+What a web framework does
+Routes connect URLs to functions
+Requests and responses
+Templates for HTML pages
+Running and testing the development server
+
+Flask: Final Test
+
+What happens when a URL is visited
+Why a route returns a 404
+When to use a template vs returning text
+How data passes from a request to a page
+Why the dev server isn’t for public use
+
+Beautiful Soup: Lesson
+
+How HTML is structured (tags, attributes, nesting)
+Parsing a page into a searchable object
+find vs find_all
+Extracting text and attributes
+Scraping responsibly (site terms, robots.txt)
+
+Beautiful Soup: Final Test
+
+Locate an element from an HTML snippet
+Why a search returns nothing
+Text vs attributes
+Why scraping breaks when a site changes
+Ethical scraping scenarios
+
+Requests: Lesson
+
+HTTP basics: GET and POST
+Status codes and what they mean
+Reading responses as text or JSON
+Sending parameters and headers
+Timeouts and handling failed requests
+
+Requests: Final Test
+
+What a status code means for a scenario
+GET vs POST for a task
+Why a request hangs, and the fix
+Getting data out of a JSON response
+Handling a failed request safely
+
+sqlite3: Lesson
+
+What a database is and why not just use files
+Tables, rows, and columns
+Basic SQL: create, insert, select, update, delete
+Connections, cursors, and committing
+Parameterized queries to prevent SQL injection
+
+sqlite3: Final Test
+
+Why changes disappear without a commit
+Write or read a basic query for a scenario
+Why string-building queries is dangerous
+Database vs file for a described need
+Design a simple table
+
+os: Lesson
+
+Working with paths using os.path
+Listing, creating, and removing files and folders
+The working directory
+Environment variables
+How os relates to the newer pathlib
+
+os: Final Test
+
+Build a path that works on any OS
+Why deleting with os needs caution
+Read an environment variable and explain why it’s used
+Predict the result of a directory operation
+os vs pathlib for a task

@@ -1,0 +1,3 @@
+--where to first look to get a proper anwer
+--how to tell if a forum answer will not help you 
+--how to navigate documentation

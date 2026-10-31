@@ -1,0 +1,5 @@
+--Tracing short program that has variables, conditons, and loops.
+--Finding logic errors in code
+--Why is function act incorrectly
+--Choosing correct tool (loop, condition, function) senarios
+--Return vs printing senarios

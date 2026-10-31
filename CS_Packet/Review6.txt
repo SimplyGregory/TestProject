@@ -1,0 +1,78 @@
+1.
+grid = []
+total = 0
+
+for i in range(3):
+    row = []
+    for j in range(3):
+        num = int(input("Put a number!"))
+        row.append(num)
+        total += num
+    grid.append(row)
+
+print(grid)
+print(f"The sum is {total}")
+print(f"The average is {total / 9}")
+
+2.
+grid = [[1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]]
+
+for j in range(3):
+    column_total = 0
+    for i in range(3):
+        column_total += grid[i][j]
+    print(f"Sum of column {j + 1} is {column_total}")
+
+for i in range(3):
+    row_total = 0
+    for j in range(3):
+        row_total += grid[i][j]
+    print(f"Average of row {i + 1} is {row_total / 3}")
+
+3.
+import random
+
+grid = []
+
+for i in range(3):
+    row = []
+    for j in range(3):
+        row.append(random.randint(1, 10))
+    grid.append(row)
+
+for row in grid:
+    print(row)
+
+principal = 0
+secondary = 0
+
+for i in range(3):
+    principal += grid[i][i]
+    secondary += grid[i][2 - i]
+
+print(f"Sum of principal diagonal is {principal}")
+print(f"Sum of secondary diagonal is {secondary}")
+
+4.
+a = [[1, 2, 3],
+     [4, 5, 6]]
+
+b = [[7, 8],
+     [9, 10],
+     [11, 12]]
+
+result = [[0, 0],
+          [0, 0]]
+
+for i in range(2):
+    for j in range(2):
+        for k in range(3):
+            result[i][j] += a[i][k] * b[k][j]
+
+for row in result:
+    print(row)
+
+Reflection:
+The most challenging thing was creating multi-dimention arrays as it required multiple interacting for loops. I used online example to create my arrays. I learned how to use matrix calculation in python, which would be usful in the future for programs that require 3rd dimention math.

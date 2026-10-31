@@ -1,0 +1,5 @@
+--Which interpreter does the IDE use
+--organizing file system
+--terminal interactions with environment
+--output/error window, and history window
+--important extensions and settings

@@ -1,0 +1,5 @@
+--Nafigating python documentation
+--using help commands in python
+--judging quality of forums by quality and date and responses
+--properly using AI tools without letting it replace knowledge
+--properly searching youtube

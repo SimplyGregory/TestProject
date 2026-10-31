@@ -1,0 +1,5 @@
+--Decomposition and breaking down issues
+--pattern recoginizion across problems
+--abstraction and focusing on important features
+--designing algorithms step - by - step
+--planning before writing

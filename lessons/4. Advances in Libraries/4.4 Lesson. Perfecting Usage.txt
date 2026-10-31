@@ -1,0 +1,4 @@
+--reading a library's documentation
+--exploring libraries
+--reading errors from libraries
+--writing code only when you need to

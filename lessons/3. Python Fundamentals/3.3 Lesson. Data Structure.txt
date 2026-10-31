@@ -1,0 +1,4 @@
+--list, tuple, dictionaries and settings
+--order v underdered, and dynamic vs static data settings
+--how to call data from these sets 
+--speed difference

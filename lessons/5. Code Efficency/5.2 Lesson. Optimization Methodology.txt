@@ -1,3 +1,0 @@
---make it work, then make it features
---finding bottlenecks
---avoidng premature optimization

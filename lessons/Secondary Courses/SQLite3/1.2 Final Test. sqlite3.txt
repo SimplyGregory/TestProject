@@ -1,4 +1,0 @@
---why everything deletes without committing
---writing and reading basic in sqqlite3
---designing simple tables
---dangers database fixes and how to secure

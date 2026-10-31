@@ -1,5 +1,0 @@
---what libraries are
---standard vs 3rd party libraries
---judging a library based on doc, popularity, and maintenance
---searching for libraries
---PyPi

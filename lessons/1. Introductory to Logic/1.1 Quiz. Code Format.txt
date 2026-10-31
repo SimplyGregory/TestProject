@@ -1,3 +1,0 @@
---Indentation questions
---How line order effect Program
---dot notation fundamental meaning

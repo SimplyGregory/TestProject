@@ -1,3 +1,0 @@
---replacing loop with built-inside
---which standard tools fix issues
---when shorter code is less clean

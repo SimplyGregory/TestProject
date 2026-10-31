@@ -1,6 +1,0 @@
---Order code runs
---Indentation & meaning
---Comments & computer translation
---dot notation & object placement
---reading/understanding code
---indent 1 tab vs 4 spaces

@@ -1,5 +1,0 @@
---What is a webframework
---routing URLS to functions
---requests are responses
---how data is passed
---difference between server and client

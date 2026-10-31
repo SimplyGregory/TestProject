@@ -1,3 +1,0 @@
---what should be refactored
---why reactorigng should not change code output
---when coe is good enough

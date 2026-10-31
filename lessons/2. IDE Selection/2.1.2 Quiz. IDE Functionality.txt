@@ -1,4 +1,0 @@
---Ways IDEs help solve issues
---What is the red underline
---What do debuggers offer that print does not
---Different aspects of an IDE

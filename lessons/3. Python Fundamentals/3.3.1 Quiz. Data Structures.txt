@@ -1,3 +1,0 @@
---meaning of each structure
---predicting structure results
---simulation of properly using data sets 

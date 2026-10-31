@@ -1,4 +1,0 @@
---Variable name Requirements & what it is
---assignment of variables/how reassignment works
---core variable Types
---why data types matter ("5" + "5" instead of 5 + 5)

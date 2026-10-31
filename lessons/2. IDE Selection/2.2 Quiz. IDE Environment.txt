@@ -1,4 +1,0 @@
---Why might terminal act differently based on initial path
---Why project folder matters
---What are extensions
---How to revert to previous work

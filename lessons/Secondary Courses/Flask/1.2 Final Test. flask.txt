@@ -1,3 +1,0 @@
---What happens with url is visited
---fixing return 404s
---why dev server isn't public

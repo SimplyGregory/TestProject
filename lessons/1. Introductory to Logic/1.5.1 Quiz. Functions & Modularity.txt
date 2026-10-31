@@ -1,3 +1,0 @@
---Why doe print in function not give value to rest of program
---properties of local variables
---Turning repeating code into function

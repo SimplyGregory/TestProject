@@ -1,3 +1,0 @@
---Why python might not be found as path
---how to get help with terminal commands
---parameters in running a python script

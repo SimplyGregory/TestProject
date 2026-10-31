@@ -1,3 +1,0 @@
---Why import is not enough for 3rd pary libraries
---what does pip do
---where do libraries get installed

@@ -1,2 +1,0 @@
---Convering senarios into logic
---What not does in condition

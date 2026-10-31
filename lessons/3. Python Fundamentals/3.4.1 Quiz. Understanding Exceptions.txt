@@ -1,3 +1,0 @@
---How does an exception effect a program
---how error types differ needed exception for specific catching
---Real life senarios of raising errors

@@ -1,3 +1,0 @@
---finding how to use parts of libraries from dictionaries
---what errors come from libraries and how to Fixing
---whether it is better to use documentation or external sources

@@ -1,3 +1,0 @@
---Why readability matters
---where to put print statement more efficently
---why python is best first language to learn

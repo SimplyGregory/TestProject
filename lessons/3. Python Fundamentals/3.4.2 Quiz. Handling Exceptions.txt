@@ -1,3 +1,0 @@
--- Why finally, except, else is useful
---When to handle an error or allow crash
---why bare exceptions are bad

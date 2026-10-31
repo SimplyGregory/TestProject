@@ -1,3 +1,0 @@
---choose effective debugging strategy
---issues with popular error debugging
---steps to take when code breaks

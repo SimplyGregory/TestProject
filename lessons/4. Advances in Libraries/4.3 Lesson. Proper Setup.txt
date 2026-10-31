@@ -1,4 +1,0 @@
---differences in import and from _ import and aliases
---wjere import go in file
---confirming library is working
---keeping project's setup reproducable for updates

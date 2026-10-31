@@ -1,5 +1,0 @@
---html structures
---parsing a page
---find vs find_all
---extracting text
---following ethical guides (robots.txt)

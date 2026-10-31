@@ -1,3 +1,0 @@
---Real uses of %, even vs odd
---Difference in / vs /
---Predicting results

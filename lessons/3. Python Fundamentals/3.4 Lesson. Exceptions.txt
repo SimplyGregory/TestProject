@@ -1,4 +1,0 @@
---what exceptions meaning
---try / except / else / finally
---catching specific errors vs all errors
---how to raise exceptions

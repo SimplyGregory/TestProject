@@ -1,2 +1,0 @@
---build in functions in libraries to reduce code
---when libraries are worth adding

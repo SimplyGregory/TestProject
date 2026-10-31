@@ -1,3 +1,0 @@
---Picking correct structures fo real world things
---how nesting structures work
---why some are better than others

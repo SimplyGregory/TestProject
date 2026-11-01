@@ -5,6 +5,7 @@
     --foreground2: #3d3a41;
     --text: #ffffff;
     --text2: #f3f3f9;
+    
 }
 
 @media (prefers-color-scheme: light) {

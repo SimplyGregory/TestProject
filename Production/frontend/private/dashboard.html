@@ -7,11 +7,15 @@
     <title>Dashboard | Pylingo</title>
     <link rel="icon" type="image/x-icon" href="../content/media/favicon.ico">
     <link rel="stylesheet" href="../content/style.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
 
         :root {
             --sidebar_width: max(13vw, 150px);
+        }
+
+        body {
+            font-family: "Inter", system-ui, sans-serif;
         }
 
         #side_bar {
@@ -182,12 +186,16 @@
             width: 100%;
             height: 100%;
             border-radius: 12px;
+            object-fit: cover;
         }
 
         #front {
             flex: 1;
             margin-left: -15%;
             position: relative;
+            display: flex;
+            padding: 28px 32px;
+            box-sizing: border-box;
             height: 100%;
             border-radius: 12px;
             background-color: var(--foreground);
@@ -205,6 +213,7 @@
 
         #title {
             display: flex;
+            margin-top: auto;
             position: relative;
             font-size: 40px;
             left: 3%;
@@ -231,6 +240,8 @@
 
         #front button {
             position: absolute;
+            align-self: flex-start;
+            font-family: inherit;
             top: 80%;
             left: 50%;
             transform: translateX(-50%);

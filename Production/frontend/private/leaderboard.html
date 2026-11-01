@@ -98,12 +98,6 @@
             font-size: clamp(28px, 4.5cqw, 50px);
         }
 
-        #username {
-            margin-left: 1.5%;
-            font-size: clamp(20px, 3.2cqw, 35px);
-            font-weight: 600;
-        }
-
         .profile {
             position: absolute;
             top: 2cqw;
@@ -130,6 +124,8 @@
         .streak_icon {
             aspect-ratio: 1 / 1;
             width: clamp(25px, 3.5cqw, 65px);
+            height: 1em;
+            width: auto;
             
         }
 
@@ -146,144 +142,6 @@
             left: 2%;
             line-height: 0.91;
             font-size: clamp(5px, 2cqw, 22px);
-        }
-
-        #continue {
-            display: flex;
-            margin-top: 3.5%;
-            width: calc(100% - 28.5vw);
-            height: clamp(200px, 30vh, 400px);
-        }
-
-        #back {
-            height: 100%;
-            width: 45%;
-        }
-        
-        #back img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            border-radius: 12px;
-            object-fit: cover;
-        }
-
-        #front {
-            flex: 1;
-            margin-left: -15%;
-            display: flex;
-            min-width: 0;
-            flex-direction: column;
-            padding: clamp(16px, 2vw, 28px) clamp(16px, 2.5vw, 32px);
-            box-sizing: border-box;
-            color: var(--text);
-            border-radius: 12px;
-            background-color: var(--foreground);
-        }
-
-        #upper {
-            display: flex;
-            gap: 4px;
-            flex-direction: column;
-        }
-
-        #title {
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        #unit {
-            font-size: 20px;
-        }
-
-        #unit_name {
-            font-size: clamp(24px, 3vw, 48px);
-            font-weight: 700;
-            white-space: nowrap;
-            margin-bottom: 20px;
-            margin-top: auto;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        #front button {
-            align-self: flex-start;
-            font-size: 16px;
-            background-color: #6f9cc0;
-            border-radius: 12px;
-            padding: 12px clamp(14px, 2vw, 28px);
-            color: var(--text);
-            font-weight: 600;
-            border: none;
-        }
-
-        #front button:hover {
-            background-color: #88bbe4;
-            cursor: pointer;
-        }
-
-        #courses {
-            position: relative;
-            height: 40vh;
-        }
-
-        #course_title {
-            display: block;
-            font-weight: 600;
-            font-size: 30px;
-            margin-top: 2.5%;
-        }
-
-        #course_list {
-            position: absolute;
-            height: 35vh;
-            width: calc(100% - 28.5vw);
-            top: 18%;
-        }
-
-        #add_option {
-            width: 25%;
-            height: 100%;
-            min-width: 120px;
-            border-radius: 12px;
-            background-color: var(--foreground);
-            color: var(--text);
-            border: none;
-            cursor: pointer;
-        }
-
-        #add_option:hover {
-            background-color: var(--foreground2);
-        }
-
-        #add {
-            position: relative;
-            font-size: clamp(40px, 6cqw, 80px);
-            display: flex;
-            justify-content: center;
-            top: -5%;
-        }
-
-        #content {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            top: 10%;
-            font-size: clamp(10px, 1.6cqw, 20px);
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
-
-        #goal {
-            position: absolute;
-            top: 18%;
-            right: 2.5%;
-            background-color: var(--foreground);
-            width: 26%;
-            height: 30%;
-            border-radius: 12px;
         }
 
         #leaderboard {
@@ -304,7 +162,7 @@
             align-items: baseline;
         }
 
-        #goal_title, #leaderboard_title {
+        #leaderboard_title {
             position: relative;
             color: var(--text);
             font-size: clamp(14px, 1.4vw, 20px);
@@ -323,22 +181,6 @@
             cursor: pointer;
         }
 
-        #outer_ring {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 45%;
-            aspect-ratio: 1 / 1;
-            background-color: #3d4656;
-
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 22%;
-            z-index: 9;
-        }
-
         .leaderboard_item {
             display: flex;
             align-items: center;
@@ -351,32 +193,6 @@
             background-color: var(--foreground2);
             overflow-x: hidden;
 
-        }
-
-        #inner_ring {
-            z-index: 10;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 85%;
-            aspect-ratio: 1 / 1;
-            background-color: var(--foreground);
-
-            border-radius: 20%;
-        }
-
-        #completed_lessons {
-            margin-top: -6%;
-            font-weight: 600;
-            font-size: clamp(24px, 3vw, 50px);
-        }
-
-        #lesson {
-            font-size: 20px;
-            margin-top: -5%;
-            font-size: clamp(12px, 1.2vw, 20px);
         }
 
         #leaderboard_list {
@@ -399,11 +215,6 @@
 
         .streak_icon_top {
             height: clamp(20px, 3.5vw, 60px);
-            width: auto;
-        }
-
-        .streak_icon {
-            height: 1em;
             width: auto;
         }
 
@@ -450,8 +261,7 @@
 
     <div id="main_body">
         <div id="Welcome">
-            <span id="greeting">Good morning,</span>
-            <span id="username">Username!</span>
+            <span id="greeting">Leaderboard</span>
         </div>
         <div id="streak">
             <img class="streak_icon_top" src="../content/media/fire.png">
@@ -466,41 +276,9 @@
                 <img src="../content/media/empty-profile_Black.png">
             </picture>
         </div>
-        <div id="continue">
-            <div id="back"><img src="../content/media/temp.jpg"></div>
-            <div id="front">
-                <div id="upper">
-                    <span id="title">New lesson</span>
-                    <span id="unit">Unit 5 Lesson 2</span>
-                </div>
-                <span id="unit_name">Code Format</span>
-                <button>Start Lesson ></button>
-            </div>
-        </div>
-        <div id="courses">
-            <span id="course_title">My Courses</span>
-            <div id="course_list">
-                <button id="add_option">
-                    <span id="add">+</span>
-                    <span id="content">Add Course</span>
-                </button>
-            </div>
-        </div>
-        <div id="right_bar">
-            <div id="goal">
-                <span id="goal_title">Daily Goal</span>
-                <div id="outer_ring">
-                    <div id="inner_ring">
-                        <span id="completed_lessons">3/5</span>
-                        <span id="lesson">Lessons</span>
-                    </div>
-
-                </div>
-            </div>
-            <div id="leaderboard">
+        <div id="leaderboard">
                 <div class="leaderboard_top">
                     <span id="leaderboard_title">Leaderboard</span>
-                    <span id="goto_leaderboard">See all ></span>
                 </div>
                 <ol id="leaderboard_list">
                     <li class="leaderboard_item first">
@@ -529,7 +307,6 @@
                     </li>
                 </ol>
             </div>
-        </div>
     </div>
 </body>
     <script>

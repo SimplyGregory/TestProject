@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.25">
+    <title>Leaderboard | Pylingo</title>
+    <link rel="icon" type="image/x-icon" href="../content/media/favicon.ico">
+    <link rel="stylesheet" href="../content/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+
+        :root {
+            --sidebar_width: max(13vw, 150px);
+        }
+
+        body {
+            font-family: "Inter", system-ui, sans-serif;
+        }
+
+        #side_bar {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: var(--sidebar_width);
+            background-color: var(--foreground);
+            container-type: inline-size;
+        }
+        .side_logo img {
+            width: 85%;
+            height: auto;
+            padding-left: 9%;
+            padding-right: 9%;
+            margin-top: 10%;
+        }
+        
+        button {
+            font: inherit;
+        }
+
+        .option_icon img {
+            width: 15.4cqw;
+            min-width: 20px;
+        }
+
+        .option_icon {
+            flex: 0 0 25%;
+            display: flex;
+        }
+
+        #side_bar_options {
+            list-style-type: none;
+            position: relative;
+            padding: 0 10%;
+        }
+
+        #side_bar_options li {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        #side_bar_options li button {
+            border-radius: 12px;
+            background: transparent;
+            border: transparent;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5% 3%;
+        }
+
+        #side_bar_options li button:hover {
+            background-color: var(--foreground2);
+        }
+
+        .option_name {
+            font-size: 7.7cqw;
+            font-weight: 300;
+            color: var(--text);
+        }
+
+        #main_body {
+            margin-left: var(--sidebar_width);
+            min-height: 100vh;
+            box-sizing: border-box;
+            padding: 1vh 2%;
+        }
+
+        #Welcome {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #greeting {
+            font-size: clamp(28px, 4.5cqw, 50px);
+        }
+
+        #username {
+            margin-left: 1.5%;
+            font-size: clamp(20px, 3.2cqw, 35px);
+            font-weight: 600;
+        }
+
+        .profile {
+            position: absolute;
+            top: 2cqw;
+            right: 2cqw;
+            aspect-ratio: 1 / 1;
+            width: clamp(20px, 5cqw, 80px);
+        }
+
+        .profile picture img {
+            border-radius: 12px;
+        }
+
+        #streak {
+            right: 7cqw;
+            top: 1.8cqw;
+            position: absolute;
+            width: clamp(60px, 15cqw, 240px);
+            height: clamp(20px, 5cqw, 80px);
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .streak_icon {
+            aspect-ratio: 1 / 1;
+            width: clamp(25px, 3.5cqw, 65px);
+            
+        }
+
+        .streak_count {
+            font-weight: bold;
+            font-size: 1.8em;
+            line-height: 1;
+        }
+        
+        #streak_text {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            left: 2%;
+            line-height: 0.91;
+            font-size: clamp(5px, 2cqw, 22px);
+        }
+
+        #continue {
+            display: flex;
+            margin-top: 3.5%;
+            width: calc(100% - 28.5vw);
+            height: clamp(200px, 30vh, 400px);
+        }
+
+        #back {
+            height: 100%;
+            width: 45%;
+        }
+        
+        #back img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        #front {
+            flex: 1;
+            margin-left: -15%;
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            padding: clamp(16px, 2vw, 28px) clamp(16px, 2.5vw, 32px);
+            box-sizing: border-box;
+            color: var(--text);
+            border-radius: 12px;
+            background-color: var(--foreground);
+        }
+
+        #upper {
+            display: flex;
+            gap: 4px;
+            flex-direction: column;
+        }
+
+        #title {
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        #unit {
+            font-size: 20px;
+        }
+
+        #unit_name {
+            font-size: clamp(24px, 3vw, 48px);
+            font-weight: 700;
+            white-space: nowrap;
+            margin-bottom: 20px;
+            margin-top: auto;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #front button {
+            align-self: flex-start;
+            font-size: 16px;
+            background-color: #6f9cc0;
+            border-radius: 12px;
+            padding: 12px clamp(14px, 2vw, 28px);
+            color: var(--text);
+            font-weight: 600;
+            border: none;
+        }
+
+        #front button:hover {
+            background-color: #88bbe4;
+            cursor: pointer;
+        }
+
+        #courses {
+            position: relative;
+            height: 40vh;
+        }
+
+        #course_title {
+            display: block;
+            font-weight: 600;
+            font-size: 30px;
+            margin-top: 2.5%;
+        }
+
+        #course_list {
+            position: absolute;
+            height: 35vh;
+            width: calc(100% - 28.5vw);
+            top: 18%;
+        }
+
+        #add_option {
+            width: 25%;
+            height: 100%;
+            min-width: 120px;
+            border-radius: 12px;
+            background-color: var(--foreground);
+            color: var(--text);
+            border: none;
+            cursor: pointer;
+        }
+
+        #add_option:hover {
+            background-color: var(--foreground2);
+        }
+
+        #add {
+            position: relative;
+            font-size: clamp(40px, 6cqw, 80px);
+            display: flex;
+            justify-content: center;
+            top: -5%;
+        }
+
+        #content {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            top: 10%;
+            font-size: clamp(10px, 1.6cqw, 20px);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        #goal {
+            position: absolute;
+            top: 18%;
+            right: 2.5%;
+            background-color: var(--foreground);
+            width: 26%;
+            height: 30%;
+            border-radius: 12px;
+        }
+
+        #leaderboard {
+            position: absolute;
+            top: 52%;
+            right: 2.5%;
+            background-color: var(--foreground);
+            width: 26%;
+            height: 45%;
+            border-radius: 12px;
+            overflow-x: hidden;
+        }
+
+        .leaderboard_top {
+            margin-top: 2%;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        #goal_title, #leaderboard_title {
+            position: relative;
+            color: var(--text);
+            font-size: clamp(14px, 1.4vw, 20px);
+            margin-left: 3%;
+            top: 3%;
+
+        }
+
+        #goto_leaderboard {
+            position: relative;
+            top: 2%;
+            margin-right: 3%;
+            white-space: nowrap;
+            font-size: clamp(12px, 1.1vw, 16px);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        #outer_ring {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45%;
+            aspect-ratio: 1 / 1;
+            background-color: #3d4656;
+
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 22%;
+            z-index: 9;
+        }
+
+        .leaderboard_item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: clamp(13px, 1.3vw, 20px);
+            color: var(--text);
+            padding: 8px 12px;
+            margin-bottom: 8px;
+            border-radius: 12px;
+            background-color: var(--foreground2);
+            overflow-x: hidden;
+
+        }
+
+        #inner_ring {
+            z-index: 10;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 85%;
+            aspect-ratio: 1 / 1;
+            background-color: var(--foreground);
+
+            border-radius: 20%;
+        }
+
+        #completed_lessons {
+            margin-top: -6%;
+            font-weight: 600;
+            font-size: clamp(24px, 3vw, 50px);
+        }
+
+        #lesson {
+            font-size: 20px;
+            margin-top: -5%;
+            font-size: clamp(12px, 1.2vw, 20px);
+        }
+
+        #leaderboard_list {
+            position: relative;
+            width: 90%;
+            left: 5%;
+            top: 5%;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .user {
+            flex: 1;
+        }
+
+        .placement {
+            font-weight: 700;
+        }
+
+        .streak_icon_top {
+            height: clamp(20px, 3.5vw, 60px);
+            width: auto;
+        }
+
+        .streak_icon {
+            height: 1em;
+            width: auto;
+        }
+
+        .streak_class {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            height: 1em;
+            width: auto;
+        }
+
+        .streak_num {
+            font-weight: 600;
+        }
+
+    </style>
+</head>
+<body style="margin: 0;">
+    <div id="side_bar">
+        <picture class="side_logo">
+            <source srcset="../content/media/logo_White.png" media="(prefers-color-scheme: dark)">
+            <img src="../content/media/logo_Black.png">
+        </picture>
+        <ul id="side_bar_options">
+            <li><button><picture class="option_icon">
+            <source srcset="../content/media/home_White.png" media="(prefers-color-scheme: dark)">
+            <img src="../content/media/home_Black.png">
+        </picture><span class="option_name">Home</span></button>
+            </li>
+            <li>
+                <button>
+                    <picture class="option_icon">
+                        <source srcset="../content/media/leaderboard_White.png" media="(prefers-color-scheme: dark)">
+                        <img src="../content/media/leaderboard_Black.png">
+                    </picture><span class="option_name">Leaderboard</span>
+                </button>
+                </li>
+            <li><button><picture class="option_icon">
+                <source srcset="../content/media/settings_White.png" media="(prefers-color-scheme: dark)">
+                <img src="../content/media/settings_Black.png">
+            </picture><span  class="option_name">Settings</span></button></li>
+        </ul>
+    </div>
+
+    <div id="main_body">
+        <div id="Welcome">
+            <span id="greeting">Good morning,</span>
+            <span id="username">Username!</span>
+        </div>
+        <div id="streak">
+            <img class="streak_icon_top" src="../content/media/fire.png">
+            <div id="streak_text">
+                <span class="streak_count">12</span>
+                <span>day streak</span>
+            </div>
+        </div>
+        <div class="profile">
+            <picture class="option_icon">
+                <source srcset="../content/media/empty-profile_White.png" media="(prefers-color-scheme: dark)">
+                <img src="../content/media/empty-profile_Black.png">
+            </picture>
+        </div>
+        <div id="continue">
+            <div id="back"><img src="../content/media/temp.jpg"></div>
+            <div id="front">
+                <div id="upper">
+                    <span id="title">New lesson</span>
+                    <span id="unit">Unit 5 Lesson 2</span>
+                </div>
+                <span id="unit_name">Code Format</span>
+                <button>Start Lesson ></button>
+            </div>
+        </div>
+        <div id="courses">
+            <span id="course_title">My Courses</span>
+            <div id="course_list">
+                <button id="add_option">
+                    <span id="add">+</span>
+                    <span id="content">Add Course</span>
+                </button>
+            </div>
+        </div>
+        <div id="right_bar">
+            <div id="goal">
+                <span id="goal_title">Daily Goal</span>
+                <div id="outer_ring">
+                    <div id="inner_ring">
+                        <span id="completed_lessons">3/5</span>
+                        <span id="lesson">Lessons</span>
+                    </div>
+
+                </div>
+            </div>
+            <div id="leaderboard">
+                <div class="leaderboard_top">
+                    <span id="leaderboard_title">Leaderboard</span>
+                    <span id="goto_leaderboard">See all ></span>
+                </div>
+                <ol id="leaderboard_list">
+                    <li class="leaderboard_item first">
+                        <span class="placement">1</span>
+                        <span class="user">USERNAME</span>
+                        <span class="streak_class">
+                            <img class="streak_icon" src="../content/media/fire.png">
+                            <span class="streak_num">0</span>
+                        </span>
+                    </li>
+                    <li class="leaderboard_item second">
+                        <span class="placement">2</span>
+                        <span class="user">USERNAME</span>
+                        <span class="streak_class">
+                            <img class="streak_icon" src="../content/media/fire.png">
+                            <span class="streak_num">0</span>
+                        </span>
+                    </li>
+                    <li class="leaderboard_item third">
+                        <span class="placement">3</span>
+                        <span class="user">USERNAME</span>
+                        <span class="streak_class">
+                            <img class="streak_icon" src="../content/media/fire.png">
+                            <span class="streak_num">0</span>
+                        </span>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</body>
+    <script>
+        const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    </script>
+</html>

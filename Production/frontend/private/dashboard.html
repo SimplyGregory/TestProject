@@ -193,6 +193,37 @@
             background-color: var(--foreground);
         }
 
+        #upper {
+            width: 100%;
+            border-radius: 12px;
+            height: 20%;
+            position: relative;
+            top: 0;
+            left: 0;
+            color: var(--text);
+        }
+
+        #title {
+            display: flex;
+            position: relative;
+            font-size: 40px;
+            left: 3%;
+            top: 15%;
+        }
+
+        #unit {
+            position: relative;
+            font-size: 20px;
+            margin-left: 8%;
+            top: 5%;
+        }
+
+        #unit_name {
+            position: relative;
+            top: 50%;
+            left: 50%;
+        }
+
     </style>
 </head>
 <body style="margin: 0;">
@@ -244,8 +275,11 @@
             <div id="back"><img src="../content/media/temp.jpg"></div>
             <div id="front">
                 <div id="upper">
-                    <span></span>
+                    <span id="title">New lesson</span>
+                    <span id="unit">Unit 5 Lesson 2</span>
                 </div>
+                <span id="unit_name">Code Format</span>
+                <button>Start Lesson ></button>
             </div>
         </div>
     </div>

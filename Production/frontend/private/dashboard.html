@@ -387,8 +387,13 @@
             font-weight: 700;
         }
 
+        .streak_icon_top {
+            height: clamp(20px, 3.5vw, 60px);
+            width: auto;
+        }
+
         .streak_icon {
-            height: 3em;
+            height: 1em;
             width: auto;
         }
 
@@ -439,7 +444,7 @@
             <span id="username">Username!</span>
         </div>
         <div id="streak">
-            <img class="streak_icon" src="../content/media/fire.png">
+            <img class="streak_icon_top" src="../content/media/fire.png">
             <div id="streak_text">
                 <span class="streak_count">12</span>
                 <span>day streak</span>

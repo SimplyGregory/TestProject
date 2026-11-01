@@ -147,7 +147,10 @@
 
         #leaderboard {
             position: absolute;
-            top: 20%;
+            top: max(20%, 90px);
+            left: calc(var(--sidebar_width) + 2%);
+            right: 2%;
+            bottom: 4%;
             background-color: var(--foreground);
             width: 82%;
             height: 76%;

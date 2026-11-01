@@ -46,7 +46,6 @@
 
         .option_icon {
             flex: 0 0 25%;
-            min-width: 20px;
             display: flex;
         }
 
@@ -58,7 +57,6 @@
 
         #side_bar_options li {
             display: flex;
-            align-items: center;
             margin-bottom: 10px;
         }
 
@@ -80,7 +78,7 @@
 
         .option_name {
             font-size: 7.7cqw;
-            font-weight: lighter;
+            font-weight: 300;
             color: var(--text);
         }
 
@@ -153,8 +151,8 @@
         #continue {
             display: flex;
             margin-top: 3.5%;
-            width: 65%;
-            height: 30vh;
+            width: calc(100% - 28.5vw);
+            height: clamp(200px, 30vh, 400px);
         }
 
         #back {
@@ -174,8 +172,9 @@
             flex: 1;
             margin-left: -15%;
             display: flex;
+            min-width: 0;
             flex-direction: column;
-            padding: 28px 32px;
+            padding: clamp(16px, 2vw, 28px) clamp(16px, 2.5vw, 32px);
             box-sizing: border-box;
             color: var(--text);
             border-radius: 12px;
@@ -200,21 +199,21 @@
         }
 
         #unit_name {
-            font-size: 48px;
+            font-size: clamp(24px, 3vw, 48px);
             font-weight: 700;
             white-space: nowrap;
             margin-bottom: 20px;
             margin-top: auto;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         #front button {
             align-self: flex-start;
-            font-family: inherit;
             font-size: 16px;
             background-color: #6f9cc0;
             border-radius: 12px;
-            font-family: inherit;
-            padding: 12px 28px;
+            padding: 12px clamp(14px, 2vw, 28px);
             color: var(--text);
             font-weight: 600;
             border: none;
@@ -240,13 +239,14 @@
         #course_list {
             position: absolute;
             height: 35vh;
-            width: 65%;
+            width: calc(100% - 28.5vw);
             top: 18%;
         }
 
         #add_option {
             width: 25%;
             height: 100%;
+            min-width: 120px;
             border-radius: 12px;
             background-color: var(--foreground);
         }
@@ -264,8 +264,142 @@
             display: flex;
             justify-content: center;
             top: 30%;
-            font-size: clamp(12px, 1.6cqw, 20px);
+            font-size: clamp(10px, 1.6cqw, 20px);
             text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        #goal {
+            position: absolute;
+            top: 18%;
+            right: 2.5%;
+            background-color: var(--foreground);
+            width: 26%;
+            height: 30%;
+            border-radius: 12px;
+        }
+
+        #leaderboard {
+            position: absolute;
+            top: 52%;
+            right: 2.5%;
+            background-color: var(--foreground);
+            width: 26%;
+            height: 45%;
+            border-radius: 12px;
+        }
+
+        .leaderboard_top {
+            margin-top: 2%;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        #goal_title, #leaderboard_title {
+            position: relative;
+            color: var(--text);
+            font-size: clamp(14px, 1.4vw, 20px);
+            margin-left: 3%;
+            top: 3%;
+
+        }
+
+        #goto_leaderboard {
+            position: relative;
+            top: 2%;
+            margin-right: 3%;
+            white-space: nowrap;
+            font-size: clamp(12px, 1.1vw, 16px);
+            text-decoration: underline;
+        }
+
+        #outer_ring {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45%;
+            aspect-ratio: 1 / 1;
+            background-color: #3d4656;
+
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 22%;
+            z-index: 9;
+        }
+
+        .leaderboard_item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: clamp(13px, 1.3vw, 20px);
+            color: var(--text);
+            padding: 8px 12px;
+            margin-bottom: 8px;
+            border-radius: 12px;
+            background-color: var(--foreground2);
+
+        }
+
+        #inner_ring {
+            z-index: 10;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 85%;
+            aspect-ratio: 1 / 1;
+            background-color: var(--foreground);
+
+            border-radius: 20%;
+        }
+
+        #completed_lessons {
+            margin-top: -6%;
+            font-weight: 600;
+            font-size: clamp(24px, 3vw, 50px);
+        }
+
+        #lesson {
+            font-size: 20px;
+            margin-top: -5%;
+            font-size: clamp(12px, 1.2vw, 20px);
+        }
+
+        #leaderboard_list {
+            position: relative;
+            width: 90%;
+            left: 5%;
+            top: 5%;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .user {
+            flex: 1;
+        }
+
+        .placement {
+            font-weight: 700;
+        }
+
+        .streak_icon, .streak_class {
+            height: 1em;
+            width: auto;
+        }
+
+        .streak_class {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .streak_num {
+            font-weight: 600;
         }
 
     </style>
@@ -337,10 +471,46 @@
         </div>
         <div id="right_bar">
             <div id="goal">
+                <span id="goal_title">Daily Goal</span>
+                <div id="outer_ring">
+                    <div id="inner_ring">
+                        <span id="completed_lessons">3/5</span>
+                        <span id="lesson">Lessons</span>
+                    </div>
 
+                </div>
             </div>
             <div id="leaderboard">
-
+                <div class="leaderboard_top">
+                    <span id="leaderboard_title">Leaderboard</span>
+                    <span id="goto_leaderboard">See all ></span>
+                </div>
+                <ol id="leaderboard_list">
+                    <li class="leaderboard_item first">
+                        <span class="placement">1</span>
+                        <span class="user">USERNAME</span>
+                        <span class="streak_class">
+                            <img class="streak_icon" src="../content/media/fire.png">
+                            <span class="streak_num">0</span>
+                        </span>
+                    </li>
+                    <li class="leaderboard_item second">
+                        <span class="placement">2</span>
+                        <span class="user">USERNAME</span>
+                        <span class="streak_class">
+                            <img class="streak_icon" src="../content/media/fire.png">
+                            <span class="streak_num">0</span>
+                        </span>
+                    </li>
+                    <li class="leaderboard_item third">
+                        <span class="placement">3</span>
+                        <span class="user">USERNAME</span>
+                        <span class="streak_class">
+                            <img class="streak_icon" src="../content/media/fire.png">
+                            <span class="streak_num">0</span>
+                        </span>
+                    </li>
+                </ol>
             </div>
         </div>
     </div>

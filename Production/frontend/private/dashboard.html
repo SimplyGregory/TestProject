@@ -242,6 +242,11 @@
             cursor: pointer;
         }
 
+        #courses {
+            position: relative;
+            height: 40vh;
+        }
+
         #course_title {
             display: block;
             position: relative;
@@ -252,11 +257,9 @@
 
         #course_list {
             position: absolute;
-            height: 32%;
-            width: 54%;
-            background-color: #6f9cc0;
-            bottom: 5%;
-            left: 15%;
+            height: 35vh;
+            width: 65%;
+            top: 18%;
         }
 
     </style>
@@ -320,7 +323,10 @@
         <div id="courses">
             <span id="course_title">My Courses</span>
             <div id="course_list">
-
+                <div id="add_option">
+                    <span id="add">+</span>
+                    <span id="content">Add Course</span>
+                </div>
             </div>
         </div>
     </div>

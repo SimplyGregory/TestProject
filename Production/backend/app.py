@@ -285,7 +285,7 @@ def login():
 
     ph = PasswordHasher()
     form = request.form
-    input, password = form.get("email").lower(), request.form.get("password")
+    input, password = form.get("email", "").strip().lower(), request.form.get("password", "")
     response=redirect(url_for("login_index"))
 
     user_data = database_action("SELECT * FROM users WHERE LOWER(email) = ? or username = ?", (input, input), True, True)

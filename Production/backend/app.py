@@ -272,12 +272,10 @@ def grab_data():
 #LOGOUT
 @app.route("/send-logout", methods=["POST"])
 def logout():
-    if ("session_cookie" not in request.cookies) or (not database_action("SELECT * FROM users WHERE sessionID = ?", (request.cookies.get("session_cookie"),), True)):
-        return redirect(url_for("login_index"))
-
-    response = redirect(url_for("login_index"))
-    response.set_cookie("session_cookie", "", max_age=0)
-    return response
+    sessionID = request.cookies.get("session_cookie")
+    if sessionID:
+        database_action("UPDATE users SET sessionID = NULL, session_expiry = NULL WHERE sessionID = ?", (sessionID,))
+    return login_redirect()
 
 #LOGIN
 @app.route("/send-login", methods=["POST"])
@@ -392,8 +390,6 @@ def google_callback():
         username = id_info["name"]
         database_action("INSERT INTO users (username, email, password, sessionID, session_expiry) VALUES (?, ?, ?, ?, ?)", (username, email, None, sessionId, expires))
 
-
-        user_data = database_action("SELECT * FROM users WHERE id = ?", ("cursor.lastrowid",))
     else:
         sessionId = str(uuid.uuid4())
         database_action("UPDATE users SET sessionID = ?, session_expiry = ? WHERE username = ?", (sessionId, expires, user_data["username"]))
@@ -406,6 +402,6 @@ def google_callback():
 
 if __name__ == "__main__":
     #CREATE ACCOUNTS TABLE IF N/A, CREATE STATS TABLE IF N/A
-    database_action('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, email TEXT UNIQUE, password TEXT, sessionID TEXT, session_expiry STRING)''')
+    database_action('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, email TEXT UNIQUE, password TEXT, sessionID TEXT, session_expiry TEXT)''')
     database_action('''CREATE TABLE IF NOT EXISTS statistics (user_id INTEGER UNIQUE PRIMARY KEY, streak INTEGER, lesson_inprogress BOOLEAN, completed_lessons INTEGER, daily_streak INTEGER, assigned_units STRING)''')
     app.run()

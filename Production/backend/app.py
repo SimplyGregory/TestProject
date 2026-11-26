@@ -51,11 +51,26 @@ def database_action(sql, params=(), read = False, row_val = False, fetch_one = T
         
         return None
 
+#Get User
+def get_user(sessionID):
+    if not sessionID:
+        return None
+    user_data = database_action("SELECT * FROM users WHERE sessionID = ?", (sessionID,), True, True)
+    if user_data and datetime.fromisoformat(user_data["session_Expiry"]) > datetime.now():
+        return user_data
+    return None
+
+#Cookie management
+def login_redirect():
+    response = redirect(url_for("login_index"))
+    response.set_cookie("session_cookie", "", max_age=0)
+    return response
+
 #BASE DOMAIN REDIRECT
 @app.route("/")
 def login_index():
     if "session_cookie" in request.cookies:
-        user_data = database_action("SELECT * FROM users WHERE sessionID = ?", (request.cookies.get("session_cookie"),), True)
+        user_data = get_user()
         if user_data:
             if datetime.fromisoformat(user_data["session_expiry"]) < datetime.now():
                 return redirect(url_for("dashboard"))

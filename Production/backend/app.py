@@ -114,6 +114,9 @@ def attempt_register():
     if not 7 < len(stripped_email.split("@")[0]) < 51:
                 return "Email incorrect length"
 
+    if database_action("SELECT * FROM users WHERE email = ? or username = ?", (email, username), True):
+        return "Username or Email already taken"
+
     password = ph.hash(password)
     sessionID = str(uuid.uuid4())
     expires = (datetime.now() + timedelta(days=30)).isoformat()

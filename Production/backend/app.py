@@ -57,7 +57,7 @@ def get_user():
     if not sessionID:
         return None
     user_data = database_action("SELECT * FROM users WHERE sessionID = ?", (sessionID,), True, True)
-    if user_data and user_data["session_expiry"] and datetime.fromisoformat(user_data["session_Expiry"]) > datetime.now():
+    if user_data and user_data["session_expiry"] and datetime.fromisoformat(user_data["session_expiry"]) > datetime.now():
         return user_data
     return None
 
@@ -131,8 +131,9 @@ def attempt_register():
 #PRIVATE DASHBOARD
 @app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
-    if not get_user():
-        return jsonify({"errpr": "Incorrect Credentials!"}), 401
+    user_data = get_user()
+    if not user_data:
+        return login_redirect()
 
     statistics_data = database_action("SELECT * FROM statistics WHERE user_id = ?", (user_data["id"],), True, True)
     if not statistics_data:
@@ -292,7 +293,7 @@ def login():
     if user_data and user_data["password"]:
         try:
             valid = ph.verify(user_data["password"], password)
-        except VerifyMismatchError:
+        except (VerifyMismatchError, InvalidHashError):
             valid = False
 
     if not valid:

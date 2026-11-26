@@ -317,7 +317,7 @@
             const password = document.getElementById('password_signup')
             if (email.value.trim() === "") {
                 document.getElementById("3").style.visibility = "visible";
-                document.getElementById("3").textContent = "Please enter your emil."
+                document.getElementById("3").textContent = "Please enter your email."
                 document.getElementById("email_signup").style.borderColor = "var(--error)";
             }
             else if (!emailPattern.test(email.value.trim()) || !emailDomains.includes(email.value.trim().split("@")[1]?.toLowerCase()) || !regex.test(email.value.trim())) {

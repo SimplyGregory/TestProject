@@ -287,6 +287,10 @@ def login():
     user_data = database_action("SELECT * FROM users WHERE LOWER(email) = ? or username = ?", (input, input), True, True)
 
     if user_data:
+        expires = (datetime.now() + timedelta(days=30)).isoformat()
+        sessionId = str(uuid.uuid4())
+        database_action("UPDATE users SET sessionID = ?, session_expiry = ? WHERE username = ?", (sessionId, expires, user_data["username"]))
+        
         try:
             ph.verify(user_data["password"], password)
             response = redirect(url_for("dashboard"))
@@ -382,7 +386,7 @@ def google_callback():
         user_data = database_action("SELECT * FROM users WHERE id = ?", ("cursor.lastrowid",))
     else:
         sessionId = str(uuid.uuid4())
-        database_action("UPDATE users SET ")
+        database_action("UPDATE users SET sessionID = ?, session_expiry = ? WHERE username = ?", (sessionId, expires, user_data["username"]))
 
 
     response = redirect(url_for("dashboard"))

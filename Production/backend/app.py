@@ -382,6 +382,8 @@ def google_callback():
         user_data = database_action("SELECT * FROM users WHERE id = ?", ("cursor.lastrowid",))
     else:
         sessionId = str(uuid.uuid4())
+        database_action("UPDATE users SET ")
+
 
     response = redirect(url_for("dashboard"))
     response.set_cookie("session_cookie", sessionId, max_age=60 * 60 * 24 * 30)

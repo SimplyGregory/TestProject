@@ -132,6 +132,8 @@ def dashboard():
         database_action("INSERT INTO statistics (user_id, streak, lesson_inprogress, completed_lessons, daily_streak, assigned_units) VALUES (?, ?, ?, ?, ?, ?)", (user_data["id"], 0, False, 0, 0, 0))
         statistics_data = database_action("SELECT * FROM statistics WHERE user_id = ?", (user_data["id"],), True, True)
 
+    
+
     leaderboard = []
 
     stats_data = json.loads((database_action("SELECT json_group_array(json_object('user_id', user_id, 'streak', streak)) FROM (SELECT user_id, streak FROM statistics ORDER BY streak DESC LIMIT 10)", "", True, False, True))[0])

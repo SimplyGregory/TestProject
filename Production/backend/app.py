@@ -292,8 +292,6 @@ def login():
     if user_data and user_data["password"]:
         try:
             valid = ph.verify(user_data["password"], password)
-            response = redirect(url_for("dashboard"))
-            response.set_cookie("session_cookie", user_data["sessionID"], max_age=60 * 60 * 24)
         except VerifyMismatchError:
             valid = False
 

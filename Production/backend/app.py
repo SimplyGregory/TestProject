@@ -124,25 +124,15 @@ def attempt_register():
     database_action("INSERT INTO statistics (user_id, streak, lesson_inprogress, completed_lessons, daily_streak, assigned_units) VALUES (?, ?, ?, ?, ?, ?)", (user_id, 0, False, 0, 0, 0))
         
     response = redirect(url_for("dashboard"))
-    response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24)
+    response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24 * 30, samesite="Lax")
     return response
 
 #PRIVATE DASHBOARD
 @app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
-    if ("session_cookie" not in request.cookies) or (not database_action("SELECT * FROM users WHERE sessionID = ?", (request.cookies.get("session_cookie"),), True)):
-        return redirect(url_for("login_index"))
-    
-    sessionID = request.cookies.get("session_cookie")
-
-    user_data = database_action("SELECT * FROM users WHERE sessionID = ?", (sessionID,), True, True)
+    user_data = get_user()
     if not user_data:
-        response = redirect(url_for("login_index"))
-        response.set_cookie("session_cookie", "", max_age=0)
-        return response
-
-    if datetime.fromisoformat(user_data["session_expiry"]) < datetime.now():
-        return render_template("public/login.html")
+        return login_redirect()
 
     statistics_data = database_action("SELECT * FROM statistics WHERE user_id = ?", (user_data["id"],), True, True)
     if not statistics_data:

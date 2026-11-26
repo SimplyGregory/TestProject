@@ -57,7 +57,7 @@ def get_user():
     if not sessionID:
         return None
     user_data = database_action("SELECT * FROM users WHERE sessionID = ?", (sessionID,), True, True)
-    if user_data and datetime.fromisoformat(user_data["session_Expiry"]) > datetime.now():
+    if user_data and user_data["session_expiry"] and datetime.fromisoformat(user_data["session_Expiry"]) > datetime.now():
         return user_data
     return None
 

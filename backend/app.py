@@ -83,7 +83,7 @@ def attempt_register():
     database_action("INSERT INTO statistics (username, streak, is_active, lesson_count) VALUES (?, ?, ?, ?)", (username, 0, False, 0))
         
     response = redirect(url_for("dashboard"))
-    response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24)
+    response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24 * 30)
     return response
 
 #PRIVATE DASHBOARD

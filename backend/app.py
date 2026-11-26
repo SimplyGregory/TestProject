@@ -147,7 +147,10 @@ def login():
             response.set_cookie("session_cookie", user_data["sessionID"], max_age=60 * 60 * 24)
         except VerifyMismatchError:
             print("Incorrect Password!")
-            response = ""
+            response = {
+                "status": 403,
+                "message": "Incorrect Password"
+            }
 
     return response
 

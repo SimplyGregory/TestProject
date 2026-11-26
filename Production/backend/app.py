@@ -122,18 +122,18 @@ def dashboard():
     sessionID = request.cookies.get("session_cookie")
 
     user_data = database_action("SELECT * FROM users WHERE sessionID = ?", (sessionID,), True, True)
-    statistics_data = database_action("SELECT * FROM statistics WHERE user_id = ?", (user_data["id"],), True, True)
-
     if not user_data:
         response = redirect(url_for("login_index"))
         response.set_cookie("session_cookie", "", max_age=0)
         return response
-    
+
+    if datetime.fromisoformat(user_data["session_expiry"]) < datetime.now():
+        return render_template("public/login.html")
+
+    statistics_data = database_action("SELECT * FROM statistics WHERE user_id = ?", (user_data["id"],), True, True)
     if not statistics_data:
         database_action("INSERT INTO statistics (user_id, streak, lesson_inprogress, completed_lessons, daily_streak, assigned_units) VALUES (?, ?, ?, ?, ?, ?)", (user_data["id"], 0, False, 0, 0, 0))
         statistics_data = database_action("SELECT * FROM statistics WHERE user_id = ?", (user_data["id"],), True, True)
-
-
 
     leaderboard = []
 
@@ -165,13 +165,15 @@ def leaderboard():
     sessionID = request.cookies.get("session_cookie")
     
     user_data = database_action("SELECT * FROM users WHERE sessionID = ?", (sessionID,), True, True)
-    statistics_data = database_action("SELECT * FROM statistics WHERE user_id = ?", (user_data["id"],), True, True)
-
     if not user_data:
         response = redirect(url_for("login_index"))
         response.set_cookie("session_cookie", "", max_age=0)
         return response
-    
+
+    if datetime.fromisoformat(user_data["session_expiry"]) < datetime.now():
+            return render_template("public/login.html")
+
+    statistics_data = database_action("SELECT * FROM statistics WHERE user_id = ?", (user_data["id"],), True, True)
     if not statistics_data:
         database_action("INSERT INTO statistics (user_id, streak, lesson_inprogress, completed_lessons, daily_streak, assigned_units) VALUES (?, ?, ?, ?, ?, ?)", (user_data["id"], 0, False, 0, 0, 0))
         statistics_data = database_action("SELECT * FROM statistics WHERE user_id = ?", (user_data["id"],), True, True)
@@ -203,13 +205,15 @@ def settings():
     sessionID = request.cookies.get("session_cookie")
 
     user_data = database_action("SELECT * FROM users WHERE sessionID = ?", (sessionID,), True, True)
-    statistics_data = database_action("SELECT * FROM statistics WHERE user_id = ?", (user_data["id"],), True, True)
-
     if not user_data:
         response = redirect(url_for("login_index"))
         response.set_cookie("session_cookie", "", max_age=0)
         return response
-    
+
+    if datetime.fromisoformat(user_data["session_expiry"]) < datetime.now():
+                return render_template("public/login.html")
+
+    statistics_data = database_action("SELECT * FROM statistics WHERE user_id = ?", (user_data["id"],), True, True)
     if not statistics_data:
         database_action("INSERT INTO statistics (user_id, streak, lesson_inprogress, completed_lessons, daily_streak, assigned_units) VALUES (?, ?, ?, ?, ?, ?)", (user_data["id"], 0, False, 0, 0, 0))
         statistics_data = database_action("SELECT * FROM statistics WHERE user_id = ?", (user_data["id"],), True, True)
@@ -245,7 +249,7 @@ def grab_data():
     sessionID = request.cookies.get("session_cookie")
 
     user_data = database_action("SELECT * FROM users WHERE sessionID = ?", (sessionID,), True, True)
-    if not user_data:
+    if not user_data or datetime.fromisoformat(user_data["session_expiry"]) < datetime.now():
         return jsonify({"error": "Incorrect Credentials!"}), 401
     
     filename = "lesson_list.json"

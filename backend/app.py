@@ -72,7 +72,7 @@ def attempt_register():
 
     ph = PasswordHasher()
     form = request.form
-    username, email, password = form.get("username").lower(), form.get("email").lower(), form.get("password")
+    username, email, password = form.get("username", "").strip().lower(), form.get("email", "").strip().lower(), form.get("password", "")
 
     if database_action("SELECT * FROM users WHERE email = ? or username = ?", (email, username), True):
         return "Username or Email already exists"

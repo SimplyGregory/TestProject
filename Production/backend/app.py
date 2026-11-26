@@ -120,7 +120,7 @@ def attempt_register():
     sessionID = str(uuid.uuid4())
     expires = (datetime.now() + timedelta(days=30)).isoformat()
     database_action("INSERT INTO users (username, email, password, sessionID, session_expiry) VALUES (?, ?, ?, ?, ?)", (username, email, password, sessionID, expires))
-    user_id = database_action("SELECT id FROM users WHERE username = ?", (username,), True, True)
+    user_id = database_action("SELECT id FROM users WHERE username = ?", (username,), True, True)["id"]
     database_action("INSERT INTO statistics (user_id, streak, lesson_inprogress, completed_lessons, daily_streak, assigned_units) VALUES (?, ?, ?, ?, ?, ?)", (user_id, 0, False, 0, 0, 0))
         
     response = redirect(url_for("dashboard"))
@@ -130,9 +130,8 @@ def attempt_register():
 #PRIVATE DASHBOARD
 @app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
-    user_data = get_user()
-    if not user_data:
-        return login_redirect()
+    if not get_user():
+        return jsonify({"errpr": "Incorrect Credentials!"}), 401
 
     statistics_data = database_action("SELECT * FROM statistics WHERE user_id = ?", (user_data["id"],), True, True)
     if not statistics_data:

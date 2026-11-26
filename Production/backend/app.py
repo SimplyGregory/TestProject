@@ -86,9 +86,16 @@ def attempt_register():
         return "Password has minimum of 8 characters"
     if not regex.fullmatch(username):
         return "username incorrectly formatted"
+    if not 4 < len(username) < 21:
+        return "Username incorrect length"
+    if not 7 < len(password) < 51:
+            return "Username incorrect length"
 
     stripped_email = email.strip()
     domain = stripped_email.split("@")[1].lower()
+
+    if not email_pattern.fullmatch(stripped_email) or domain not in email_domains:
+        return "Incorrect email format"
 
     password = ph.hash(password)
     sessionID = str(uuid.uuid4())

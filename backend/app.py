@@ -147,6 +147,7 @@ def login():
             response.set_cookie("session_cookie", user_data["sessionID"], max_age=60 * 60 * 24)
         except VerifyMismatchError:
             print("Incorrect Password!")
+            response = ""
 
     return response
 

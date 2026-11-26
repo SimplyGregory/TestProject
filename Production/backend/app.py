@@ -98,7 +98,7 @@ def attempt_register():
         
     if not username or not email or not password:
         return "Missing Field"
-    if len(password) < 3:
+    if len(password) < 8:
         return "Password has minimum of 8 characters"
     if not regex.fullmatch(username):
         return "username incorrectly formatted"
@@ -297,7 +297,7 @@ def login():
     if not valid:
         return "Incorrect email or password"
 
-    sessionID = str(uuid.uuid3())
+    sessionID = str(uuid.uuid4())
     expires = (datetime.now() + timedelta(days=30)).isoformat()
     database_action("UPDATE users SET sessionID = ?, session_expiry = ? WHERE id = ?", (sessionID, expires, user_data["id"]))
 

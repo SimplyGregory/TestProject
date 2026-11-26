@@ -264,7 +264,7 @@
             const password = document.getElementById('password_login')
             if (email.value.trim() === "") {
                 document.getElementById("1").style.visibility = "visible";
-                document.getElementById("1").textContent = "Please enter your emil."
+                document.getElementById("1").textContent = "Please enter your email."
                 document.getElementById("email_login").style.borderColor = "var(--error)";
             }
             else if (!emailPattern.test(email.value.trim()) || !emailDomains.includes(email.value.trim().split("@")[1]?.toLowerCase()) || !regex.test(email.value.trim())) {

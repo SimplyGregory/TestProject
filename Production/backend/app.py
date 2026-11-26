@@ -380,6 +380,6 @@ def google_callback():
 
 if __name__ == "__main__":
     #CREATE ACCOUNTS TABLE IF N/A, CREATE STATS TABLE IF N/A
-    database_action('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, email TEXT UNIQUE, password TEXT, sessionID TEXT UNIQUE)''')
+    database_action('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, email TEXT UNIQUE, password TEXT, sessionID TEXT, session_expiry STRING)''')
     database_action('''CREATE TABLE IF NOT EXISTS statistics (user_id INTEGER UNIQUE PRIMARY KEY, streak INTEGER, lesson_inprogress BOOLEAN, completed_lessons INTEGER, daily_streak INTEGER, assigned_units STRING)''')
     app.run()

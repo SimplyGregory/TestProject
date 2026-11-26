@@ -102,7 +102,7 @@ def attempt_register():
 
     password = ph.hash(password)
     sessionID = str(uuid.uuid4())
-    database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, password, sessionID))
+    database_action("INSERT INTO users (username, email, password, sessionID, session_expiry) VALUES (?, ?, ?, ?, ?)", (username, email, password, sessionID))
     user_id = database_action("SELECT id FROM users WHERE username = ?", (username,), True, True)
     database_action("INSERT INTO statistics (user_id, streak, lesson_inprogress, completed_lessons, daily_streak, assigned_units) VALUES (?, ?, ?, ?, ?, ?)", (user_id, 0, False, 0, 0, 0))
         

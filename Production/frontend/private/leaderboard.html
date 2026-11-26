@@ -112,7 +112,7 @@
         }
 
         #streak {
-            right: 7cqw;
+            right: 7.5cqw;
             top: 1.8cqw;
             position: absolute;
             width: clamp(60px, 15cqw, 240px);
@@ -147,7 +147,7 @@
 
         #leaderboard {
             position: absolute;
-            top: calc(max(13%, 65px) + max(4%, 22px) + 12px);
+            top: calc(max(13%, 65px) + 12px);
             left: calc(var(--sidebar_width) + 2%);
             right: 2%;
             bottom: 4%;
@@ -207,13 +207,14 @@
             position: relative;
             width: 90%;
             left: 5%;
-            top: 5%;
+            top: 1%;
             list-style: none;
             margin: 0;
             padding: 0;
             color: var(--text);
             font-size: 20px;
             font-weight: 500;
+
         }
 
         .user {
@@ -241,36 +242,6 @@
             font-weight: 600;
         }
 
-        #sort {
-            position: absolute;
-            top: max(13%, 65px);
-            height: max(4%, 22px);
-            width: 80%;
-            white-space: nowrap;
-        }
-
-        #sort button {
-            color: var(--text);
-            position: relative;
-            background-color: #6f9cc0;
-            border: none;
-            border-radius: 12px;
-            width: 10%;
-            height: 100%;
-            margin-right: 1%;
-            font-size: clamp(5px, 1vw, 15px);
-        }
-
-        #sort .active {
-            background: #425b70;
-            cursor: default;
-        }
-
-        #sort button:hover:not(.active) {
-            background-color: #88bbe4;
-            cursor: pointer;
-        }
-
     </style>
 </head>
 <body style="margin: 0;">
@@ -280,20 +251,20 @@
             <img src="../content/media/logo_Black.png">
         </picture>
         <ul id="side_bar_options">
-            <li><button><picture class="option_icon">
+            <li><button onclick="window.location.href='/dashboard';"><picture class="option_icon">
             <source srcset="../content/media/home_White.png" media="(prefers-color-scheme: dark)">
             <img src="../content/media/home_Black.png">
         </picture><span class="option_name">Home</span></button>
             </li>
             <li>
-                <button>
+                <button onclick="window.location.href='/leaderboard';">
                     <picture class="option_icon">
                         <source srcset="../content/media/leaderboard_White.png" media="(prefers-color-scheme: dark)">
                         <img src="../content/media/leaderboard_Black.png">
                     </picture><span class="option_name">Leaderboard</span>
                 </button>
                 </li>
-            <li><button><picture class="option_icon">
+            <li><button onclick="window.location.href='/settings';"><picture class="option_icon">
                 <source srcset="../content/media/settings_White.png" media="(prefers-color-scheme: dark)">
                 <img src="../content/media/settings_Black.png">
             </picture><span  class="option_name">Settings</span></button></li>
@@ -307,20 +278,22 @@
         <div id="streak">
             <img class="streak_icon_top" src="../content/media/fire.png">
             <div id="streak_text">
-                <span class="streak_count">12</span>
+                <span class="streak_count">{{ streak }}</span>
                 <span>day streak</span>
             </div>
         </div>
         <div class="profile">
-            <picture class="option_icon">
-                <source srcset="../content/media/empty-profile_White.png" media="(prefers-color-scheme: dark)">
-                <img src="../content/media/empty-profile_Black.png">
-            </picture>
-        </div>
-        <div id="sort">
-            <button class="active">All Time</button>
-            <button>This Month</button>
-            <button>This Week</button>
+            {% set picture = request.cookies.get("profile_picture") %}
+            {% if picture %}
+                <picture class="option_icon">
+                    <img src="{{ picture }}">
+                </picture>
+            {% else %}
+                <picture class="option_icon">
+                    <source srcset="../content/media/empty-profile_White.png" media="(prefers-color-scheme: dark)">
+                    <img src="../content/media/empty-profile_Black.png">
+                </picture>
+            {% endif %}
         </div>
         <div id="leaderboard">
                 <div class="leaderboard_top">
@@ -329,30 +302,16 @@
                     <span id="streak_title">streak</span>
                 </div>
                 <ol id="leaderboard_list">
-                    <li class="leaderboard_item first">
-                        <span class="placement">1</span>
-                        <span class="user">USERNAME</span>
-                        <span class="streak_class">
-                            <img class="streak_icon" src="../content/media/fire.png">
-                            <span class="streak_num">0</span>
-                        </span>
-                    </li>
-                    <li class="leaderboard_item second">
-                        <span class="placement">2</span>
-                        <span class="user">USERNAME</span>
-                        <span class="streak_class">
-                            <img class="streak_icon" src="../content/media/fire.png">
-                            <span class="streak_num">0</span>
-                        </span>
-                    </li>
-                    <li class="leaderboard_item third">
-                        <span class="placement">3</span>
-                        <span class="user">USERNAME</span>
-                        <span class="streak_class">
-                            <img class="streak_icon" src="../content/media/fire.png">
-                            <span class="streak_num">0</span>
-                        </span>
-                    </li>
+                    {% for user in leaderboard_data %}
+                        <li class="leaderboard_item">
+                            <span class="placement">{{ loop.index }}</span>
+                            <span class="user">{{ user.username[0] }}</span>
+                            <span class="streak_class">
+                                <img class="streak_icon" src="../content/media/fire.png">
+                                <span class="streak_num">{{ user.streak }}</span>
+                            </span>
+                        </li>
+                    {% endfor %}
                 </ol>
             </div>
     </div>

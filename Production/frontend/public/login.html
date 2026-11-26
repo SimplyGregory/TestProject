@@ -182,15 +182,15 @@
             <source srcset="../content/media/logo_White.png" media="(prefers-color-scheme: dark)">
                 <img src="../content/media/logo_Black.png">
             </picture>
-            <form novalidate id="login_form">
+            <form novalidate id="login_form" method="post" action="/send-login">
                 <div class="form_input">
                     <label>Email<span aria-hidden="true"> *</span></label>
-                    <input required autocomplete="email" type="text" id="email_login" class="form" autocorrect="off" spellcheck="off" minlength="5" maxlength="30">
+                    <input name="email" required autocomplete="email" type="text" id="email_login" class="form" autocorrect="off" spellcheck="off" minlength="5" maxlength="30">
                     <label id="1" class="input_error">Please enter your email.</label>
                 </div>
                 <div class="form_input2">
                     <label>Password<span aria-hidden="true"> *</span></label>
-                    <input required autocomplete="current-password" type="password" id="password_login" class="form" autocorrect="off" spellcheck="off" minlength="8" maxlength="50">
+                    <input name="password" required autocomplete="current-password" type="password" id="password_login" class="form" autocorrect="off" spellcheck="off" minlength="8" maxlength="50">
                     <button type="button" class="toggle_password">
                         <svg style="fill: var(--text);" width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.92,11.6C19.9,6.91,16.1,4,12,4S4.1,6.91,2.08,11.6a1,1,0,0,0,0,.8C4.1,17.09,7.9,20,12,20s7.9-2.91,9.92-7.6A1,1,0,0,0,21.92,11.6ZM12,18c-3.17,0-6.17-2.29-7.9-6C5.83,8.29,8.83,6,12,6s6.17,2.29,7.9,6C18.17,15.71,15.17,18,12,18ZM12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14Z"/></svg>
                     </button>
@@ -200,20 +200,20 @@
                 </div>
                 <button type="submit" class="login_submit">Sign In</button>
             </form>
-            <form novalidate id="signup_form" hidden>
+            <form novalidate id="signup_form" hidden method="post" action="/send-register">
                 <div class="form_input">
                     <label>Email<span aria-hidden="true"> *</span></label>
-                    <input required autocomplete="email" type="text" id="email_signup" class="form" autocorrect="off" spellcheck="off" minlength="5" maxlength="30">
+                    <input required autocomplete="email" name="email" type="text" id="email_signup" class="form" autocorrect="off" spellcheck="off" minlength="5" maxlength="30">
                     <label id="3" class="input_error">Please enter your email.</label>
                 </div>
                 <div class="form_input2">
                     <label>Username<span aria-hidden="true"> *</span></label>
-                    <input required type="text" id="username_signup" class="form" autocorrect="off" spellcheck="off" minlength="5" maxlength="20">
+                    <input required name="username" type="text" id="username_signup" class="form" autocorrect="off" spellcheck="off" minlength="5" maxlength="20">
                     <label id="4" class="input_error">Please enter your username.</label>
                 </div>
                 <div class="form_input2">
                     <label>Password<span aria-hidden="true"> *</span></label>
-                    <input required autocomplete="new-password" type="password" id="password_signup" class="form" autocorrect="off" spellcheck="off" minlength="8" maxlength="50">
+                    <input name="password" required autocomplete="new-password" type="password" id="password_signup" class="form" autocorrect="off" spellcheck="off" minlength="8" maxlength="50">
                     <button type="button" class="toggle_password">
                         <svg style="fill: var(--text);" width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.92,11.6C19.9,6.91,16.1,4,12,4S4.1,6.91,2.08,11.6a1,1,0,0,0,0,.8C4.1,17.09,7.9,20,12,20s7.9-2.91,9.92-7.6A1,1,0,0,0,21.92,11.6ZM12,18c-3.17,0-6.17-2.29-7.9-6C5.83,8.29,8.83,6,12,6s6.17,2.29,7.9,6C18.17,15.71,15.17,18,12,18ZM12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14Z"/></svg>
                     </button>
@@ -225,13 +225,12 @@
             <a style="color: var(--text); display: flex; justify-content: center; font-size: 15px; font-weight: 100; margin-top: 3.5%;">-- or continue with --</a>
 
             <div id="g_id_onload"
-                data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
-                data-login_uri="https://your.domain/your_login_endpoint"
+                data-client_id="1046333407287-q37gi497bhi6miet9s8rh3ttg4dja6ra.apps.googleusercontent.com"
                 data-auto_prompt="false">
             </div>
 
             <div class="google_login">
-                <div class="g_id_signin"></div>
+                <button onclick="window.location.href='/google-login'" class="g_id_signin"></button>
             </div>
         </div>
     </div>

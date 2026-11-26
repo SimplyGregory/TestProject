@@ -97,6 +97,9 @@ def attempt_register():
     if not email_pattern.fullmatch(stripped_email) or domain not in email_domains:
         return "Incorrect email format"
 
+    if not 7 < len(stripped_email.split("@")[0]) < 51:
+                return "Email incorrect length"
+
     password = ph.hash(password)
     sessionID = str(uuid.uuid4())
     database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, password, sessionID))

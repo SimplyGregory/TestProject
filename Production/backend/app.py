@@ -12,7 +12,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 from google.auth.transport import requests as google_auth_requests
 from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
-from argon2.exceptions import VerifyMismatchError
+from argon2.exceptions import VerifyMismatchError, InvalidHashError
 from google_auth_oauthlib.flow import Flow
 from google.oauth2 import id_token
 from argon2 import PasswordHasher
@@ -290,7 +290,7 @@ def login():
         expires = (datetime.now() + timedelta(days=30)).isoformat()
         sessionId = str(uuid.uuid4())
         database_action("UPDATE users SET sessionID = ?, session_expiry = ? WHERE username = ?", (sessionId, expires, user_data["username"]))
-        
+
         try:
             ph.verify(user_data["password"], password)
             response = redirect(url_for("dashboard"))

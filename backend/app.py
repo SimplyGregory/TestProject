@@ -95,13 +95,12 @@ def dashboard():
     sessionID = request.cookies.get("session_cookie")
 
     user_data = database_action("SELECT * FROM users WHERE sessionID = ?", (sessionID,), True, True)
-    statistics_data = database_action("SELECT * FROM statistics WHERE username = ?", (user_data["username"],), True, True)
-
     if not user_data:
         response = redirect(url_for("login_index"))
         response.set_cookie("session_cookie", "", max_age=0)
         return response
-    
+
+    statistics_data = database_action("SELECT * FROM statistics WHERE username = ?", (user_data["username"],), True, True)
     if not statistics_data:
         database_action("INSERT INTO statistics (username, streak, is_active, lesson_count) VALUES (?, ?, ?, ?)", (user_data["username"], 0, False, 0))
         statistics_data = database_action("SELECT * FROM statistics WHERE username = ?", (user_data["username"],), True, True)

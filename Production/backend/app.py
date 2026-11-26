@@ -303,7 +303,11 @@ def login():
         return "Incorrect email or password"
 
     sessionID = str(uuid.uuid3())
-    expires 
+    expires = (datetime.now() + timedelta(days=30)).isoformat()
+    database_action("UPDATE users SET sessionID = ?, session_expiry = ? WHERE id = ?", (sessionID, expires, user_data["id"]))
+
+    response = redirect(url_for("dashboard"))
+    response.set_cookie("session_cookie", sessionID, max_age=60 * 60 * 24 * 30, samesite="Lax")
     return response
 
 #GOOGLE LOGIN

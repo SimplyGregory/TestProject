@@ -364,11 +364,12 @@ def google_callback():
     sessionId = None
 
     user_data = database_action("SELECT * FROM users WHERE email = ?", (email,), True, True)
+    expires = (datetime.now() + timedelta(days=30)).isoformat()
 
     if not user_data:
         sessionId = str(uuid.uuid4())
         username = id_info["name"]
-        database_action("INSERT INTO users (username, email, password, sessionID) VALUES (?, ?, ?, ?)", (username, email, None, sessionId))
+        database_action("INSERT INTO users (username, email, password, sessionID, session_expiry) VALUES (?, ?, ?, ?, ?)", (username, email, None, sessionId, expires))
 
 
         user_data = database_action("SELECT * FROM users WHERE id = ?", ("cursor.lastrowid",))

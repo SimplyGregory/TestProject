@@ -290,18 +290,20 @@ def login():
 
     user_data = database_action("SELECT * FROM users WHERE LOWER(email) = ? or username = ?", (input, input), True, True)
 
-    if user_data:
-        expires = (datetime.now() + timedelta(days=30)).isoformat()
-        sessionId = str(uuid.uuid4())
-        database_action("UPDATE users SET sessionID = ?, session_expiry = ? WHERE username = ?", (sessionId, expires, user_data["username"]))
-
+    valid = False
+    if user_data and user_data["password"]:
         try:
-            ph.verify(user_data["password"], password)
+            valid = ph.verify(user_data["password"], password)
             response = redirect(url_for("dashboard"))
             response.set_cookie("session_cookie", user_data["sessionID"], max_age=60 * 60 * 24)
         except VerifyMismatchError:
-            print("Incorrect Password!")
+            valid = False
 
+    if not valid:
+        return "Incorrect email or password"
+
+    sessionID = str(uuid.uuid3())
+    expires 
     return response
 
 #GOOGLE LOGIN

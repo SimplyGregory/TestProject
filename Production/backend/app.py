@@ -55,9 +55,10 @@ def database_action(sql, params=(), read = False, row_val = False, fetch_one = T
 @app.route("/")
 def login_index():
     if "session_cookie" in request.cookies:
-
-        if database_action("SELECT * FROM users WHERE sessionID = ?", (request.cookies.get("session_cookie"),), True):
-            return redirect(url_for("dashboard"))
+        user_data = database_action("SELECT * FROM users WHERE sessionID = ?", (request.cookies.get("session_cookie"),), True)
+        if user_data:
+            if datetime.fromisoformat(user_data["session_expiry"]) < datetime.now():
+                return redirect(url_for("dashboard"))
 
     return render_template("public/login.html")
 
@@ -132,7 +133,7 @@ def dashboard():
         database_action("INSERT INTO statistics (user_id, streak, lesson_inprogress, completed_lessons, daily_streak, assigned_units) VALUES (?, ?, ?, ?, ?, ?)", (user_data["id"], 0, False, 0, 0, 0))
         statistics_data = database_action("SELECT * FROM statistics WHERE user_id = ?", (user_data["id"],), True, True)
 
-    
+
 
     leaderboard = []
 

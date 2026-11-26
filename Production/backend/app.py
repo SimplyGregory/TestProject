@@ -19,7 +19,7 @@ from argon2 import PasswordHasher
 from werkzeug.utils import secure_filename
 from pathlib import Path
 from dotenv import load_dotenv  
-import time
+from datetime import datetime, timedelta
 import json   
 import os
 import re
@@ -103,8 +103,8 @@ def attempt_register():
 
     password = ph.hash(password)
     sessionID = str(uuid.uuid4())
-    expires = (datetime.now() + timedelda(days=30)).isoformat()
-    database_action("INSERT INTO users (username, email, password, sessionID, session_expiry) VALUES (?, ?, ?, ?, ?)", (username, email, password, sessionID))
+    expires = (datetime.now() + timedelta(days=30)).isoformat()
+    database_action("INSERT INTO users (username, email, password, sessionID, session_expiry) VALUES (?, ?, ?, ?, ?)", (username, email, password, sessionID, expires))
     user_id = database_action("SELECT id FROM users WHERE username = ?", (username,), True, True)
     database_action("INSERT INTO statistics (user_id, streak, lesson_inprogress, completed_lessons, daily_streak, assigned_units) VALUES (?, ?, ?, ?, ?, ?)", (user_id, 0, False, 0, 0, 0))
         

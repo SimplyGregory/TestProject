@@ -74,6 +74,13 @@ def attempt_register():
     form = request.form
     username, email, password = form.get("username", "").strip().lower(), form.get("email", "").strip().lower(), form.get("password", "")
 
+    "gmail.com",
+    "yahoo.com",
+    "outlook.com",
+    "hotmail.com",
+    "icloud.com",
+    "fcpsschools.net"
+    
     if not username or not email or not password:
         return "Missing Field"
     

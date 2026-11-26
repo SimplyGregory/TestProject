@@ -21,6 +21,7 @@ from pathlib import Path
 from dotenv import load_dotenv  
 import json   
 import os
+import re
 import sqlite3
 import uuid                                                                                                                                                             
 
@@ -65,10 +66,29 @@ def attempt_register():
 
     ph = PasswordHasher()
     form = request.form
-    username, email, password = form.get("username").lower(), form.get("email").lower(), form.get("password")
+    username, email, password = form.get("username", "").strip().lower(), form.get("email", "").strip().lower(), form.get("password", "")
+    
+    regex = re.compile(r"^[A-Za-z0-9!@#$%&.+\-_]+$")
+    email_pattern = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
+    email_domains = [
+        "gmail.com",
+        "yahoo.com",
+        "outlook.com",
+        "hotmail.com",
+        "icloud.com"
+    ]
 
-    if database_action("SELECT * FROM users WHERE email = ? or username = ?", (email, username), True):
-        return "Username or Email already exists"
+
+        
+    if not username or not email or not password:
+        return "Missing Field"
+    if len(password) < 3:
+        return "Password has minimum of 8 characters"
+    if not regex.fullmatch(username):
+        return "username incorrectly formatted"
+
+    stripped_email = email.strip()
+    domain = stripped_email.split("@")[1].lower()
 
     password = ph.hash(password)
     sessionID = str(uuid.uuid4())

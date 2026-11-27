@@ -12,7 +12,10 @@
             "name": "Code Format",
             "questions": [
                 {
-                    "Question": "Which "
+                    "Question": "Which code line creates a variable?",
+                    "options": ["food = soup", "int soup", "var soup", "let soup"],
+                    "correct": "0",
+                    "Explanation": "Python creates a variable when defined through a name."
                 }
             ]
             

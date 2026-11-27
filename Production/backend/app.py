@@ -99,7 +99,9 @@ def attempt_register():
     if not username or not email or not password:
         return "Missing Field"
     if not regex.fullmatch(username):
-        return "username incorrectly formatted"
+        return "Username incorrectly formatted"
+    if not regex.fullmatch(password):
+            return "Password incorrectly formatted"
     if not 4 < len(username) < 21:
         return "Username incorrect length"
     if not 7 < len(password) < 51:
